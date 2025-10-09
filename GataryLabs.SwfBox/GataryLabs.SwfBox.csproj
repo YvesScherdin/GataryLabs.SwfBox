@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GataryLabs.SwfBox.Domain\GataryLabs.SwfBox.Domain.csproj" />
+    <ProjectReference Include="..\GataryLabs.SwfBox.Infrastructure\GataryLabs.SwfBox.Infrastructure.csproj" />
+    <ProjectReference Include="..\GataryLabs.SwfBox.Persistence\GataryLabs.SwfBox.Persistence.csproj" />
+    <ProjectReference Include="..\GataryLabs.SwfBox.ViewModels\GataryLabs.SwfBox.ViewModels.csproj" />
+    <ProjectReference Include="..\GataryLabs.SwfBox.Views\GataryLabs.SwfBox.Views.csproj" />
+  </ItemGroup>
+
 </Project>
