@@ -1,0 +1,22 @@
+<diagram program="umletino" version="15.1"><zoom_level>18</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>18</x><y>306</y><w>378</w><h>342</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISessionContext*
+--
++CurrentFile: SwfFileInfo
++RecentFiles: IList&lt;SwfFileInfo&gt;
+--
+Responsibilities
+-- Holds data about the session</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>684</x><y>144</y><w>378</w><h>342</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+*SwfFileInfo*
+--
++Id: string
++Name: string
++Path: string
+--
+Responsibilities
+-- Describes SWF file</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>378</x><y>306</y><w>342</w><h>216</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;100;170;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>684</x><y>522</y><w>378</w><h>342</h></coordinates><panel_attributes>&lt;&lt;Stereotype&gt;&gt;
+*Stuff*
+--
++Thing
+--
+Responsibilities
+-- Resp1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>378</x><y>504</y><w>342</w><h>216</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;100</additional_attributes></element></diagram>
