@@ -4,10 +4,20 @@
                     xmlns:views="clr-namespace:GataryLabs.SwfBox.Views;assembly="
                     xmlns:templates="clr-namespace:GataryLabs.SwfBox.Views.Templates">
 
-    <DataTemplate x:Key="{x:Type viewModels:IMainWindowSwfDetailsContentViewModel}">
-        <views:MainWindowSwfDetailsContentView/>
-    </DataTemplate>
+    <templates:ViewModelDataTemplateSelector x:Key="DataTemplateSelector.ViewModels">
 
-    <templates:ViewModelDataTemplateSelector x:Key="DataTemplateSelector.ViewModels" />
+        <templates:ViewModelDataTemplateSelector.Resources>
+            <ResourceDictionary>
+                <DataTemplate x:Key="{x:Type viewModels:IMainWindowSwfDetailsContentViewModel}">
+                    <views:MainWindowSwfDetailsContentView/>
+                </DataTemplate>
+
+                <DataTemplate x:Key="{x:Type viewModels:IMainWindowErrorContentViewModel}">
+                    <views:MainWindowSwfDetailsContentView/>
+                </DataTemplate>
+            </ResourceDictionary>
+        </templates:ViewModelDataTemplateSelector.Resources>
+
+    </templates:ViewModelDataTemplateSelector>
 
 </ResourceDictionary>

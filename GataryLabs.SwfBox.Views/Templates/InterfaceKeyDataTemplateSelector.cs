@@ -14,15 +14,21 @@ namespace GataryLabs.SwfBox.Views.Templates
     {
         public Type InterfaceType { get; set; }
 
+        public ResourceDictionary Resources { get; set; } = null;
+
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
             if (InterfaceType == null) return null;
             if (item == null) return null;
-            if (container == null) return null;
             if (!InterfaceType.IsAssignableFrom(item.GetType())) return null;
 
-            if (container is not FrameworkElement frameworkElement)
+            ResourceDictionary source = Resources ?? (container as FrameworkElement)?.Resources;
+
+            if (source == null)
+            {
+                Debug.WriteLine($"Could not find proper data template for key '{item}'; no resources are resolvable.");
                 return null;
+            }
 
             Type inspectedType = item.GetType();
             Type keyInterface = inspectedType.GetInterfaces().FirstOrDefault(InterfaceType.IsAssignableFrom);
@@ -33,7 +39,13 @@ namespace GataryLabs.SwfBox.Views.Templates
                 return null;
             }
 
-            object result = frameworkElement.TryFindResource(keyInterface);
+            if (!source.Contains(keyInterface))
+            {
+                Debug.WriteLine($"Could not find proper data template for key '{item}'.");
+                return null;
+            }
+
+            object result = source[keyInterface];
 
             if (result is not DataTemplate dataTemplate)
             {
