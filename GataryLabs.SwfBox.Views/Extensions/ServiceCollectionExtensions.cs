@@ -18,8 +18,7 @@ namespace GataryLabs.SwfBox.Views.Extensions
             where TView : Control, new()
             where TViewModel : IViewModel
         {
-            serviceCollection.AddTransient(
-                serviceProvider => CreateViewWithScope<TView, TViewModel>(serviceProvider));
+            serviceCollection.AddTransient(CreateViewWithScope<TView, TViewModel>);
 
             return serviceCollection;
         }

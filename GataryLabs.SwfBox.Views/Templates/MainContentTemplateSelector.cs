@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace GataryLabs.SwfBox.Views.Templates
 {
-    internal class MainContentTemplateSelector : DataTemplateSelector
+    public class MainContentTemplateSelector : DataTemplateSelector
     {
         public DataTemplate SwfDetails { get; set; }
         public DataTemplate AppSettings { get; set; }
@@ -16,7 +16,7 @@ namespace GataryLabs.SwfBox.Views.Templates
         {
             if (item == null) return null;
             if (container == null) return null;
-            if (item is not IMainWindowViewModel) return null;
+            if (item is not IMainWindowContentViewModel) return null;
 
             switch (item)
             {

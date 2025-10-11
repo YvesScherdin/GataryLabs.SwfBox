@@ -4,8 +4,10 @@
                     xmlns:views="clr-namespace:GataryLabs.SwfBox.Views;assembly="
                     xmlns:templates="clr-namespace:GataryLabs.SwfBox.Views.Templates">
 
-    <DataTemplate DataType="{x:Type viewModels:IMainWindowSwfDetailsContentViewModel}">
+    <DataTemplate x:Key="{x:Type viewModels:IMainWindowSwfDetailsContentViewModel}">
         <views:MainWindowSwfDetailsContentView/>
     </DataTemplate>
+
+    <templates:ViewModelDataTemplateSelector x:Key="DataTemplateSelector.ViewModels" />
 
 </ResourceDictionary>

@@ -1,10 +1,10 @@
 ﻿<views:MvvmWindow x:Class="GataryLabs.SwfBox.Views.MainWindow"
         xmlns:views="clr-namespace:GataryLabs.SwfBox.Views"
+        xmlns:viewModels="clr-namespace:GataryLabs.SwfBox.ViewModels.Abstractions;assembly=GataryLabs.SwfBox.ViewModels.Abstractions"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModels="clr-namespace:GataryLabs.SwfBox.ViewModels.Abstractions;assembly=GataryLabs.SwfBox.ViewModels.Abstractions"
         mc:Ignorable="d"
         TitleVisibility="Collapsed"
         IconVisibility="Collapsed"
@@ -18,13 +18,17 @@
     <Grid>
         <DockPanel LastChildFill="True">
             <Grid DockPanel.Dock="Left" Background="Aqua" Width="200">
-                
+
+                <Button Content="Test" Command="{Binding TestCommand}" />
+
             </Grid>
 
             <Grid DockPanel.Dock="Right" Background="Green">
-                <ContentControl ContentTemplate="{Binding MainContentViewModel}">
-                    
-                </ContentControl>
+                
+                <ContentControl
+                    Content="{Binding MainContentViewModel}"
+                    ContentTemplateSelector="{StaticResource DataTemplateSelector.ViewModels}"/>
+                
             </Grid>
         </DockPanel>
     </Grid>
