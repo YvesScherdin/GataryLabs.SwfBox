@@ -5,11 +5,11 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox", "GataryLabs.SwfBox\GataryLabs.SwfBox.csproj", "{C1F6D3F0-9350-487C-8D7E-87DABC93B897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.ViewModels", "GataryLabs.SwfBox.ViewModels\GataryLabs.SwfBox.ViewModels.csproj", "{0A2EE75D-A858-497C-A5F7-4EE154D19F35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.ViewModels", "GataryLabs.SwfBox.ViewModels\GataryLabs.SwfBox.ViewModels.csproj", "{0A2EE75D-A858-497C-A5F7-4EE154D19F35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.ViewModels.Abstractions", "GataryLabs.SwfBox.ViewModels.Abstractions\GataryLabs.SwfBox.ViewModels.Abstractions.csproj", "{B42694A0-FA63-4C4A-BE56-58A78944DDAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.ViewModels.Abstractions", "GataryLabs.SwfBox.ViewModels.Abstractions\GataryLabs.SwfBox.ViewModels.Abstractions.csproj", "{B42694A0-FA63-4C4A-BE56-58A78944DDAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.Views", "GataryLabs.SwfBox.Views\GataryLabs.SwfBox.Views.csproj", "{56833903-CECF-4825-9B03-6205E26EEE4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Views", "GataryLabs.SwfBox.Views\GataryLabs.SwfBox.Views.csproj", "{56833903-CECF-4825-9B03-6205E26EEE4E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00_Infrastructure", "00_Infrastructure", "{7F07EF16-28F8-408F-89CE-761C8A8D707C}"
 EndProject
@@ -18,20 +18,25 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Domain", "02_Domain", "{459DDF47-D99F-43DF-8265-C4AE65619FC6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_MVVM", "03_MVVM", "{01EBBF85-2D48-4E56-B957-BC3F7CC7AAB5}"
+	ProjectSection(SolutionItems) = preProject
+		GataryLabs.SwfBox.Views\MvvmWindow.xaml.cs = GataryLabs.SwfBox.Views\MvvmWindow.xaml.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_App", "04_App", "{A0FC97CB-DF31-4195-8248-92A4746741ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.Domain", "GataryLabs.SwfBox.Domain\GataryLabs.SwfBox.Domain.csproj", "{22D7FD5E-694A-46C0-8AAD-757BE62CBF01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Domain", "GataryLabs.SwfBox.Domain\GataryLabs.SwfBox.Domain.csproj", "{22D7FD5E-694A-46C0-8AAD-757BE62CBF01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.Domain.Abstractions", "GataryLabs.SwfBox.Domain.Abstractions\GataryLabs.SwfBox.Domain.Abstractions.csproj", "{580BD5BD-6479-41AA-A049-9C648D32182F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Domain.Abstractions", "GataryLabs.SwfBox.Domain.Abstractions\GataryLabs.SwfBox.Domain.Abstractions.csproj", "{580BD5BD-6479-41AA-A049-9C648D32182F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.Persistence", "GataryLabs.SwfBox.Persistence\GataryLabs.SwfBox.Persistence.csproj", "{5B7672D2-50DA-46DA-860F-2B30D932AE83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Persistence", "GataryLabs.SwfBox.Persistence\GataryLabs.SwfBox.Persistence.csproj", "{5B7672D2-50DA-46DA-860F-2B30D932AE83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.Persistence.Abstractions", "GataryLabs.SwfBox.Persistence.Abstractions\GataryLabs.SwfBox.Persistence.Abstractions.csproj", "{33674043-3263-4338-A362-85FFA6E86FEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Persistence.Abstractions", "GataryLabs.SwfBox.Persistence.Abstractions\GataryLabs.SwfBox.Persistence.Abstractions.csproj", "{33674043-3263-4338-A362-85FFA6E86FEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.Infrastructure", "GataryLabs.SwfBox.Infrastructure\GataryLabs.SwfBox.Infrastructure.csproj", "{FA25A086-DD53-4949-B831-FD52DBF5EB42}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Infrastructure", "GataryLabs.SwfBox.Infrastructure\GataryLabs.SwfBox.Infrastructure.csproj", "{FA25A086-DD53-4949-B831-FD52DBF5EB42}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.Infrastructure.Abstractions", "GataryLabs.SwfBox.Infrastructure.Abstractions\GataryLabs.SwfBox.Infrastructure.Abstractions.csproj", "{F884C844-32C2-4714-AE26-731FDFC8C240}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Infrastructure.Abstractions", "GataryLabs.SwfBox.Infrastructure.Abstractions\GataryLabs.SwfBox.Infrastructure.Abstractions.csproj", "{F884C844-32C2-4714-AE26-731FDFC8C240}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Views.Abstractions", "GataryLabs.SwfBox.Views.Abstractions\GataryLabs.SwfBox.Views.Abstractions.csproj", "{FFFF7728-9B2E-49EB-BD52-9EBD4CD760E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +84,10 @@ Global
 		{F884C844-32C2-4714-AE26-731FDFC8C240}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F884C844-32C2-4714-AE26-731FDFC8C240}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F884C844-32C2-4714-AE26-731FDFC8C240}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFFF7728-9B2E-49EB-BD52-9EBD4CD760E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFFF7728-9B2E-49EB-BD52-9EBD4CD760E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFFF7728-9B2E-49EB-BD52-9EBD4CD760E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFFF7728-9B2E-49EB-BD52-9EBD4CD760E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +103,7 @@ Global
 		{33674043-3263-4338-A362-85FFA6E86FEB} = {50C1C715-3AB0-4329-86F3-50E6BF5EEB52}
 		{FA25A086-DD53-4949-B831-FD52DBF5EB42} = {7F07EF16-28F8-408F-89CE-761C8A8D707C}
 		{F884C844-32C2-4714-AE26-731FDFC8C240} = {7F07EF16-28F8-408F-89CE-761C8A8D707C}
+		{FFFF7728-9B2E-49EB-BD52-9EBD4CD760E5} = {01EBBF85-2D48-4E56-B957-BC3F7CC7AAB5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6BBC8E20-6E94-4EA5-B71C-CB29F3D32248}
