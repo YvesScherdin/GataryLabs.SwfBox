@@ -1,4 +1,9 @@
-﻿using System.Windows;
+﻿using GataryLabs.SwfBox.ViewModels.Extensions;
+using GataryLabs.SwfBox.Views;
+using GataryLabs.SwfBox.Views.Extensions;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Windows;
 
 namespace GataryLabs.SwfBox
 {
@@ -7,12 +12,28 @@ namespace GataryLabs.SwfBox
     /// </summary>
     public partial class App : Application
     {
+        private IHost host;
 
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
 
-            MainWindow mainWindow = new MainWindow();
+            IHostBuilder hostBuilder = Host.CreateDefaultBuilder();
+            
+            hostBuilder.ConfigureAppConfiguration(configurationBulder =>
+            {
+
+            });
+
+            hostBuilder.ConfigureServices(services =>
+            {
+                services.AddViews();
+                services.AddViewModels();
+            });
+
+            this.host = hostBuilder.Build();
+
+            MainWindow mainWindow = host.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
         }
     }
