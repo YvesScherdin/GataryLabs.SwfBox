@@ -2,27 +2,39 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
     
-    <system:String x:Key="Loca.Main.SwfDetails.Button.Play.Text" >
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Play.Text">
         Start
     </system:String>
 
-    <system:String x:Key="Loca.Main.SwfDetails.Button.Analyze.Text" >
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Analyze.Text">
         Analysieren
     </system:String>
 
-    <system:String x:Key="Loca.Main.SwfDetails.Headline.Activity" >
+    <system:String x:Key="Loca.Main.SwfDetails.Headline.Activity">
         Bisherige Aktivität
     </system:String>
 
-    <system:String x:Key="Loca.Main.SwfDetails.Headline.MetaData" >
+    <system:String x:Key="Loca.Main.SwfDetails.Activity.LastExecution">
+        Letze Ausführung:
+    </system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Activity.DurationOfExecution">
+        Dauer:
+    </system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Headline.MetaData">
         Meta-Daten
     </system:String>
 
-    <system:String x:Key="Loca.Main.SwfDetails.Headline.Analysis" >
+    <system:String x:Key="Loca.Main.SwfDetails.MetaData.FileSize">
+        Dateigröße:
+    </system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Headline.Analysis">
         Analyse
     </system:String>
 
-    <system:String x:Key="Loca.Main.SwfDetails.Analysis.NotDone" >
-        Analyse
+    <system:String x:Key="Loca.Main.SwfDetails.Analysis.NotDone">
+        Es wurde bisher keine Analyse durchgeführt.
     </system:String>
 </ResourceDictionary>

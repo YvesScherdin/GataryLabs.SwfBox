@@ -5,7 +5,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:pt="http://propertytools.org/wpf"
-                   mc:Ignorable="d" 
+             mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModels:IMainWindowSwfDetailsContentViewModel, IsDesignTimeCreatable=False}">
     <Grid>
@@ -17,50 +17,76 @@
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
-                
-                <StackPanel Grid.Row="0"
-                      Name="headerPanel"
-                      Orientation="Vertical"
-                      HorizontalAlignment="Center"
-                      Style="{StaticResource Main.Panel.Card}">
 
-                    <Label Style="{StaticResource Main.Headline.Big}"
+                <Grid Grid.Row="0"
+                      Name="headerPanel"
+                      Style="{StaticResource Main.Panel.SubRegion.Header}">
+
+                    <StackPanel Orientation="Vertical"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center">
+
+                        <Label Style="{StaticResource Main.Headline.Big}"
                            HorizontalContentAlignment="Center"
                            Content="{Binding Details.FileName}"/>
 
-                    <Label Style="{StaticResource Main.Paragraph}"
+                        <Label Style="{StaticResource Main.Paragraph}"
                            HorizontalContentAlignment="Center"
                            Content="{Binding Details.Path}"/>
-                    
-                    <Label Style="{StaticResource Main.Paragraph}"
+
+                        <Label Style="{StaticResource Main.Paragraph}"
                            HorizontalContentAlignment="Center"
                            Content="{Binding Details.Description}"/>
-                    
-                </StackPanel>
-                
-                <StackPanel Grid.Row="1"
-                      Name="activityPanel"
-                      HorizontalAlignment="Stretch">
-
-                    <Label Style="{StaticResource Main.Headline.Medium}"
-                           HorizontalContentAlignment="Center"
-                           Content="{StaticResource Loca.Main.SwfDetails.Headline.Activity}"/>
-
-                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
-
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150" Content="Last execution:" />
-                            <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50" Content="---"/>
-                        </StackPanel>
                         
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150" Content="Duration:"/>
-                            <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50" Content="0h 12m 13s"/>
-                        </StackPanel>
+                        <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom">
                         
+                            <Button Content="{StaticResource Loca.Main.SwfDetails.Button.Play.Text}"
+                                    Command="{Binding PlayCommand}"
+                                    Style="{StaticResource Main.ActionButton.Big}"/>
+                        
+                        </StackPanel>
                     </StackPanel>
+                   
                     
-                </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Name="activityPanel"
+                      HorizontalAlignment="Stretch"
+                      Style="{StaticResource Main.Panel.Card}">
+                    
+                    <Border Style="{StaticResource Main.Panel.Card.Border}">
+
+                        <StackPanel >
+
+                            <Label Style="{StaticResource Main.Headline.Medium}"
+                                   HorizontalContentAlignment="Center"
+                                   Content="{StaticResource Loca.Main.SwfDetails.Headline.Activity}"/>
+
+                            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <Label Content="{StaticResource Loca.Main.SwfDetails.Activity.LastExecution}"
+                                           Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150"/>
+                                    <Label Content="---"
+                                           Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Label Content="{StaticResource Loca.Main.SwfDetails.Activity.DurationOfExecution}"
+                                           Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150"/>
+                                    <Label Content="0h 12m 13s"
+                                           Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50"/>
+                                </StackPanel>
+
+                            </StackPanel>
+
+                        </StackPanel>
+                        
+                    </Border>
+                </Grid>
                 
                 <Grid Grid.Row="2"
                       Name="infoPanel">
@@ -70,26 +96,76 @@
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0" Name="metaDataPanel">
+                        <!-- Meta data panel -->
+                        <Grid Grid.Column="0"
+                              Name="metaDataPanel"
+                              Style="{StaticResource Main.Panel.Card}">
 
-                            <Label Style="{StaticResource Main.Headline.Medium}"
-                           HorizontalContentAlignment="Left"
-                           Content="{StaticResource Loca.Main.SwfDetails.Headline.MetaData}"/>
+                            <Border Style="{StaticResource Main.Panel.Card.Border}">
+                                <StackPanel>
 
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150" Content="File size:" />
-                                <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50" Content="---"/>
-                            </StackPanel>
+                                    <Label Style="{StaticResource Main.Headline.Medium}"
+                                           HorizontalContentAlignment="Left"
+                                           Content="{StaticResource Loca.Main.SwfDetails.Headline.MetaData}"/>
+                                    
+                                    <!-- Info items -->
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <Label Content="{StaticResource Loca.Main.SwfDetails.MetaData.FileSize}"
+                                               Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150"/>
+                                        <Label Content="---"
+                                               Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50"/>
+                                    </StackPanel>
+                                    <!-- ... -->
+                                    
+                                </StackPanel>
+                            </Border>
+                        </Grid>
 
-                        </StackPanel>
+                        <Grid Grid.Column="1"
+                              Name="analysisPanel"
+                              Style="{StaticResource Main.Panel.Card}">
 
-                        <StackPanel Grid.Column="1" Name="analysisPanel">
+                            <Border Style="{StaticResource Main.Panel.Card.Border}">
 
-                            <Label Style="{StaticResource Main.Headline.Medium}"
-                           HorizontalContentAlignment="Left"
-                           Content="{StaticResource Loca.Main.SwfDetails.Headline.Analysis}"/>
+                                <DockPanel>
 
-                        </StackPanel>
+                                    <StackPanel DockPanel.Dock="Top"
+                                                Orientation="Horizontal">
+
+                                        <Label Content="{StaticResource Loca.Main.SwfDetails.Headline.Analysis}"
+                                               Style="{StaticResource Main.Headline.Medium}"
+                                               HorizontalContentAlignment="Left"/>
+
+                                        <Grid Width="10"/>
+
+                                        <Button Content="{StaticResource Loca.Main.SwfDetails.Button.Analyze.Text}"
+                                                Command="{Binding AnalyzeCommand}"
+                                                Style="{StaticResource Main.ActionButton.Small}"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"/>
+
+                                    </StackPanel>
+                                    
+                                    
+
+                                    <Grid DockPanel.Dock="Bottom"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch">
+
+                                        <TextBlock Style="{StaticResource Main.Paragraph.TextBlock}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Text="{StaticResource Loca.Main.SwfDetails.Analysis.NotDone}" />
+
+                                    </Grid>
+
+                                </DockPanel>
+                                
+                            </Border>
+                            
+                        </Grid>
+
                     </Grid>
                 </Grid>
                 

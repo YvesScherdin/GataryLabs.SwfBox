@@ -17,17 +17,24 @@
 
     <Grid>
         <DockPanel LastChildFill="True">
-            <Grid DockPanel.Dock="Left" Background="Aqua" Width="200">
+            <Grid DockPanel.Dock="Left" Width="200">
 
-                <Button Content="Test" Command="{Binding TestCommand}" />
+                <Border Style="{StaticResource Main.SideBoard.Border}">
+                    
+                    <Button Content="Test" Command="{Binding TestCommand}" />
+                    
+                </Border>
 
             </Grid>
 
-            <Grid DockPanel.Dock="Right" Background="Green">
-                
-                <ContentControl
-                    Content="{Binding MainContentViewModel}"
-                    ContentTemplateSelector="{StaticResource DataTemplateSelector.ViewModels}"/>
+            <Grid DockPanel.Dock="Right">
+
+                <Border Style="{StaticResource Main.MainRegion.Border}">
+
+                    <ContentControl Content="{Binding MainContentViewModel}"
+                                    ContentTemplateSelector="{StaticResource DataTemplateSelector.ViewModels}"/>
+
+                </Border>
                 
             </Grid>
         </DockPanel>
