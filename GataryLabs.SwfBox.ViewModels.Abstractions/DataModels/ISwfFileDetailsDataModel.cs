@@ -6,11 +6,9 @@
 
         string Path { get; }
 
-        string Description { get; }
+        ISwfMetaDataModel MetaData { get; }
 
         ISwfActivityDataModel Activity { get; }
-
-        ISwfMetaDataModel MetaData { get; }
 
         ISwfAnalysisDataModel Analysis { get; }
     }

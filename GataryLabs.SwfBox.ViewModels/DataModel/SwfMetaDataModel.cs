@@ -1,30 +1,45 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
+using System;
 
 namespace GataryLabs.SwfBox.ViewModels.DataModel
 {
     internal class SwfMetaDataModel : ObservableObject, ISwfMetaDataModel
     {
-        private string format;
-        private string version;
-        private uint fileLength;
+        private Uri image;
+        private string title;
+        private string description;
+        private string developer;
+        private Uri developerLogo;
 
-        public string Format
+        public Uri Image
         {
-            get => format;
-            set => SetProperty(ref format, value);
+            get => image;
+            set => SetProperty(ref image, value);
         }
 
-        public string Version
+        public string Title
         {
-            get => version;
-            set => SetProperty(ref version, value);
+            get => title;
+            set => SetProperty(ref title, value);
         }
-
-        public uint FileLength
+        
+        public string Description
         {
-            get => fileLength;
-            set => SetProperty(ref fileLength, value);
+            get => description;
+            set => SetProperty(ref description, value);
+        }
+        
+        public string Developer
+        {
+            get => developer;
+            set => SetProperty(ref developer, value);
+        }
+        
+        public Uri DeveloperLogo
+        {
+            get => developerLogo;
+            set => SetProperty(ref developerLogo, value);
         }
     }
 }
