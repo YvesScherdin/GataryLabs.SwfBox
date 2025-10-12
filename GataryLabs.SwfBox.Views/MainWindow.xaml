@@ -20,7 +20,7 @@
         <DockPanel LastChildFill="True">
             <Grid DockPanel.Dock="Left" Width="200">
 
-                <Border Style="{StaticResource Main.SideBar.Border}">
+                <Border Style="{StaticResource Main.MenuBar.Border}">
                     
                     <Button Content="Test" Command="{Binding TestCommand}" />
                     

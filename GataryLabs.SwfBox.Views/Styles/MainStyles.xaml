@@ -67,7 +67,7 @@
         <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Paragraph}"/>
     </Style>
     
-    <Style x:Key="Main.SideBar.Border" TargetType="Border">
+    <Style x:Key="Main.MenuBar.Border" TargetType="Border">
         <Setter Property="Padding" Value="{StaticResource Theme.Thickness.Big}"/>
         <Setter Property="Background" Value="{StaticResource Theme.Background.MenuBar}"/>
     </Style>
