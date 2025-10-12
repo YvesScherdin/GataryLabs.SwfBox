@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Play.Text" >
+        Start
+    </system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Analyze.Text" >
+        Analysieren
+    </system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Headline.Activity" >
+        Bisherige Aktivität
+    </system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Headline.MetaData" >
+        Meta-Daten
+    </system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Headline.Analysis" >
+        Analyse
+    </system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Analysis.NotDone" >
+        Analyse
+    </system:String>
+</ResourceDictionary>

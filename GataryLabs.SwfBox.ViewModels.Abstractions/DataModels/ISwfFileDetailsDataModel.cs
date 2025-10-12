@@ -6,6 +6,8 @@
 
         string Path { get; }
 
+        string Description { get; }
+
         ISwfActivityDataModel Activity { get; }
 
         ISwfMetaDataModel MetaData { get; }

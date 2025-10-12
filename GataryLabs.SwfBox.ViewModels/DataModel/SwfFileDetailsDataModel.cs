@@ -7,6 +7,7 @@ namespace GataryLabs.SwfBox.ViewModels.DataModel
     {
         private string fileName;
         private string path;
+        private string description;
         private ISwfActivityDataModel activity;
         private ISwfMetaDataModel metaData;
         private ISwfAnalysisDataModel analysis;
@@ -21,6 +22,12 @@ namespace GataryLabs.SwfBox.ViewModels.DataModel
         {
             get => path;
             set => SetProperty(ref path, value);
+        }
+        
+        public string Description
+        {
+            get => description;
+            set => SetProperty(ref description, value);
         }
 
         public ISwfActivityDataModel Activity

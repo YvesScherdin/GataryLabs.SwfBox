@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="pack://application:,,,/AdonisUI.ClassicTheme;component/Resources.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/GataryLabs.SwfBox.Views;component/Styles/MainStyles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/GataryLabs.SwfBox.Views;component/Templates/MainContentTemplateResources.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/GataryLabs.SwfBox.Views;component/Resources/Localization_DE-de.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

@@ -4,8 +4,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:pt="http://propertytools.org/wpf"
+                   mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModels:IMainWindowSwfDetailsContentViewModel, IsDesignTimeCreatable=False}">
     <Grid>
@@ -18,31 +18,78 @@
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
                 
-                <Grid Grid.Row="0" Name="headerPanel">
+                <StackPanel Grid.Row="0"
+                      Name="headerPanel"
+                      Orientation="Vertical"
+                      HorizontalAlignment="Center"
+                      Style="{StaticResource Main.Panel.Card}">
 
                     <Label Style="{StaticResource Main.Headline.Big}"
-                           Content="Some.swf"/>
+                           HorizontalContentAlignment="Center"
+                           Content="{Binding Details.FileName}"/>
 
-                </Grid>
-                
-                <Grid Grid.Row="1" Name="activityPanel">
+                    <Label Style="{StaticResource Main.Paragraph}"
+                           HorizontalContentAlignment="Center"
+                           Content="{Binding Details.Path}"/>
                     
-                </Grid>
+                    <Label Style="{StaticResource Main.Paragraph}"
+                           HorizontalContentAlignment="Center"
+                           Content="{Binding Details.Description}"/>
+                    
+                </StackPanel>
                 
-                <Grid Grid.Row="2" Name="infoPanel">
+                <StackPanel Grid.Row="1"
+                      Name="activityPanel"
+                      HorizontalAlignment="Stretch">
+
+                    <Label Style="{StaticResource Main.Headline.Medium}"
+                           HorizontalContentAlignment="Center"
+                           Content="{StaticResource Loca.Main.SwfDetails.Headline.Activity}"/>
+
+                    <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150" Content="Last execution:" />
+                            <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50" Content="---"/>
+                        </StackPanel>
+                        
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150" Content="Duration:"/>
+                            <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50" Content="0h 12m 13s"/>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                    
+                </StackPanel>
+                
+                <Grid Grid.Row="2"
+                      Name="infoPanel">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
                             <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        
-                        <Grid Grid.Column="0" Name="metaDataPanel">
-                            
-                        </Grid>
-                        
-                        <Grid Grid.Column="1" Name="analysisPanel">
-                            
-                        </Grid>
+
+                        <StackPanel Grid.Column="0" Name="metaDataPanel">
+
+                            <Label Style="{StaticResource Main.Headline.Medium}"
+                           HorizontalContentAlignment="Left"
+                           Content="{StaticResource Loca.Main.SwfDetails.Headline.MetaData}"/>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150" Content="File size:" />
+                                <Label Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50" Content="---"/>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Name="analysisPanel">
+
+                            <Label Style="{StaticResource Main.Headline.Medium}"
+                           HorizontalContentAlignment="Left"
+                           Content="{StaticResource Loca.Main.SwfDetails.Headline.Analysis}"/>
+
+                        </StackPanel>
                     </Grid>
                 </Grid>
                 
