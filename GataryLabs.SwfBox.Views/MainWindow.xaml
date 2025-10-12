@@ -9,6 +9,7 @@
         TitleVisibility="Collapsed"
         IconVisibility="Collapsed"
         Height="450" Width="800"
+        MinHeight="420" MinWidth="640"
         d:DataContext="{d:DesignInstance viewModels:IMainWindowViewModel, IsDesignTimeCreatable=False}">
 
     <views:MvvmWindow.Style>
@@ -19,7 +20,7 @@
         <DockPanel LastChildFill="True">
             <Grid DockPanel.Dock="Left" Width="200">
 
-                <Border Style="{StaticResource Main.SideBoard.Border}">
+                <Border Style="{StaticResource Main.SideBar.Border}">
                     
                     <Button Content="Test" Command="{Binding TestCommand}" />
                     

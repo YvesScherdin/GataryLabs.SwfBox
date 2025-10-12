@@ -136,7 +136,7 @@
                                                Style="{StaticResource Main.Headline.Medium}"
                                                HorizontalContentAlignment="Left"/>
 
-                                        <Grid Width="10"/>
+                                        <Grid Width="{StaticResource Theme.Spacing.Small}"/>
 
                                         <Button Content="{StaticResource Loca.Main.SwfDetails.Button.Analyze.Text}"
                                                 Command="{Binding AnalyzeCommand}"
@@ -146,8 +146,6 @@
 
                                     </StackPanel>
                                     
-                                    
-
                                     <Grid DockPanel.Dock="Bottom"
                                           HorizontalAlignment="Stretch"
                                           VerticalAlignment="Stretch">
