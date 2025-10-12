@@ -1,22 +1,155 @@
-<diagram program="umletino" version="15.1"><zoom_level>18</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>162</x><y>324</y><w>378</w><h>342</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>430</x><y>445</y><w>105</w><h>105</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
 *ISessionContext*
 --
-+CurrentFile: SwfFileInfo
-+RecentFiles: IList&lt;SwfFileInfo&gt;
++InspectedFile: GUID
++InspectionHistory: IList&lt;GUID&gt;
++Library: IList&lt;SwfFileDetailsInfo&gt;
++Settings: ISessionSettings
 --
 Responsibilities
--- Holds data about the session</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>828</x><y>162</y><w>378</w><h>342</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
-*SwfFileInfo*
+-- Holds detailed Swf file list
+-- Holds inspection history
+-- Holds what is currently inspected
+-- Holds user's settings</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>625</x><y>690</y><w>185</w><h>95</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISwfFileService*
 --
-+Id: string
-+Name: string
+-sessionContext: ISessionContext
+--
++Analyze(info: SwfFileDetailsInfo): void
++EditMetaData(id: GUID, delta: SwfFileMetaDataInfo): void
++Play(id: GUID): void
+-HandleStopped():void
+--
+Responsibilities
+-- Modifies details of SWF files
+-- Interacts with SWF files</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>470</y><w>105</w><h>95</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+*SwfFileDetailsInfo*
+--
++ID: GUID
 +Path: string
++MetaData: SwfFileMetaDataInfo
++Activity: SwfFileActivityInfo
++Analysis: SwfFileAnalysisInfo
 --
 Responsibilities
--- Describes SWF file</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>522</x><y>324</y><w>342</w><h>216</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;100;170;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>828</x><y>540</y><w>378</w><h>342</h></coordinates><panel_attributes>&lt;&lt;Stereotype&gt;&gt;
-*Stuff*
+-- Holds all details about a SWF
+-- Serializable for persistence</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>985</x><y>470</y><w>105</w><h>95</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+*SwfFileActivityInfo*
 --
-+Thing
++LastExecutedAt: Date
++RegisteredAt: Date
++LastExecutionDuration: long
++AverageExecutionDuration: long
 --
 Responsibilities
--- Resp1</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>522</x><y>522</y><w>342</w><h>216</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;100</additional_attributes></element></diagram>
+-- Describes tracked interaction</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>985</x><y>360</y><w>105</w><h>95</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+*SwfFileMetaDataInfo*
+--
++Image: Uri?
++Title: string
++Description: string
++Developer: string
++DeveloperLogo: Uri?
+--
+Responsibilities
+-- Holds meta data for the medium</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>985</x><y>580</y><w>105</w><h>95</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+*SwfFileAnalysisInfo*
+--
++Format: string
++Version: string
++FileLength: uint
+--
+Responsibilities
+-- Holds information from analysis</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>430</y><w>95</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;120;80;120;80;10;170;10</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>540</y><w>95</w><h>65</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;80;10;80;110;170;110</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>415</x><y>310</y><w>115</w><h>35</h></coordinates><panel_attributes>Domain.Abstractions
+--
++Interface of domain layer
+bg=gray
+fg=red</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>415</x><y>55</y><w>115</w><h>35</h></coordinates><panel_attributes>ViewModel.Abstractions
+--
++Interface of ViewModels
+bg=#101010
+fg=#AA22ff</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>585</x><y>115</y><w>105</w><h>95</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISwfFileBriefDataModel*
+--
++ID: GUID
++Image: Uri?
++Path: string
++Description: string
+--
+Responsibilities
+-- Data displayed in item and tooltip
+-- Identifies related domain model</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>790</x><y>115</y><w>105</w><h>95</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISwfFileDetailsDataModel*
+--
++ID: GUID
++FileName: string
++Path: string
++MetaData: ISwfMetaDataModel
++Activity: ISwfActivityDataModel
++Analysis: ISwfAnalysisDataModel
+--
+Responsibilities
+-- Detailed data about SWF file
+-- Identifies related domain model</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>985</x><y>95</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISwfFileMetaDataModel*
+--
+Responsibilities
+-- Holds related data for display</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>985</x><y>145</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISwfActivityDataModel*
+--
+Responsibilities
+-- Holds related data for display</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>985</x><y>195</y><w>100</w><h>40</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISwfAnalysisDataModel*
+--
+Responsibilities
+-- Holds related data for display</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>155</y><w>105</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;190;10</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>175</y><w>105</w><h>35</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;190;50</additional_attributes></element><element><id>Relation</id><coordinates><x>890</x><y>115</y><w>105</w><h>35</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;50;190;10</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1120</x><y>395</y><w>100</w><h>25</h></coordinates><panel_attributes>Editable / semi-auto detectable
+e.g. no title -&gt; file name displayed
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1120</x><y>505</y><w>100</w><h>25</h></coordinates><panel_attributes>Tracked by application
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1120</x><y>610</y><w>100</w><h>25</h></coordinates><panel_attributes>Detected by application
+TODO: add Tags
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>510</y><w>95</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;170;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>645</x><y>325</y><w>105</w><h>110</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISessionSettings*
+--
++DefaultDeveloper: string
++DefaultDeveloperLogo: Uri
++DefaultPlayer: Guid
++Players: IList&lt;SwfPlayerInfo&gt;
+--
+Responsibilities
+-- Holds session settings data
+-- Holds SWF player options</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>365</y><w>125</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;200;130;200;130;10;230;10</additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>535</y><w>280</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;540;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>425</x><y>735</y><w>185</w><h>115</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISwfFileLibraryService*
+--
+-sessionContext: ISessionContext
+--
++HasFileWithPath(path: string): bool
++Load(path: string): SwfFileDetailsInfo
++RegisterFile(info: SwfFileDetailsInfo): void
++UnregisterFile(info: SwfFileDetailsInfo): void
++GetSingleFileDetails(id: GUID): SwfFileDetailsInfo
++GetManyFileDetails(ids: IList&lt;GUID&gt;): IList&lt;SwfFileDetailsInfo&gt;
+--
+Responsibilities
+-- Loading and registering details of SWF file
+-- Modifies library of SWF files
+-- Retrieves library items + related information</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>645</x><y>405</y><w>100</w><h>30</h></coordinates><panel_attributes>Initial default values taken from
+application config file.
+Resettable.
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>645</x><y>455</y><w>105</w><h>75</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+*ISwfExecutionInfo*
+--
++PlayerInfo: SwfPlayerInfo
++FileDetails: SwfFileDetailsInfo
+-hostControl: IHostControl
+--
+Responsibilities
+-- Holds executed file details (ref.)
+-- Holds player info and host (ref.)</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>485</y><w>125</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;230;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>350</y><w>105</w><h>95</h></coordinates><panel_attributes>&lt;&lt;Class&gt;&gt;
+*SwfPlayerInfo*
+--
++Id: Guid
++Type: string
++Version: string
+--
+Responsibilities
+-- Holds meta data for the medium</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>745</x><y>365</y><w>65</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>745</x><y>415</y><w>65</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;120;60;120;60;10;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>455</x><y>545</y><w>15</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;380;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>505</x><y>545</y><w>165</w><h>155</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>310;290;310;150;10;150;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>805</x><y>560</y><w>40</w><h>180</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>60;10;60;340;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>605</x><y>560</y><w>280</w><h>255</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>540;10;540;490;10;490</additional_attributes></element><element><id>Relation</id><coordinates><x>745</x><y>505</y><w>65</w><h>15</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;110;10</additional_attributes></element></diagram>
