@@ -21,9 +21,9 @@
             <Grid DockPanel.Dock="Left" Width="200">
 
                 <Border Style="{StaticResource Main.MenuBar.Border}">
-                    
-                    <Button Content="Test" Command="{Binding TestCommand}" />
-                    
+
+                    <views:MainWindowMenuBar/>
+
                 </Border>
 
             </Grid>

@@ -1,11 +1,9 @@
-﻿using System.Windows.Input;
-
-namespace GataryLabs.SwfBox.ViewModels.Abstractions
+﻿namespace GataryLabs.SwfBox.ViewModels.Abstractions
 {
     public interface IMainWindowViewModel : IViewModel
     {
-        public IMainWindowContentViewModel MainContentViewModel { get; }
+        IMainWindowMenuBarViewModel MenuBarViewModel { get; }
 
-        public ICommand TestCommand { get; }
+        IMainWindowContentViewModel MainContentViewModel { get; }
     }
 }

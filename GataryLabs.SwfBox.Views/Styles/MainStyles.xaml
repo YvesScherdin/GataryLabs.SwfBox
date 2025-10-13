@@ -7,10 +7,15 @@
     <SolidColorBrush x:Key="Theme.Background.MainRegion" Color="#E0E0E0" />
     <SolidColorBrush x:Key="Theme.Background.MainRegion.Card" Color="#C9C9C9" />
     <SolidColorBrush x:Key="Theme.BorderBrush.MainRegion.Card" Color="#FFFFFF" />
-    <SolidColorBrush x:Key="Theme.Background.MenuBar" Color="#9E9E9E" />
     <SolidColorBrush x:Key="Theme.Background.Button" Color="#999999" />
     <SolidColorBrush x:Key="Theme.Foreground.Button" Color="#FFFFFF" />
     <SolidColorBrush x:Key="Theme.BorderBrush.Button" Color="#999999" />
+    
+    <SolidColorBrush x:Key="Theme.Background.MenuBar" Color="#9E9E9E" />
+    <SolidColorBrush x:Key="Theme.Foreground.MenuBar.Headline" Color="#E0E0E0" />
+    <SolidColorBrush x:Key="Theme.Background.MenuBar.Button" Color="#E0E0E0" />
+    <SolidColorBrush x:Key="Theme.Foreground.MenuBar.Button" Color="#9E9E9E" />
+    <SolidColorBrush x:Key="Theme.BorderBrush.MenuBar.Button" Color="#9E9E9E" />
 
     <!-- Fonts -->
 
@@ -35,7 +40,7 @@
         <Setter Property="BorderBrush" Value="{StaticResource Theme.BorderBrush.Button}"/>
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
-
+    
     <Style x:Key="Main.ActionButton.Big" TargetType="Button" BasedOn="{StaticResource Main.ActionButton.Basic}">
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Button.Big}"/>
@@ -48,7 +53,23 @@
         <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Button.Small}"/>
         <Setter Property="MinWidth" Value="100"/>
     </Style>
-    
+
+    <Style x:Key="Main.MenuBar.ActionButton.Basic" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Theme.Background.MenuBar.Button}"/>
+        <Setter Property="Foreground" Value="{StaticResource Theme.Foreground.MenuBar.Button}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Theme.BorderBrush.MenuBar.Button}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style x:Key="Main.MenuBar.ActionButton.Big" TargetType="Button" BasedOn="{StaticResource Main.MenuBar.ActionButton.Basic}">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Button.Big}"/>
+        <!--
+        <Setter Property="MinWidth" Value="120"/>
+        -->
+        <Setter Property="Height" Value="36"/>
+    </Style>
+
     <Style x:Key="Main.Headline.Big" TargetType="Label">
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Headline.Huge}"/>
@@ -66,7 +87,13 @@
     <Style x:Key="Main.Paragraph.TextBlock" TargetType="TextBlock">
         <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Paragraph}"/>
     </Style>
-    
+
+    <Style x:Key="Main.MenuBar.Headline.Big" TargetType="Label">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Headline.Huge}"/>
+        <Setter Property="Foreground" Value="{StaticResource Theme.Foreground.MenuBar.Headline}"/>
+    </Style>
+
     <Style x:Key="Main.MenuBar.Border" TargetType="Border">
         <Setter Property="Padding" Value="{StaticResource Theme.Thickness.Big}"/>
         <Setter Property="Background" Value="{StaticResource Theme.Background.MenuBar}"/>
@@ -94,5 +121,5 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="{StaticResource Theme.Thickness.Small}"/>
     </Style>
-    
+
 </ResourceDictionary>

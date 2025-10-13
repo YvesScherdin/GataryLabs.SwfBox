@@ -2,7 +2,7 @@
 
 namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
 {
-    public interface ISwfActivityDataModel
+    public interface ISwfActivityDataModel : IDataModel
     {
         DateTimeOffset? LastExecutedAt { get; }
         DateTimeOffset? RegisteredAt { get; }

@@ -1,17 +1,22 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace GataryLabs.SwfBox.ViewModels
 {
     internal class MainWindowViewModel : ObservableObject, IMainWindowViewModel
     {
+        private IMainWindowMenuBarViewModel mainWindowMenuBarViewModel;
         private IMainWindowSwfDetailsContentViewModel mainWindowSwfDetailsContentViewModel;
-
         private IMainWindowContentViewModel mainContentViewModel;
+
+        public MainWindowViewModel(
+            IMainWindowMenuBarViewModel mainWindowMenuBarViewModel,
+            IMainWindowSwfDetailsContentViewModel mainWindowSwfDetailsContentViewModel)
+        {
+            this.mainWindowMenuBarViewModel = mainWindowMenuBarViewModel;
+            this.mainWindowSwfDetailsContentViewModel = mainWindowSwfDetailsContentViewModel;
+        }
 
         public IMainWindowContentViewModel MainContentViewModel
         {
@@ -22,35 +27,18 @@ namespace GataryLabs.SwfBox.ViewModels
             }
         }
 
-        public ICommand TestCommand { get; init; }
-
-        public MainWindowViewModel(IMainWindowSwfDetailsContentViewModel mainWindowSwfDetailsContentViewModel)
-        {
-            this.mainWindowSwfDetailsContentViewModel = mainWindowSwfDetailsContentViewModel;
-
-            this.TestCommand = new RelayCommand(DoStuff);
-        }
+        public IMainWindowMenuBarViewModel MenuBarViewModel => mainWindowMenuBarViewModel;
 
         public void OnLoaded()
         {
             Debug.WriteLine("On loaded - MainWindowViewModel");
-        }
 
-        private async void DoStuffAsync()
-        {
-            await Task.Delay(1000);
+            MainContentViewModel = mainWindowSwfDetailsContentViewModel;
         }
 
         public void OnUnloaded()
         {
             Debug.WriteLine("On unloaded - MainWIndowViewModel");
         }
-
-
-        private void DoStuff()
-        {
-            MainContentViewModel = mainContentViewModel == null ? mainWindowSwfDetailsContentViewModel : null;
-        }
-
     }
 }
