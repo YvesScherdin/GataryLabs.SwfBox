@@ -21,19 +21,15 @@ namespace GataryLabs.SwfBox.ViewModels
         public IMainWindowContentViewModel MainContentViewModel
         {
             get => mainContentViewModel;
-            set
-            {
-                SetProperty(ref mainContentViewModel, value);
-            }
+            set => SetProperty(ref mainContentViewModel, value);
         }
 
         public IMainWindowMenuBarViewModel MenuBarViewModel => mainWindowMenuBarViewModel;
+        public IMainWindowSwfDetailsContentViewModel MainWindowSwfDetailsContentViewModel => mainWindowSwfDetailsContentViewModel;
 
         public void OnLoaded()
         {
             Debug.WriteLine("On loaded - MainWindowViewModel");
-
-            MainContentViewModel = mainWindowSwfDetailsContentViewModel;
         }
 
         public void OnUnloaded()

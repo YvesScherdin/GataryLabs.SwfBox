@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 using GataryLabs.SwfBox.ViewModels.DataModel;
+using GataryLabs.SwfBox.ViewModels.Utils;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,16 +13,26 @@ namespace GataryLabs.SwfBox.ViewModels
 {
     internal class MainWindowMenuBarViewModel : ObservableObject, IMainWindowMenuBarViewModel
     {
+        private LazyInstance<IMainWindowViewModel> mainWindowViewModelLazy;
+
         private RelayCommand openOverviewCommand;
         private RelayCommand openSettingsCommand;
         private RelayCommand selectSwfFileCommand;
         private IList<ISwfFileBriefDataModel> recentSwfFiles;
 
-        public MainWindowMenuBarViewModel()
+        public MainWindowMenuBarViewModel(
+            LazyInstance<IMainWindowViewModel> mainWindowViewModelLazy)
         {
-            openOverviewCommand = new RelayCommand(() => Debug.WriteLine("Open overview!"));
+            this.mainWindowViewModelLazy = mainWindowViewModelLazy;
+
+            openOverviewCommand = new RelayCommand(ExecuteOpenOverviewCommand);
             openSettingsCommand = new RelayCommand(() => Debug.WriteLine("Open settings!"), () => false);
             selectSwfFileCommand = new RelayCommand(() => Debug.WriteLine("Select swf!"));
+        }
+
+        private void ExecuteOpenOverviewCommand()
+        {
+            mainWindowViewModelLazy.Value.MainContentViewModel = mainWindowViewModelLazy.Value.MainWindowSwfDetailsContentViewModel;
         }
 
         public ICommand OpenOverviewCommand => openOverviewCommand;

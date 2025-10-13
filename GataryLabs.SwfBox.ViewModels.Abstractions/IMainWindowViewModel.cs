@@ -4,6 +4,7 @@
     {
         IMainWindowMenuBarViewModel MenuBarViewModel { get; }
 
-        IMainWindowContentViewModel MainContentViewModel { get; }
+        IMainWindowContentViewModel MainContentViewModel { get; set; }
+        IMainWindowSwfDetailsContentViewModel MainWindowSwfDetailsContentViewModel { get; }
     }
 }

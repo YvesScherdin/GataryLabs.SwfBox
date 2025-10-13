@@ -38,10 +38,7 @@
                         
                         <Label Content="Recent SWFs" Style="{StaticResource Main.MenuBar.Headline.Big}"/>
 
-                        <ListBox ItemsSource="{Binding }">
-                            
-                        </ListBox>
-                        
+                        <!-- <ListBox ItemsSource="{Binding }"></ListBox> -->
                     </StackPanel>
                     
                 </Grid>

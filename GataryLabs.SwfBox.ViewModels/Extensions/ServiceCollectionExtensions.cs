@@ -1,5 +1,6 @@
 ﻿using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.DataModel;
+using GataryLabs.SwfBox.ViewModels.Utils;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -9,6 +10,8 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
     {
         public static IServiceCollection AddViewModels(this IServiceCollection services)
         {
+            services.AddTransient(typeof(LazyInstance<>));
+
             services.AddScoped<IMainWindowViewModel, MainWindowViewModel>();
             services.AddScoped<IMainWindowSwfDetailsContentViewModel, MainWindowSwfDetailsContentViewModel>(CreateSwfDetailsViewModel);
             services.AddScoped<IMainWindowErrorContentViewModel, MainWindowErrorContentViewModel>();

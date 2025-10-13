@@ -22,7 +22,7 @@
 
                 <Border Style="{StaticResource Main.MenuBar.Border}">
 
-                    <views:MainWindowMenuBar/>
+                    <views:MainWindowMenuBar DataContext="{Binding MenuBarViewModel}"/>
 
                 </Border>
 
