@@ -2,11 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
-using GataryLabs.SwfBox.ViewModels.Constants;
-using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Utils;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -19,12 +15,14 @@ namespace GataryLabs.SwfBox.ViewModels
         private RelayCommand openOverviewCommand;
         private RelayCommand openSettingsCommand;
         private RelayCommand selectSwfFileCommand;
-        private ISwfFileLibraryDataModel recentSwfFiles;
+        private IRecentSwfFileLibraryDataModel recentSwfFiles;
 
         public MainWindowMenuBarViewModel(
-            LazyInstance<IMainWindowViewModel> mainWindowViewModelLazy)
+            LazyInstance<IMainWindowViewModel> mainWindowViewModelLazy,
+            IRecentSwfFileLibraryDataModel recentSwfFiles)
         {
             this.mainWindowViewModelLazy = mainWindowViewModelLazy;
+            this.recentSwfFiles = recentSwfFiles;
 
             openOverviewCommand = new RelayCommand(ExecuteOpenOverviewCommand);
             openSettingsCommand = new RelayCommand(() => Debug.WriteLine("Open settings!"), () => false);
@@ -35,7 +33,7 @@ namespace GataryLabs.SwfBox.ViewModels
         public ICommand OpenSettingsCommand => openSettingsCommand;
         public ICommand SelectSwfFileCommand => selectSwfFileCommand;
 
-        public ISwfFileLibraryDataModel RecentSwfFiles
+        public IRecentSwfFileLibraryDataModel RecentSwfFiles
         {
             get => recentSwfFiles;
             private set => SetProperty(ref recentSwfFiles, value);
@@ -43,81 +41,10 @@ namespace GataryLabs.SwfBox.ViewModels
 
         public void OnLoaded()
         {
-            RecentSwfFiles = new SwfFileLibraryDataModel
-            {
-                Files = new List<ISwfFileBriefDataModel>
-                {
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    }
-                }
-            };
         }
 
         public void OnUnloaded()
         {
-
         }
 
         private void ExecuteOpenOverviewCommand()

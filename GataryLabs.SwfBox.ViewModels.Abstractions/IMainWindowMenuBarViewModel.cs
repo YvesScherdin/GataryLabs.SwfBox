@@ -9,6 +9,6 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions
         ICommand OpenSettingsCommand { get; }
         ICommand SelectSwfFileCommand { get; }
 
-        ISwfFileLibraryDataModel RecentSwfFiles { get; }
+        IRecentSwfFileLibraryDataModel RecentSwfFiles { get; }
     }
 }
