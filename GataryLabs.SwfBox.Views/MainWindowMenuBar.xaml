@@ -47,7 +47,7 @@
                        Style="{StaticResource Main.MenuBar.Headline.Big}"
                        Grid.Row="0"/>
 
-                <ListBox ItemsSource="{Binding RecentSwfFiles}"
+                <ListBox ItemsSource="{Binding RecentSwfFiles.Files}"
                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
                          ScrollViewer.VerticalScrollBarVisibility="Visible"
                          Style="{StaticResource Main.MenuBar.ListBox}"
