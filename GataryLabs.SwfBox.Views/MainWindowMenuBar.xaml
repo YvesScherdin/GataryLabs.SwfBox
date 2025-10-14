@@ -9,43 +9,77 @@
              d:DesignHeight="600" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance viewModels:IMainWindowMenuBarViewModel, IsDesignTimeCreatable=False}">
     <Grid>
-        <ScrollViewer>
-            
-            <DockPanel>
+        <DockPanel>
 
-                <Grid DockPanel.Dock="Top">
+            <Grid DockPanel.Dock="Top">
                     
-                    <StackPanel>
+                <StackPanel>
+                    <!--
+                    <Image Source="pack://application:,,,/GataryLabs.SwfBox.Views;component/Resources/Icon_SwfFileDefault_128x128.png"/>
+                    -->
+                    <Label Content="SWF Box"
+                            Style="{StaticResource Main.MenuBar.Headline.Big}"/>
                         
-                        <Label Content="SWF Box"
-                               Style="{StaticResource Main.MenuBar.Headline.Big}"/>
+                    <Button Content="Overview"
+                            Command="{Binding OpenOverviewCommand}"
+                            Style="{StaticResource Main.MenuBar.ActionButton.Big}"/>
                         
-                        <Button Content="Overview"
-                                Command="{Binding OpenOverviewCommand}"
-                                Style="{StaticResource Main.MenuBar.ActionButton.Big}"/>
+                    <Button Content="Settings"
+                            Command="{Binding OpenSettingsCommand}"
+                            Style="{StaticResource Main.MenuBar.ActionButton.Big}"/>
                         
-                        <Button Content="Settings"
-                                Command="{Binding OpenSettingsCommand}"
-                                Style="{StaticResource Main.MenuBar.ActionButton.Big}"/>
-                        
-                    </StackPanel>
+                </StackPanel>
                     
-                </Grid>
-                
-                <Grid DockPanel.Dock="Bottom">
-                    
-                    <StackPanel>
-                        
-                        <Label Content="Recent SWFs" Style="{StaticResource Main.MenuBar.Headline.Big}"/>
+            </Grid>
 
-                        <!-- <ListBox ItemsSource="{Binding }"></ListBox> -->
-                    </StackPanel>
+            <Grid DockPanel.Dock="Top" Margin="0 20 0 6">
+                <Separator Background="White"/>
+            </Grid>
+
+            <Grid DockPanel.Dock="Top">
                     
-                </Grid>
-                
-            </DockPanel>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>   
+                    
+                <Label Content="Recent SWFs"
+                       Style="{StaticResource Main.MenuBar.Headline.Big}"
+                       Grid.Row="0"/>
+
+                <ListBox ItemsSource="{Binding RecentSwfFiles}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         Style="{StaticResource Main.MenuBar.ListBox}"
+                         ItemContainerStyle="{StaticResource Main.MenuBar.ItemContainer}"
+                         Grid.Row="1">
+                        
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ToolTip="{Binding Path}">
+                                <Border Padding="1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="24"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Image Source="{Binding Image}"
+                                                Grid.Column="0" Width="24" Height="24"/>
+                                        <Label Content="{Binding Title}"
+                                                Grid.Column="1"
+                                                Style="{StaticResource Main.MenuBar.ListItem.Text}" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                        
+                </ListBox>
+                    
+            </Grid>
+  
+        </DockPanel>
             
-        </ScrollViewer>
     </Grid>
     
 </views:MvvmUserControl>

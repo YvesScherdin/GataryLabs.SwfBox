@@ -7,7 +7,7 @@ namespace GataryLabs.SwfBox.ViewModels.DataModel
     internal class SwfFileBriefDataModel : ObservableObject, ISwfFileBriefDataModel
     {
         private Guid id;
-        private Uri image;
+        private string image;
         private string title;
         private string path;
         private string description;
@@ -18,7 +18,7 @@ namespace GataryLabs.SwfBox.ViewModels.DataModel
             set => SetProperty(ref id, value);
         }
         
-        public Uri Image
+        public string Image
         {
             get => image;
             set => SetProperty(ref image, value);

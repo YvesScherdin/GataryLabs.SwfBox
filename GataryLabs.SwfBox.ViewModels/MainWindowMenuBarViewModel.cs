@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
+using GataryLabs.SwfBox.ViewModels.Constants;
 using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Utils;
 using System;
@@ -54,8 +55,64 @@ namespace GataryLabs.SwfBox.ViewModels
                     Id = Guid.NewGuid(),
                     Title = "SomeFile.swf",
                     Description = "Blah",
-                    Image = null,
+                    Image = FallbackFilePathes.SwfDefaultIconSmall,
                     Path = "path/to/SomeFile.swf"
+                },
+                new SwfFileBriefDataModel
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "SomeFile1.swf",
+                    Description = "Blah",
+                    Image = FallbackFilePathes.SwfDefaultIconSmall,
+                    Path = "path/to/SomeFile1.swf"
+                },
+                new SwfFileBriefDataModel
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "SomeFile1.swf",
+                    Description = "Blah",
+                    Image = FallbackFilePathes.SwfDefaultIconSmall,
+                    Path = "path/to/SomeFile1.swf"
+                },
+                new SwfFileBriefDataModel
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "SomeFile1.swf",
+                    Description = "Blah",
+                    Image = FallbackFilePathes.SwfDefaultIconSmall,
+                    Path = "path/to/SomeFile1.swf"
+                },
+                new SwfFileBriefDataModel
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "SomeFile1.swf",
+                    Description = "Blah",
+                    Image = FallbackFilePathes.SwfDefaultIconSmall,
+                    Path = "path/to/SomeFile1.swf"
+                },
+                new SwfFileBriefDataModel
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "SomeFile1.swf",
+                    Description = "Blah",
+                    Image = FallbackFilePathes.SwfDefaultIconSmall,
+                    Path = "path/to/SomeFile1.swf"
+                },
+                new SwfFileBriefDataModel
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "SomeFile1.swf",
+                    Description = "Blah",
+                    Image = FallbackFilePathes.SwfDefaultIconSmall,
+                    Path = "path/to/SomeFile1.swf"
+                },
+                new SwfFileBriefDataModel
+                {
+                    Id = Guid.NewGuid(),
+                    Title = "SomeFile1.swf",
+                    Description = "Blah",
+                    Image = FallbackFilePathes.SwfDefaultIconSmall,
+                    Path = "path/to/SomeFile1.swf"
                 }
             };
         }
