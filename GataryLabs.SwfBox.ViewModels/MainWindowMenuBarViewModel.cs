@@ -49,7 +49,7 @@ namespace GataryLabs.SwfBox.ViewModels
 
         private void ExecuteOpenOverviewCommand()
         {
-            mainWindowViewModelLazy.Value.MainContentViewModel = mainWindowViewModelLazy.Value.MainWindowSwfDetailsContentViewModel;
+            mainWindowViewModelLazy.Value.MainContentViewModel = mainWindowViewModelLazy.Value.MainWindowOverviewContentViewModel;
         }
     }
 }

@@ -8,14 +8,17 @@ namespace GataryLabs.SwfBox.ViewModels
     {
         private IMainWindowMenuBarViewModel mainWindowMenuBarViewModel;
         private IMainWindowSwfDetailsContentViewModel mainWindowSwfDetailsContentViewModel;
+        private IMainWindowOverviewContentViewModel mainWindowOverviewContentViewModel;
         private IMainWindowContentViewModel mainContentViewModel;
 
         public MainWindowViewModel(
             IMainWindowMenuBarViewModel mainWindowMenuBarViewModel,
-            IMainWindowSwfDetailsContentViewModel mainWindowSwfDetailsContentViewModel)
+            IMainWindowSwfDetailsContentViewModel mainWindowSwfDetailsContentViewModel,
+            IMainWindowOverviewContentViewModel mainWindowOverviewContentViewModel)
         {
             this.mainWindowMenuBarViewModel = mainWindowMenuBarViewModel;
             this.mainWindowSwfDetailsContentViewModel = mainWindowSwfDetailsContentViewModel;
+            this.mainWindowOverviewContentViewModel = mainWindowOverviewContentViewModel;
         }
 
         public IMainWindowContentViewModel MainContentViewModel
@@ -26,6 +29,7 @@ namespace GataryLabs.SwfBox.ViewModels
 
         public IMainWindowMenuBarViewModel MenuBarViewModel => mainWindowMenuBarViewModel;
         public IMainWindowSwfDetailsContentViewModel MainWindowSwfDetailsContentViewModel => mainWindowSwfDetailsContentViewModel;
+        public IMainWindowOverviewContentViewModel MainWindowOverviewContentViewModel => mainWindowOverviewContentViewModel;
 
         public void OnLoaded()
         {

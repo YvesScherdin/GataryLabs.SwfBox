@@ -59,7 +59,7 @@
                     
                     <Border Style="{StaticResource Main.Panel.Card.Border}">
 
-                        <StackPanel >
+                        <StackPanel>
 
                             <Label Style="{StaticResource Main.Headline.Medium}"
                                    HorizontalContentAlignment="Center"

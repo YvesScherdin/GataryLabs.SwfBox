@@ -22,9 +22,9 @@
     <SolidColorBrush x:Key="Theme.Foreground.MenuBar.Button" Color="#232323" />
     <SolidColorBrush x:Key="Theme.Background.MenuBar.Button" Color="#E0E0E0" />
     <SolidColorBrush x:Key="Theme.BorderBrush.MenuBar.Button" Color="#9E9E9E" />
-    <SolidColorBrush x:Key="Theme.Background.MenuBar.List" Color="#FFFFFF" />
-    <SolidColorBrush x:Key="Theme.Background.MenuBar.ListItem" Color="#DEDEDE" />
-    <SolidColorBrush x:Key="Theme.Foreground.MenuBar.ListItem" Color="#232323" />
+    <SolidColorBrush x:Key="Theme.Background.List" Color="#999999" />
+    <SolidColorBrush x:Key="Theme.Background.ListItem" Color="#DEDEDE" />
+    <SolidColorBrush x:Key="Theme.Foreground.ListItem" Color="#232323" />
 
     <!-- Fonts -->
 
@@ -40,6 +40,7 @@
     <Thickness x:Key="Theme.Thickness.Big">20</Thickness>
     <Thickness x:Key="Theme.Thickness.Small">10</Thickness>
     <system:Double x:Key="Theme.Spacing.Small">10</system:Double>
+    <GridLength x:Key="Theme.Spacing.Headline.Medium">40</GridLength>
     
     <!-- Main panel -->
 
@@ -99,6 +100,22 @@
         <Setter Property="Padding" Value="{StaticResource Theme.Thickness.Small}"/>
     </Style>
 
+    <Style x:Key="Main.Overview.ListBox" TargetType="ListBox">
+        <Setter Property="Background" Value="{StaticResource Theme.Background.List}"/>
+    </Style>
+
+    <Style x:Key="Main.Overview.ListBox.ItemContainer" TargetType="ListBoxItem">
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="64"/>
+        <Setter Property="Background" Value="{StaticResource Theme.Background.ListItem}"/>
+        <Setter Property="Margin" Value="1" />
+    </Style>
+
+    <Style x:Key="Main.Overview.ListItem.Text" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Paragraph}"/>
+        <Setter Property="Foreground" Value="{StaticResource Theme.Foreground.ListItem}"/>
+    </Style>
+
     <!-- Menu bar -->
 
     <Style x:Key="Main.MenuBar.ActionButton.Basic" TargetType="Button">
@@ -131,18 +148,18 @@
     </Style>
 
     <Style x:Key="Main.MenuBar.ListBox" TargetType="ListBox">
-        <Setter Property="Background" Value="{StaticResource Theme.Background.MenuBar.List}"/>
+        <Setter Property="Background" Value="{StaticResource Theme.Background.List}"/>
     </Style>
 
     <Style x:Key="Main.MenuBar.ItemContainer" TargetType="ListBoxItem">
         <Setter Property="Height" Value="28"/>
-        <Setter Property="Background" Value="{StaticResource Theme.Background.MenuBar.ListItem}"/>
+        <Setter Property="Background" Value="{StaticResource Theme.Background.ListItem}"/>
         <Setter Property="Margin" Value="1" />
     </Style>
 
     <Style x:Key="Main.MenuBar.ListItem.Text" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource Theme.FontSize.Paragraph}"/>
-        <Setter Property="Foreground" Value="{StaticResource Theme.Foreground.MenuBar.ListItem}"/>
+        <Setter Property="Foreground" Value="{StaticResource Theme.Foreground.ListItem}"/>
     </Style>
 
 </ResourceDictionary>

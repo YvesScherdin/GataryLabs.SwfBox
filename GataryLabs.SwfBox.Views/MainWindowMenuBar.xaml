@@ -17,14 +17,14 @@
                     <!--
                     <Image Source="pack://application:,,,/GataryLabs.SwfBox.Views;component/Resources/Icon_SwfFileDefault_128x128.png"/>
                     -->
-                    <Label Content="SWF Box"
+                    <Label Content="{StaticResource Loca.Main.MenuBar.Headline.AppTitle}"
                             Style="{StaticResource Main.MenuBar.Headline.Big}"/>
                         
-                    <Button Content="Overview"
+                    <Button Content="{StaticResource Loca.Main.MenuBar.Button.Overview.Text}"
                             Command="{Binding OpenOverviewCommand}"
                             Style="{StaticResource Main.MenuBar.ActionButton.Big}"/>
                         
-                    <Button Content="Settings"
+                    <Button Content="{StaticResource Loca.Main.MenuBar.Button.Settings.Text}"
                             Command="{Binding OpenSettingsCommand}"
                             Style="{StaticResource Main.MenuBar.ActionButton.Big}"/>
                         
@@ -43,7 +43,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>   
                     
-                <Label Content="Recent SWFs"
+                <Label Content="{StaticResource Loca.Main.MenuBar.Headline.RecentSWFs}"
                        Style="{StaticResource Main.MenuBar.Headline.Big}"
                        Grid.Row="0"/>
 
@@ -53,7 +53,7 @@
                          Style="{StaticResource Main.MenuBar.ListBox}"
                          ItemContainerStyle="{StaticResource Main.MenuBar.ItemContainer}"
                          Grid.Row="1">
-                        
+
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid ToolTip="{Binding Path}">

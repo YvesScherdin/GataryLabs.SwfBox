@@ -12,6 +12,10 @@
                     <views:MainWindowSwfDetailsContentView/>
                 </DataTemplate>
 
+                <DataTemplate x:Key="{x:Type viewModels:IMainWindowOverviewContentViewModel}">
+                    <views:MainWindowOverviewContentView/>
+                </DataTemplate>
+                
                 <DataTemplate x:Key="{x:Type viewModels:IMainWindowErrorContentViewModel}">
                     <views:MainWindowSwfDetailsContentView/>
                 </DataTemplate>

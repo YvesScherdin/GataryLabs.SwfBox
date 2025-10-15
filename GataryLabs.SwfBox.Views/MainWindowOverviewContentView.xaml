@@ -1,0 +1,168 @@
+﻿<views:ContentView x:Class="GataryLabs.SwfBox.Views.MainWindowOverviewContentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:views="clr-namespace:GataryLabs.SwfBox.Views"
+             xmlns:viewModels="clr-namespace:GataryLabs.SwfBox.ViewModels.Abstractions;assembly=GataryLabs.SwfBox.ViewModels.Abstractions"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance viewModels:IMainWindowOverviewContentViewModel, IsDesignTimeCreatable=False}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Label Content="{StaticResource Loca.Main.Overview.Headline}"
+                   Style="{StaticResource Main.Headline.Big}"
+                   HorizontalAlignment="Center"/>
+        </Grid>
+        
+        <Grid Grid.Row="1"
+              Name="searchPanel"
+              Style="{StaticResource Main.Panel.Card}">
+
+            <Border Style="{StaticResource Main.Panel.Card.Border}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="{StaticResource Loca.Main.Overview.Search.Headline}"
+                           Style="{StaticResource Main.Headline.Medium}"
+                           Grid.Column="0" Grid.Row="0"/>
+
+                    <Grid Grid.Row="1" VerticalAlignment="Top">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Content="{StaticResource Loca.Main.Overview.Search.Button.PickNewSwfFile.Text}"
+                                Command="{Binding PickNewSwfCommand}"
+                                Style="{StaticResource Main.ActionButton.Big}"
+                                Margin="10"
+                                Grid.Column="0"/>
+
+                        <Button Content="{StaticResource Loca.Main.Overview.Search.Button.ScanDirectory.Text}"
+                                Command="{Binding ScanDirectoryCommand}"
+                                Style="{StaticResource Main.ActionButton.Big}"
+                                Margin="10"
+                                Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+                
+            </Border>
+
+        </Grid>
+
+        <Grid Grid.Row="2"
+              Name="libraryPanel"
+              Style="{StaticResource Main.Panel.Card}">
+
+            <Border Style="{StaticResource Main.Panel.Card.Border}">
+
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{StaticResource Theme.Spacing.Headline.Medium}"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="{StaticResource Loca.Main.Overview.Library.Headline}"
+                           Style="{StaticResource Main.Headline.Medium}"
+                           Grid.Row="0"/>
+
+                    <Grid Grid.Row="1"
+                          Name="libraryContentPanel"
+                          Style="{StaticResource Main.Panel.Card}">
+
+                        <Border Style="{StaticResource Main.Panel.Card.Border}">
+
+                            <Grid>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="{StaticResource Theme.Spacing.Headline.Medium}"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Content="{StaticResource Loca.Main.Overview.Library.RecentlyAdded}"
+                                       Style="{StaticResource Main.Headline.Medium}"
+                                       Grid.Row="0"/>
+
+                                <ListBox ItemsSource="{Binding RecentSwfFiles.Files}"
+                                         Name="recentFilesListBox"
+                                         ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                         HorizontalAlignment="Stretch"
+                                         VerticalAlignment="Stretch"
+                                         Style="{StaticResource Main.Overview.ListBox}"
+                                         ItemContainerStyle="{StaticResource Main.Overview.ListBox.ItemContainer}"
+                                         Grid.Row="1">
+
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel Orientation="Horizontal" 
+                                                       Width="{Binding ActualWidth, ElementName=recentFilesListBox}"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ToolTip="{Binding Path}">
+
+                                                <Grid.InputBindings>
+                                                    <!-- NOT WORKING YET - WIP -->
+                                                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding SelectSwfFileCommand}" CommandParameter="{Binding}"/>
+                                                </Grid.InputBindings>
+
+                                                <Border Padding="1" BorderBrush="DarkGray">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition/>
+                                                            <RowDefinition/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="42"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Source="{Binding Image}"
+                                                               Grid.RowSpan="2" Grid.Column="0" Width="42" Height="42"/>
+                                                        
+                                                        <Label Content="{Binding Title}"
+                                                               Grid.Column="1" Grid.Row="0"
+                                                               Style="{StaticResource Main.MenuBar.ListItem.Text}"
+                                                               VerticalAlignment="Bottom"/>
+                                                        
+                                                        <Label Content="{Binding Path}"
+                                                               Grid.Column="1" Grid.Row="1"
+                                                               Style="{StaticResource Main.MenuBar.ListItem.Text}"
+                                                               VerticalAlignment="Top"/>
+                                                    </Grid>
+                                                </Border>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+
+                                </ListBox>
+                            </Grid>
+                            
+                            
+
+                        </Border>
+                        
+                    </Grid>
+
+                </Grid>
+                
+            </Border>
+
+        </Grid>
+    </Grid>
+</views:ContentView>

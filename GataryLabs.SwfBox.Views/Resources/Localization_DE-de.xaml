@@ -1,6 +1,24 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Menu bar -->
+    
+    <system:String x:Key="Loca.Main.MenuBar.Headline.AppTitle">SWF Box</system:String>
+    <system:String x:Key="Loca.Main.MenuBar.Button.Overview.Text">Übersicht</system:String>
+    <system:String x:Key="Loca.Main.MenuBar.Button.Settings.Text">Einstellungen</system:String>
+    <system:String x:Key="Loca.Main.MenuBar.Headline.RecentSWFs">Chronik</system:String>
+    
+    <!-- Overview -->
+
+    <system:String x:Key="Loca.Main.Overview.Headline">Übersicht</system:String>
+    <system:String x:Key="Loca.Main.Overview.Search.Headline">Suche</system:String>
+    <system:String x:Key="Loca.Main.Overview.Search.Button.PickNewSwfFile.Text">Datei auswählen...</system:String>
+    <system:String x:Key="Loca.Main.Overview.Search.Button.ScanDirectory.Text">Ordner scannen...</system:String>
+    <system:String x:Key="Loca.Main.Overview.Library.Headline">SWF-Dateigruppen</system:String>
+    <system:String x:Key="Loca.Main.Overview.Library.RecentlyAdded">Kürzlich hinzugefügt</system:String>
+    
+    <!-- Details view -->
     
     <system:String x:Key="Loca.Main.SwfDetails.Button.Play.Text">
         Start
@@ -37,4 +55,5 @@
     <system:String x:Key="Loca.Main.SwfDetails.Analysis.NotDone">
         Es wurde bisher keine Analyse durchgeführt.
     </system:String>
+    
 </ResourceDictionary>

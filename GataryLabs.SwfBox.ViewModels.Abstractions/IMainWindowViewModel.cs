@@ -6,5 +6,6 @@
 
         IMainWindowContentViewModel MainContentViewModel { get; set; }
         IMainWindowSwfDetailsContentViewModel MainWindowSwfDetailsContentViewModel { get; }
+        IMainWindowOverviewContentViewModel MainWindowOverviewContentViewModel { get; }
     }
 }
