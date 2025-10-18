@@ -7,7 +7,8 @@
              xmlns:viewModels="clr-namespace:GataryLabs.SwfBox.ViewModels.Abstractions;assembly=GataryLabs.SwfBox.ViewModels.Abstractions"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="300"
-             d:DataContext="{d:DesignInstance viewModels:IMainWindowMenuBarViewModel, IsDesignTimeCreatable=False}">
+             d:DataContext="{d:DesignInstance viewModels:IMainWindowMenuBarViewModel, IsDesignTimeCreatable=False}"
+             x:Name="MainMenuBar">
     <Grid>
         <DockPanel>
 
@@ -57,6 +58,14 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid ToolTip="{Binding Path}">
+
+                                <Grid.InputBindings>
+                                    <MouseBinding
+                                        Gesture="LeftClick"
+                                        CommandParameter="{Binding}"
+                                        Command="{Binding Path=DataContext.SelectSwfFileCommand, ElementName=MainMenuBar}"/>
+                                </Grid.InputBindings>
+
                                 <Border Padding="1">
                                     <Grid>
                                         <Grid.ColumnDefinitions>

@@ -1,16 +1,24 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
+using System;
 
 namespace GataryLabs.SwfBox.ViewModels.DataModel
 {
     internal class SwfFileDetailsDataModel : ObservableObject, ISwfFileDetailsDataModel
     {
+        private Guid id;
         private string fileName;
         private string path;
         private string description;
         private ISwfActivityDataModel activity;
         private ISwfMetaDataModel metaData;
         private ISwfAnalysisDataModel analysis;
+
+        public Guid Id
+        {
+            get => id;
+            init => id = value;
+        }
 
         public string FileName
         {

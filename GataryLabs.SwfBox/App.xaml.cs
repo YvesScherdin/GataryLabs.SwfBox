@@ -28,7 +28,7 @@ namespace GataryLabs.SwfBox
             hostBuilder.ConfigureServices(services =>
             {
                 services.AddViews();
-                services.AddViewModels();
+                services.AddMvvm();
             });
 
             this.host = hostBuilder.Build();

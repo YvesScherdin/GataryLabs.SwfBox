@@ -1,7 +1,11 @@
-﻿namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
+﻿using System;
+
+namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
 {
     public interface ISwfFileDetailsDataModel : IDataModel
     {
+        Guid Id { get; }
+
         string FileName { get; }
 
         string Path { get; }
