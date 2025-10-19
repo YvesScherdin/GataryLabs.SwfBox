@@ -6,8 +6,8 @@ Moreover, this project shall demonstrate my skills with WPF and MVVM.
 
 # UML
 
-![Main-UML](./Concept/UML/UML_Main.pdf)
+![Main-UML](./Concept/UML/UML_Main.png)
 
 # Mockup
 
-![Mockup Image](./Concept/Mockups/jpg)
+![Mockup Image](./Concept/Mockups/Mockup.jpg)
