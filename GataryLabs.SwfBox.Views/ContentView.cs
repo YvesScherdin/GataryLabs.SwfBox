@@ -20,6 +20,8 @@ namespace GataryLabs.SwfBox.Views
         {
             controlBehaviorManager = new ControlBehaviorManager(this);
 
+            controlBehaviorManager.Add(new ViewModelOwnerControlBehavior());
+
             this.Unloaded += ContentView_Unloaded;
         }
 

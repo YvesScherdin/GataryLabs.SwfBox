@@ -17,9 +17,11 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            
             <Label Content="{StaticResource Loca.Main.Overview.Headline}"
                    Style="{StaticResource Main.Headline.Big}"
                    HorizontalAlignment="Center"/>
+            
         </Grid>
         
         <Grid Grid.Row="1"
@@ -46,7 +48,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Button Content="{StaticResource Loca.Main.Overview.Search.Button.PickNewSwfFile.Text}"
-                                Command="{Binding PickNewSwfCommand}"
+                                Command="{Binding PickNewSwfFileCommand}"
                                 Style="{StaticResource Main.ActionButton.Big}"
                                 Margin="10"
                                 Grid.Column="0"/>

@@ -11,11 +11,14 @@ namespace GataryLabs.SwfBox.ViewModels
     internal class MainWindowSwfDetailsContentViewModel : ObservableObject, IMainWindowSwfDetailsContentViewModel
     {
         private ISwfFileDetailsDataModel details;
+        private IMainWindowContextDataModel contextData;
         private RelayCommand playCommand;
         private RelayCommand analyzeCommand;
 
-        public MainWindowSwfDetailsContentViewModel()
+        public MainWindowSwfDetailsContentViewModel(IMainWindowContextDataModel contextData)
         {
+            this.contextData = contextData;
+
             playCommand = new RelayCommand(() => Debug.WriteLine("File is played!"));
             analyzeCommand = new RelayCommand(() => Debug.WriteLine("File gets analyzed!"));
         }
@@ -40,7 +43,7 @@ namespace GataryLabs.SwfBox.ViewModels
 
         public void OnUnloaded()
         {
-
+            contextData.SelectedSwfFileItem = null;
         }
     }
 }

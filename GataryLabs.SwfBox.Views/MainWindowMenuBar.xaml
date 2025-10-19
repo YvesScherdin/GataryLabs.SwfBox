@@ -48,7 +48,8 @@
                        Style="{StaticResource Main.MenuBar.Headline.Big}"
                        Grid.Row="0"/>
 
-                <ListBox ItemsSource="{Binding RecentSwfFiles.Files}"
+                <ListBox ItemsSource="{Binding ContextData.RecentSwfFiles.Files}"
+                         SelectedItem="{Binding ContextData.SelectedSwfFileItem, Mode=TwoWay}"
                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
                          ScrollViewer.VerticalScrollBarVisibility="Visible"
                          Style="{StaticResource Main.MenuBar.ListBox}"
@@ -58,14 +59,7 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid ToolTip="{Binding Path}">
-
-                                <Grid.InputBindings>
-                                    <MouseBinding
-                                        Gesture="LeftClick"
-                                        CommandParameter="{Binding}"
-                                        Command="{Binding Path=DataContext.SelectSwfFileCommand, ElementName=MainMenuBar}"/>
-                                </Grid.InputBindings>
-
+                                    
                                 <Border Padding="1">
                                     <Grid>
                                         <Grid.ColumnDefinitions>

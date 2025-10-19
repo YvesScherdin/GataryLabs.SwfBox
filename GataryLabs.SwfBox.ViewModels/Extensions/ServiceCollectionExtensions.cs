@@ -16,7 +16,7 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
         public static IServiceCollection AddMvvm(this IServiceCollection services)
         {
             services.AddTransient(typeof(LazyInstance<>));
-
+            
             services.AddDataModels();
             services.AddCommands();
             services.AddViewModels();
@@ -27,6 +27,7 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
         private static IServiceCollection AddDataModels(this IServiceCollection services)
         {
             services.AddSingleton<IRecentSwfFileLibraryDataModel, RecentSwfFileLibraryDataModel>(CreateRecentSwfsForDebugging);
+            services.AddSingleton<IMainWindowContextDataModel, MainWindowContextDataModel>(CreateMainWindowContextDataModelForDebugging);
 
             return services;
         }
@@ -34,6 +35,8 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
         private static IServiceCollection AddCommands(this IServiceCollection services)
         {
             services.AddTransient<ISelectSwfFileCommand, SelectSwfFileCommand>();
+            services.AddTransient<IPickNewSwfFileCommand, PickNewSwfFileCommand>();
+            services.AddTransient<IScanDirectoryForSwfsCommand, ScanDirectoryForSwfsCommand>();
 
             return services;
         }
@@ -41,7 +44,7 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
         private static IServiceCollection AddViewModels(this IServiceCollection services)
         {
             services.AddScoped<IMainWindowViewModel, MainWindowViewModel>();
-            services.AddScoped<IMainWindowSwfDetailsContentViewModel, MainWindowSwfDetailsContentViewModel>(CreateSwfDetailsViewModelForDebugging);
+            services.AddScoped<IMainWindowSwfDetailsContentViewModel, MainWindowSwfDetailsContentViewModel>();
             services.AddScoped<IMainWindowOverviewContentViewModel, MainWindowOverviewContentViewModel>();
             services.AddScoped<IMainWindowErrorContentViewModel, MainWindowErrorContentViewModel>();
             services.AddScoped<IMainWindowMenuBarViewModel, MainWindowMenuBarViewModel>();
@@ -49,16 +52,20 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
             return services;
         }
 
-        private static MainWindowSwfDetailsContentViewModel CreateSwfDetailsViewModelForDebugging(IServiceProvider provider)
+        private static MainWindowContextDataModel CreateMainWindowContextDataModelForDebugging(IServiceProvider provider)
         {
-            return new MainWindowSwfDetailsContentViewModel
+            IRecentSwfFileLibraryDataModel libraryData = provider.GetRequiredService<IRecentSwfFileLibraryDataModel>();
+
+            MainWindowContextDataModel contextData = new MainWindowContextDataModel(libraryData)
             {
-                Details = new SwfFileDetailsDataModel
+                FileDetails = new SwfFileDetailsDataModel
                 {
                     Path = "path/to/somewhere",
                     FileName = "file.swf"
                 }
             };
+
+            return contextData;
         }
 
         private static RecentSwfFileLibraryDataModel CreateRecentSwfsForDebugging(IServiceProvider provider)

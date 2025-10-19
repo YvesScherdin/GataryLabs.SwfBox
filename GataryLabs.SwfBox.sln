@@ -18,9 +18,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Domain", "02_Domain", "{459DDF47-D99F-43DF-8265-C4AE65619FC6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03_MVVM", "03_MVVM", "{01EBBF85-2D48-4E56-B957-BC3F7CC7AAB5}"
-	ProjectSection(SolutionItems) = preProject
-		GataryLabs.SwfBox.Views\MvvmWindow.xaml.cs = GataryLabs.SwfBox.Views\MvvmWindow.xaml.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04_App", "04_App", "{A0FC97CB-DF31-4195-8248-92A4746741ED}"
 EndProject

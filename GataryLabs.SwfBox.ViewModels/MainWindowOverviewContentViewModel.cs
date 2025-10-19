@@ -10,23 +10,24 @@ namespace GataryLabs.SwfBox.ViewModels
 {
     internal class MainWindowOverviewContentViewModel : ObservableObject, IMainWindowOverviewContentViewModel
     {
-        private RelayCommand pickNewSwfCommand;
-        private RelayCommand scanDirectoryCommand;
+        private IPickNewSwfFileCommand pickNewSwfFileCommand;
+        private IScanDirectoryForSwfsCommand scanDirectoryCommand;
         private ISelectSwfFileCommand selectSwfFileCommand;
         private IRecentSwfFileLibraryDataModel recentSwfFiles;
 
         public MainWindowOverviewContentViewModel(
             IRecentSwfFileLibraryDataModel recentSwfFiles,
+            IPickNewSwfFileCommand pickNewSwfFileCommand,
+            IScanDirectoryForSwfsCommand scanDirectoryForSwfsCommand,
             ISelectSwfFileCommand selectSwfFileCommand)
         {
             this.recentSwfFiles = recentSwfFiles;
+            this.scanDirectoryCommand = scanDirectoryForSwfsCommand;
+            this.pickNewSwfFileCommand = pickNewSwfFileCommand;
             this.selectSwfFileCommand = selectSwfFileCommand;
-
-            pickNewSwfCommand = new RelayCommand(() => Debug.WriteLine("Pick!"));
-            scanDirectoryCommand = new RelayCommand(() => Debug.WriteLine("Scan!"));
         }
 
-        public ICommand PickNewSwfCommand => pickNewSwfCommand;
+        public ICommand PickNewSwfFileCommand => pickNewSwfFileCommand;
         public ICommand ScanDirectoryCommand => scanDirectoryCommand;
         public ICommand SelectSwfFileCommand => selectSwfFileCommand;
 

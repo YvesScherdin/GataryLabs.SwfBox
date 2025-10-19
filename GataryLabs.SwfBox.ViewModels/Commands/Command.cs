@@ -4,16 +4,13 @@ using System;
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
     /// <inheritdoc cref="ICommand{T}"/>
-    abstract public class Command<T> : ICommand<T>
+    abstract public class Command<T> : Command, ICommand<T>
     {
-        /// <inheritdoc/>
-        public event EventHandler CanExecuteChanged;
-
         /// <inheritdoc/>
         abstract public bool CanExecute(T parameter);
 
         /// <inheritdoc/>
-        public bool CanExecute(object parameter)
+        override public bool CanExecute(object parameter)
         {
             if (parameter is null)
                 return CanExecute(default);
@@ -28,7 +25,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
         abstract public void Execute(T parameter);
 
         /// <inheritdoc/>
-        public void Execute(object parameter)
+        override public void Execute(object parameter)
         {
             if (parameter is null)
             {
@@ -41,6 +38,19 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
 
             Execute(typedParameter);
         }
+    }
+
+    /// <inheritdoc cref="System.Windows.Input.ICommand"/>
+    abstract public class Command : System.Windows.Input.ICommand, INotifyCanExecuteChanged
+    {
+        /// <inheritdoc/>
+        public event EventHandler CanExecuteChanged;
+
+        /// <inheritdoc/>
+        abstract public bool CanExecute(object parameter);
+
+        /// <inheritdoc/>
+        abstract public void Execute(object parameter);
 
         /// <inheritdoc/>
         public void NotifyCanExecuteChanged()

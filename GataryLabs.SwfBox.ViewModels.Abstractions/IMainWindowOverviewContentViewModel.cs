@@ -5,7 +5,7 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions
 {
     public interface IMainWindowOverviewContentViewModel : IMainWindowContentViewModel
     {
-        ICommand PickNewSwfCommand { get; }
+        ICommand PickNewSwfFileCommand { get; }
         ICommand ScanDirectoryCommand { get; }
         ICommand SelectSwfFileCommand { get; }
 

@@ -1,4 +1,5 @@
 ﻿using GataryLabs.SwfBox.ViewModels.Abstractions;
+using GataryLabs.SwfBox.Views.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Controls;
@@ -7,11 +8,26 @@ namespace GataryLabs.SwfBox.Views.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddViews(this IServiceCollection serviceCollection)
+        public static IServiceCollection AddViews(this IServiceCollection services)
         {
-            serviceCollection.AddViewWithItsOwnScope<MainWindow, IMainWindowViewModel>();
+            services.AddUIElements();
+            services.AddMvvmUtilityServices();
 
-            return serviceCollection;
+            return services;
+        }
+
+        private static IServiceCollection AddUIElements(this IServiceCollection services)
+        {
+            services.AddViewWithItsOwnScope<MainWindow, IMainWindowViewModel>();
+
+            return services;
+        }
+        
+        private static IServiceCollection AddMvvmUtilityServices(this IServiceCollection services)
+        {
+            services.AddSingleton<IDialogService, DialogService>();
+
+            return services;
         }
 
         private static IServiceCollection AddViewWithItsOwnScope<TView, TViewModel>(this IServiceCollection serviceCollection)
