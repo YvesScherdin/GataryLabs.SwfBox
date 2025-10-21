@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace GataryLabs.SwfBox.Domain.Abstractions
 {
+    /// <summary>
+    /// A library that manages detailed information about SWF files.
+    /// </summary>
     public interface ISwfFileLibraryService
     {
         bool HasFileWithPath(string path);
