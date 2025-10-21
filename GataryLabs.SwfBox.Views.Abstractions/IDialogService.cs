@@ -4,6 +4,8 @@ namespace GataryLabs.SwfBox.Views.Abstractions
 {
     public interface IDialogService
     {
+        void Alert(AlertOptions options);
+
         OpenFileDialogResult OpenFile(OpenFileDialogOptions options);
     }
 }

@@ -1,4 +1,5 @@
-﻿using GataryLabs.SwfBox.ViewModels.Extensions;
+﻿using GataryLabs.SwfBox.Domain.Extensions;
+using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views;
 using GataryLabs.SwfBox.Views.Extensions;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,7 @@ namespace GataryLabs.SwfBox
 
             hostBuilder.ConfigureServices(services =>
             {
+                services.AddDomainServices();
                 services.AddViews();
                 services.AddMvvm();
             });

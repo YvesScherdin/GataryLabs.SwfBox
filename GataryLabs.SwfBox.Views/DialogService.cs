@@ -8,6 +8,16 @@ namespace GataryLabs.SwfBox.Views
 {
     internal class DialogService : IDialogService
     {
+        public void Alert(AlertOptions options)
+        {
+            Window ownerWindow = (options.Owner as Window) ?? WindowUtility.GetFocusedWindow();
+
+            if (string.IsNullOrEmpty(options.Title))
+                MessageBox.Show(ownerWindow, options.Message, "", MessageBoxButton.OK);
+            else
+                MessageBox.Show(ownerWindow, options.Message, options.Title, MessageBoxButton.OK);
+        }
+
         public OpenFileDialogResult OpenFile(OpenFileDialogOptions options)
         {
             OpenFileDialog dialog = new OpenFileDialog();
