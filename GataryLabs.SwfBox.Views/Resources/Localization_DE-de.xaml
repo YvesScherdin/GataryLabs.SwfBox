@@ -2,6 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
+    <!-- File dialogs -->
+    
+    <system:String x:Key="Loca.Misc.Extensions.SwfFiles">SWF-Dateien</system:String>
+    
+    
     <!-- Menu bar -->
     
     <system:String x:Key="Loca.Main.MenuBar.Headline.AppTitle">SWF Box</system:String>
@@ -17,6 +22,9 @@
     <system:String x:Key="Loca.Main.Overview.Search.Button.ScanDirectory.Text">Ordner scannen...</system:String>
     <system:String x:Key="Loca.Main.Overview.Library.Headline">SWF-Dateigruppen</system:String>
     <system:String x:Key="Loca.Main.Overview.Library.RecentlyAdded">Kürzlich hinzugefügt</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.SelectAnSwfFile.Title">Wähle eine SWF-Datei aus...</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.SwfFileAlreadyAdded.Title">Datei bereits registriert</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.SwfFileAlreadyAdded.Message">Eine Datei mit diesem Pfad wurde bereits in die Sammlung aufgenommen.</system:String>
     
     <!-- Details view -->
     

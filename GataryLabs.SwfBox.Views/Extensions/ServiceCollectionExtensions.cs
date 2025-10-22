@@ -8,6 +8,13 @@ namespace GataryLabs.SwfBox.Views.Extensions
 {
     public static class ServiceCollectionExtensions
     {
+        public static IServiceCollection AddLocalization(this IServiceCollection services)
+        {
+            services.AddSingleton<ILocalizationSource, LocalizationSource>();
+
+            return services;
+        }
+
         public static IServiceCollection AddViews(this IServiceCollection services)
         {
             services.AddUIElements();

@@ -8,7 +8,6 @@ using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views.Abstractions;
 using GataryLabs.SwfBox.Views.Abstractions.Models;
 using MapsterMapper;
-using System;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
@@ -18,6 +17,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
         private ISwfFileLibraryService swfFileLibraryService;
         private IRecentSwfFileLibraryDataModel recentSwfFileLibraryDataModel;
         private IMainWindowContextDataModel mainWindowContextDataModel;
+        private ILocalizationSource localizationSource;
         private IMapper mapper;
 
         public PickNewSwfFileCommand(
@@ -25,12 +25,14 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             ISwfFileLibraryService swfFileLibraryService,
             IRecentSwfFileLibraryDataModel recentSwfFileLibraryDataModel,
             IMainWindowContextDataModel mainWindowContextDataModel,
+            ILocalizationSource localizationSource,
             IMapper mapper)
         {
             this.dialogService = dialogService;
             this.swfFileLibraryService = swfFileLibraryService;
             this.recentSwfFileLibraryDataModel = recentSwfFileLibraryDataModel;
             this.mainWindowContextDataModel = mainWindowContextDataModel;
+            this.localizationSource = localizationSource;
             this.mapper = mapper;
         }
 
@@ -55,9 +57,9 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
                 new OpenFileDialogOptions
                 {
                     Multiselect = false,
-                    Title = "Select an SWF file"
+                    Title = localizationSource.GetText("Loca.Main.Overview.Dialog.SelectAnSwfFile.Title")
                 }
-                .AddFilter("SWF Files", "swf")
+                .AddFilter(localizationSource.GetText("Loca.Misc.Extensions.SwfFiles"), "swf")
             );
 
             if (!result.Accepted)
@@ -75,8 +77,8 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             {
                 dialogService.Alert(new AlertOptions
                 {
-                    Title = "Already added",
-                    Message = "A file with that path does already exist."
+                    Title = localizationSource.GetText("Loca.Main.Overview.Dialog.SwfFileAlreadyAdded.Title"),
+                    Message = localizationSource.GetText("Loca.Main.Overview.Dialog.SwfFileAlreadyAdded.Message"),
                 });
                 return false;
             }

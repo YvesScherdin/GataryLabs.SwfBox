@@ -33,6 +33,7 @@ namespace GataryLabs.SwfBox
             hostBuilder.ConfigureServices(services =>
             {
                 services.AddDomainServices();
+                services.AddLocalization();
                 services.AddViews();
                 services.AddMvvm();
 
