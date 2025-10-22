@@ -1,14 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace GataryLabs.SwfBox.ViewModels.DataModel
 {
     internal class SwfFileLibraryDataModel : ObservableObject, ISwfFileLibraryDataModel
     {
-        private IList<ISwfFileBriefDataModel> files;
+        private ObservableCollection<ISwfFileBriefDataModel> files = new ObservableCollection<ISwfFileBriefDataModel>();
 
-        public IList<ISwfFileBriefDataModel> Files
+        public ObservableCollection<ISwfFileBriefDataModel> Files
         {
             get => files;
             set => SetProperty(ref files, value);

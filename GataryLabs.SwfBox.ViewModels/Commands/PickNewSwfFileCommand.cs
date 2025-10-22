@@ -8,6 +8,7 @@ using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views.Abstractions;
 using GataryLabs.SwfBox.Views.Abstractions.Models;
 using MapsterMapper;
+using System;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
@@ -42,27 +43,10 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
         {
             string selectedFilePath = PromptFileSelection();
 
-            if (selectedFilePath == null)
+            if (!ValidateSelection(selectedFilePath))
                 return;
-            
-            if (swfFileLibraryService.HasFileWithPath(selectedFilePath))
-            {
-                dialogService.Alert(new AlertOptions
-                {
-                    Title = "Already added",
-                    Message = "A file with that path does already exist."
-                });
-                return;
-            }
 
-            SwfFileDetailsInfo detailsInfo = swfFileLibraryService.Load(selectedFilePath);
-            swfFileLibraryService.RegisterFile(detailsInfo);
-
-            SwfFileDetailsDataModel detailsDataModel = mapper.Map<SwfFileDetailsDataModel>(detailsInfo);
-            SwfFileBriefDataModel brieftDataModel = mapper.Map<SwfFileBriefDataModel>(detailsDataModel);
-
-            mainWindowContextDataModel.RecentSwfFiles.Files.Add(brieftDataModel);
-            mainWindowContextDataModel.SelectedSwfFileItem = brieftDataModel;
+            ProcessSelection(selectedFilePath);
         }
 
         private string PromptFileSelection()
@@ -80,6 +64,35 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
                 return null;
 
             return result.FileName;
+        }
+
+        private bool ValidateSelection(string selectedFilePath)
+        {
+            if (selectedFilePath == null)
+                return false;
+
+            if (swfFileLibraryService.HasFileWithPath(selectedFilePath))
+            {
+                dialogService.Alert(new AlertOptions
+                {
+                    Title = "Already added",
+                    Message = "A file with that path does already exist."
+                });
+                return false;
+            }
+
+            return true;
+        }
+
+        private void ProcessSelection(string selectedFilePath)
+        {
+            SwfFileDetailsInfo detailsInfo = swfFileLibraryService.Load(selectedFilePath);
+            swfFileLibraryService.RegisterFile(detailsInfo);
+
+            ISwfFileBriefDataModel brieftDataModel = mapper.Map<SwfFileBriefDataModel>(detailsInfo);
+
+            mainWindowContextDataModel.RecentSwfFiles.Files.Insert(0, brieftDataModel);
+            mainWindowContextDataModel.SelectedSwfFileItem = brieftDataModel;
         }
     }
 }

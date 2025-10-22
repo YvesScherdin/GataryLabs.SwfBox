@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 
 namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
 {
     public interface ISwfFileLibraryDataModel : IDataModel
     {
-        IList<ISwfFileBriefDataModel> Files { get; }
+        ObservableCollection<ISwfFileBriefDataModel> Files { get; }
     }
 }

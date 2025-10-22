@@ -2,12 +2,9 @@
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 using GataryLabs.SwfBox.ViewModels.Commands;
-using GataryLabs.SwfBox.ViewModels.Constants;
 using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Utils;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 
 namespace GataryLabs.SwfBox.ViewModels.Extensions
 {
@@ -28,8 +25,8 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
 
         private static IServiceCollection AddDataModels(this IServiceCollection services)
         {
-            services.AddSingleton<IRecentSwfFileLibraryDataModel, RecentSwfFileLibraryDataModel>(CreateRecentSwfsForDebugging);
-            services.AddSingleton<IMainWindowContextDataModel, MainWindowContextDataModel>(CreateMainWindowContextDataModelForDebugging);
+            services.AddSingleton<IRecentSwfFileLibraryDataModel, RecentSwfFileLibraryDataModel>();
+            services.AddSingleton<IMainWindowContextDataModel, MainWindowContextDataModel>();
 
             return services;
         }
@@ -52,96 +49,6 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
             services.AddScoped<IMainWindowMenuBarViewModel, MainWindowMenuBarViewModel>();
 
             return services;
-        }
-
-        private static MainWindowContextDataModel CreateMainWindowContextDataModelForDebugging(IServiceProvider provider)
-        {
-            IRecentSwfFileLibraryDataModel libraryData = provider.GetRequiredService<IRecentSwfFileLibraryDataModel>();
-
-            MainWindowContextDataModel contextData = new MainWindowContextDataModel(libraryData)
-            {
-                FileDetails = new SwfFileDetailsDataModel
-                {
-                    Path = "path/to/somewhere",
-                    FileName = "file.swf"
-                }
-            };
-
-            return contextData;
-        }
-
-        private static RecentSwfFileLibraryDataModel CreateRecentSwfsForDebugging(IServiceProvider provider)
-        {
-            return new RecentSwfFileLibraryDataModel
-            {
-                Files = new List<ISwfFileBriefDataModel>
-                {
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    },
-                    new SwfFileBriefDataModel
-                    {
-                        Id = Guid.NewGuid(),
-                        Title = "SomeFile1.swf",
-                        Description = "Blah",
-                        Image = FallbackFilePathes.SwfDefaultIconSmall,
-                        Path = "path/to/SomeFile1.swf"
-                    }
-                }
-            };
         }
     }
 }
