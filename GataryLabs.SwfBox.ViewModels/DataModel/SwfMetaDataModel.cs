@@ -1,18 +1,18 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
-using System;
+using System.Diagnostics;
 
 namespace GataryLabs.SwfBox.ViewModels.DataModel
 {
     internal class SwfMetaDataModel : ObservableObject, ISwfMetaDataModel
     {
-        private Uri image;
+        private string image;
         private string title;
         private string description;
         private string developer;
-        private Uri developerLogo;
+        private string developerLogo;
 
-        public Uri Image
+        public string Image
         {
             get => image;
             set => SetProperty(ref image, value);
@@ -36,7 +36,7 @@ namespace GataryLabs.SwfBox.ViewModels.DataModel
             set => SetProperty(ref developer, value);
         }
         
-        public Uri DeveloperLogo
+        public string DeveloperLogo
         {
             get => developerLogo;
             set => SetProperty(ref developerLogo, value);

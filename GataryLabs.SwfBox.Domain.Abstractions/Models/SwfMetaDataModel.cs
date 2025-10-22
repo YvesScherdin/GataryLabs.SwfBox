@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace GataryLabs.SwfBox.Domain.Abstractions.Models
+﻿namespace GataryLabs.SwfBox.Domain.Abstractions.Models
 {
     public class SwfMetaDataInfo
     {
-        public Uri Image { get; set; }
+        public string Image { get; set; }
 
         public string Title { get; set; }
 
@@ -12,6 +10,6 @@ namespace GataryLabs.SwfBox.Domain.Abstractions.Models
 
         public string Developer { get; set; }
 
-        public Uri DeveloperLogo { get; set; }
+        public string DeveloperLogo { get; set; }
     }
 }

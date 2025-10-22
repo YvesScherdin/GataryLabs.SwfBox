@@ -1,4 +1,5 @@
-﻿using GataryLabs.SwfBox.Domain.Extensions;
+﻿using AgileObjects.AgileMapper;
+using GataryLabs.SwfBox.Domain.Extensions;
 using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views;
 using GataryLabs.SwfBox.Views.Extensions;
@@ -28,9 +29,13 @@ namespace GataryLabs.SwfBox
 
             hostBuilder.ConfigureServices(services =>
             {
+                IMapper mapper = Mapper.CreateNew();
+
                 services.AddDomainServices();
                 services.AddViews();
-                services.AddMvvm();
+                services.AddMvvm(mapper);
+
+                services.AddSingleton(mapper);
             });
 
             this.host = hostBuilder.Build();

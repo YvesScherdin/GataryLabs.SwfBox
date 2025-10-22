@@ -1,10 +1,13 @@
-﻿using GataryLabs.SwfBox.Domain.Abstractions;
+﻿using AgileObjects.AgileMapper;
+using GataryLabs.SwfBox.Domain.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
+using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
+using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
+using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views.Abstractions;
 using GataryLabs.SwfBox.Views.Abstractions.Models;
-using System.Diagnostics;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
@@ -12,13 +15,22 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
     {
         private IDialogService dialogService;
         private ISwfFileLibraryService swfFileLibraryService;
+        private IRecentSwfFileLibraryDataModel recentSwfFileLibraryDataModel;
+        private IMainWindowContextDataModel mainWindowContextDataModel;
+        private IMapper mapper;
 
         public PickNewSwfFileCommand(
             IDialogService dialogService,
-            ISwfFileLibraryService swfFileLibraryService)
+            ISwfFileLibraryService swfFileLibraryService,
+            IRecentSwfFileLibraryDataModel recentSwfFileLibraryDataModel,
+            IMainWindowContextDataModel mainWindowContextDataModel,
+            IMapper mapper)
         {
             this.dialogService = dialogService;
             this.swfFileLibraryService = swfFileLibraryService;
+            this.recentSwfFileLibraryDataModel = recentSwfFileLibraryDataModel;
+            this.mainWindowContextDataModel = mainWindowContextDataModel;
+            this.mapper = mapper;
         }
 
         public override bool CanExecute(object parameter)
@@ -44,9 +56,13 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             }
 
             SwfFileDetailsInfo detailsInfo = swfFileLibraryService.Load(selectedFilePath);
-            Debug.WriteLine(detailsInfo);
-
             swfFileLibraryService.RegisterFile(detailsInfo);
+
+            SwfFileDetailsDataModel detailsDataModel = mapper.Map(detailsInfo).ToANew<SwfFileDetailsDataModel>();
+            SwfFileBriefDataModel brieftDataModel = mapper.Map(detailsDataModel).ToANew<SwfFileBriefDataModel>();
+
+            mainWindowContextDataModel.RecentSwfFiles.Files.Add(brieftDataModel);
+            mainWindowContextDataModel.SelectedSwfFileItem = brieftDataModel;
         }
 
         private string PromptFileSelection()

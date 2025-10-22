@@ -1,4 +1,6 @@
-﻿using GataryLabs.SwfBox.ViewModels.Abstractions;
+﻿using AgileObjects.AgileMapper;
+using GataryLabs.SwfBox.Domain.Abstractions.Models;
+using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 using GataryLabs.SwfBox.ViewModels.Commands;
@@ -13,13 +15,15 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddMvvm(this IServiceCollection services)
+        public static IServiceCollection AddMvvm(this IServiceCollection services, IMapper mapper)
         {
             services.AddTransient(typeof(LazyInstance<>));
             
             services.AddDataModels();
             services.AddCommands();
             services.AddViewModels();
+
+            ViewModelMappingProfile.Register(mapper);
 
             return services;
         }

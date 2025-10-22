@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
+﻿namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
 {
     public interface ISwfMetaDataModel : IDataModel
     {
-        Uri Image { get; set; }
+        string Image { get; set; }
 
         string Title { get; set; }
 
@@ -12,6 +10,6 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
 
         string Developer { get; set; }
 
-        Uri DeveloperLogo { get; set; }
+        string DeveloperLogo { get; set; }
     }
 }
