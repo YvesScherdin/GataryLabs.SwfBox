@@ -1,5 +1,4 @@
-﻿using AgileObjects.AgileMapper;
-using GataryLabs.SwfBox.Domain.Abstractions;
+﻿using GataryLabs.SwfBox.Domain.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
@@ -8,6 +7,7 @@ using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views.Abstractions;
 using GataryLabs.SwfBox.Views.Abstractions.Models;
+using MapsterMapper;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
@@ -58,8 +58,8 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             SwfFileDetailsInfo detailsInfo = swfFileLibraryService.Load(selectedFilePath);
             swfFileLibraryService.RegisterFile(detailsInfo);
 
-            SwfFileDetailsDataModel detailsDataModel = mapper.Map(detailsInfo).ToANew<SwfFileDetailsDataModel>();
-            SwfFileBriefDataModel brieftDataModel = mapper.Map(detailsDataModel).ToANew<SwfFileBriefDataModel>();
+            SwfFileDetailsDataModel detailsDataModel = mapper.Map<SwfFileDetailsDataModel>(detailsInfo);
+            SwfFileBriefDataModel brieftDataModel = mapper.Map<SwfFileBriefDataModel>(detailsDataModel);
 
             mainWindowContextDataModel.RecentSwfFiles.Files.Add(brieftDataModel);
             mainWindowContextDataModel.SelectedSwfFileItem = brieftDataModel;
