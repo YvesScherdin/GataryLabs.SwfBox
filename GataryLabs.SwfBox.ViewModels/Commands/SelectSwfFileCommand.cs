@@ -13,24 +13,27 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
 {
     internal class SelectSwfFileCommand : Command<ISwfFileBriefDataModel>, ISelectSwfFileCommand
     {
-        private readonly LazyInstance<IMainWindowViewModel> mainWindowViewModelLazy;
+        private readonly LazyInstance<IMainWindowContentNavigator> navigatorLazy;
+        private readonly IMainWindowContextDataModel contextDataModel;
         private readonly ISwfFileLibraryService swfFileLibraryService;
         private readonly IMapper mapper;
 
         public SelectSwfFileCommand(
-            LazyInstance<IMainWindowViewModel> mainWindowViewModelLazy,
+            LazyInstance<IMainWindowContentNavigator> mainContentNavigatorLazy,
+            IMainWindowContextDataModel contextDataModel,
             ISwfFileLibraryService swfFileLibraryService,
             IMapper mapper)
         {
-            this.mainWindowViewModelLazy = mainWindowViewModelLazy;
+            this.navigatorLazy = mainContentNavigatorLazy;
+            this.contextDataModel = contextDataModel;
             this.swfFileLibraryService = swfFileLibraryService;
             this.mapper = mapper;
         }
 
         public override bool CanExecute(ISwfFileBriefDataModel parameter)
         {
-            return mainWindowViewModelLazy.Value.MainContentViewModel == mainWindowViewModelLazy.Value.MainWindowSwfDetailsContentViewModel
-                || !mainWindowViewModelLazy.Value.MainWindowSwfDetailsContentViewModel.DisplaysSwf(parameter);
+            return navigatorLazy.Value.ContentViewModel == navigatorLazy.Value.SwfDetailsContentViewModel
+                || !navigatorLazy.Value.SwfDetailsContentViewModel.DisplaysSwf(parameter);
         }
 
         public override void Execute(ISwfFileBriefDataModel parameter)
@@ -41,10 +44,8 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             SwfFileDetailsInfo detailsInfo = swfFileLibraryService.GetSingleFileDetails(parameter.Id);
             SwfFileDetailsDataModel detailsDataModel = mapper.Map<SwfFileDetailsDataModel>(detailsInfo);
 
-            IMainWindowSwfDetailsContentViewModel viewModel = mainWindowViewModelLazy.Value.MainWindowSwfDetailsContentViewModel;
-            viewModel.Details = detailsDataModel;
-
-            mainWindowViewModelLazy.Value.MainContentViewModel = viewModel;
+            contextDataModel.FileDetails = detailsDataModel;
+            navigatorLazy.Value.ContentViewModel = navigatorLazy.Value.SwfDetailsContentViewModel;
         }
     }
 }

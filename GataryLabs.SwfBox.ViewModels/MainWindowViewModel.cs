@@ -1,36 +1,26 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
+using GataryLabs.SwfBox.ViewModels.Utils;
 using System.Diagnostics;
 
 namespace GataryLabs.SwfBox.ViewModels
 {
     internal class MainWindowViewModel : ObservableObject, IMainWindowViewModel
     {
-        private IMainWindowMenuBarViewModel mainWindowMenuBarViewModel;
-        private IMainWindowSwfDetailsContentViewModel mainWindowSwfDetailsContentViewModel;
-        private IMainWindowOverviewContentViewModel mainWindowOverviewContentViewModel;
-        private IMainWindowContentViewModel mainContentViewModel;
+        private readonly IMainWindowMenuBarViewModel mainWindowMenuBarViewModel;
+        private readonly LazyInstance<IMainWindowContentNavigator> contentNavigatorLazy;
 
         public MainWindowViewModel(
             IMainWindowMenuBarViewModel mainWindowMenuBarViewModel,
-            IMainWindowSwfDetailsContentViewModel mainWindowSwfDetailsContentViewModel,
-            IMainWindowOverviewContentViewModel mainWindowOverviewContentViewModel)
+            LazyInstance<IMainWindowContentNavigator> contentNavigatorLazy)
         {
             this.mainWindowMenuBarViewModel = mainWindowMenuBarViewModel;
-            this.mainWindowSwfDetailsContentViewModel = mainWindowSwfDetailsContentViewModel;
-            this.mainWindowOverviewContentViewModel = mainWindowOverviewContentViewModel;
-        }
-
-        public IMainWindowContentViewModel MainContentViewModel
-        {
-            get => mainContentViewModel;
-            set => SetProperty(ref mainContentViewModel, value);
+            this.contentNavigatorLazy = contentNavigatorLazy;
         }
 
         public IMainWindowMenuBarViewModel MenuBarViewModel => mainWindowMenuBarViewModel;
-        public IMainWindowSwfDetailsContentViewModel MainWindowSwfDetailsContentViewModel => mainWindowSwfDetailsContentViewModel;
-        public IMainWindowOverviewContentViewModel MainWindowOverviewContentViewModel => mainWindowOverviewContentViewModel;
-
+        public IMainWindowContentNavigator ContentNavigator => contentNavigatorLazy.Value;
+        
         public void OnLoaded()
         {
             Debug.WriteLine("On loaded - MainWindowViewModel");

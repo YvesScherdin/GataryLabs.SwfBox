@@ -28,7 +28,6 @@
                     <Button Content="{StaticResource Loca.Main.MenuBar.Button.Settings.Text}"
                             Command="{Binding OpenSettingsCommand}"
                             Style="{StaticResource Main.MenuBar.ActionButton.Big}"/>
-                        
                 </StackPanel>
                     
             </Grid>
@@ -48,8 +47,9 @@
                        Style="{StaticResource Main.MenuBar.Headline.Big}"
                        Grid.Row="0"/>
 
-                <ListBox ItemsSource="{Binding ContextData.RecentSwfFiles.Files}"
-                         SelectedItem="{Binding ContextData.SelectedSwfFileItem, Mode=TwoWay}"
+                <ListBox x:Name="fileListBox"
+                         ItemsSource="{Binding ContextData.RecentSwfFiles.Files}"
+                         SelectedValue="{Binding ContextData.SelectedSwfFileItem, Mode=TwoWay}"
                          ScrollViewer.HorizontalScrollBarVisibility="Visible"
                          ScrollViewer.VerticalScrollBarVisibility="Visible"
                          Style="{StaticResource Main.MenuBar.ListBox}"
@@ -66,11 +66,15 @@
                                             <ColumnDefinition Width="24"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
+                                        
                                         <Image Source="{Binding Image}"
-                                                Grid.Column="0" Width="24" Height="24"/>
+                                               Grid.Column="0"
+                                               Width="24"
+                                               Height="24"/>
+                                        
                                         <Label Content="{Binding Title}"
-                                                Grid.Column="1"
-                                                Style="{StaticResource Main.MenuBar.ListItem.Text}" />
+                                               Grid.Column="1"
+                                               Style="{StaticResource Main.MenuBar.ListItem.Text}" />
                                     </Grid>
                                 </Border>
                             </Grid>

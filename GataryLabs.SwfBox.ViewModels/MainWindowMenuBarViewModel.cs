@@ -11,7 +11,7 @@ namespace GataryLabs.SwfBox.ViewModels
 {
     internal class MainWindowMenuBarViewModel : ObservableObject, IMainWindowMenuBarViewModel
     {
-        private LazyInstance<IMainWindowViewModel> mainWindowViewModelLazy;
+        private LazyInstance<IMainWindowContentNavigator> contentNavigatorLazy;
 
         private RelayCommand openOverviewCommand;
         private RelayCommand openSettingsCommand;
@@ -19,11 +19,11 @@ namespace GataryLabs.SwfBox.ViewModels
         private IMainWindowContextDataModel contextData;
 
         public MainWindowMenuBarViewModel(
-            LazyInstance<IMainWindowViewModel> mainWindowViewModelLazy,
+            LazyInstance<IMainWindowContentNavigator> contentNavigatorLazy,
             ISelectSwfFileCommand selectSwfFileCommand,
             IMainWindowContextDataModel contextData)
         {
-            this.mainWindowViewModelLazy = mainWindowViewModelLazy;
+            this.contentNavigatorLazy = contentNavigatorLazy;
             this.selectSwfFileCommand = selectSwfFileCommand;
             this.contextData = contextData;
 
@@ -48,7 +48,7 @@ namespace GataryLabs.SwfBox.ViewModels
 
         private void ExecuteOpenOverviewCommand()
         {
-            mainWindowViewModelLazy.Value.MainContentViewModel = mainWindowViewModelLazy.Value.MainWindowOverviewContentViewModel;
+            contentNavigatorLazy.Value.ContentViewModel = contentNavigatorLazy.Value.OverviewContentViewModel;
         }
 
         private void ContextData_PropertyChanged(object sender, PropertyChangedEventArgs arguments)

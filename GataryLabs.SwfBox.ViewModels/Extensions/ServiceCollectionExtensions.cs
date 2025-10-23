@@ -43,6 +43,7 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
         private static IServiceCollection AddViewModels(this IServiceCollection services)
         {
             services.AddScoped<IMainWindowViewModel, MainWindowViewModel>();
+            services.AddScoped<IMainWindowContentNavigator, MainWindowContentNavigator>();
             services.AddScoped<IMainWindowSwfDetailsContentViewModel, MainWindowSwfDetailsContentViewModel>();
             services.AddScoped<IMainWindowOverviewContentViewModel, MainWindowOverviewContentViewModel>();
             services.AddScoped<IMainWindowErrorContentViewModel, MainWindowErrorContentViewModel>();

@@ -32,7 +32,7 @@
 
                 <Border Style="{StaticResource Main.MainRegion.Border}">
 
-                    <ContentControl Content="{Binding MainContentViewModel}"
+                    <ContentControl Content="{Binding ContentNavigator.ContentViewModel}"
                                     ContentTemplateSelector="{StaticResource DataTemplateSelector.ViewModels}"/>
 
                 </Border>

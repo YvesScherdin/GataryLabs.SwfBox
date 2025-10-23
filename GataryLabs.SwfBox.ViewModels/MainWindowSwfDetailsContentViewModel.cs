@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
-using GataryLabs.SwfBox.ViewModels.DataModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -34,11 +34,26 @@ namespace GataryLabs.SwfBox.ViewModels
         
         public void OnLoaded()
         {
+            Details = contextData.FileDetails;
+            contextData.PropertyChanged += ContextData_PropertyChanged;
         }
 
         public void OnUnloaded()
         {
             contextData.SelectedSwfFileItem = null;
+            Details = null;
+
+            contextData.PropertyChanged -= ContextData_PropertyChanged;
+        }
+
+        private void ContextData_PropertyChanged(object sender, PropertyChangedEventArgs eventArguments)
+        {
+            switch (eventArguments.PropertyName)
+            {
+                case nameof(contextData.FileDetails):
+                    Details = contextData.FileDetails;
+                    break;
+            }
         }
     }
 }

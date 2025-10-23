@@ -15,7 +15,6 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
     {
         private IDialogService dialogService;
         private ISwfFileLibraryService swfFileLibraryService;
-        private IRecentSwfFileLibraryDataModel recentSwfFileLibraryDataModel;
         private IMainWindowContextDataModel mainWindowContextDataModel;
         private ILocalizationSource localizationSource;
         private IMapper mapper;
@@ -23,14 +22,12 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
         public PickNewSwfFileCommand(
             IDialogService dialogService,
             ISwfFileLibraryService swfFileLibraryService,
-            IRecentSwfFileLibraryDataModel recentSwfFileLibraryDataModel,
             IMainWindowContextDataModel mainWindowContextDataModel,
             ILocalizationSource localizationSource,
             IMapper mapper)
         {
             this.dialogService = dialogService;
             this.swfFileLibraryService = swfFileLibraryService;
-            this.recentSwfFileLibraryDataModel = recentSwfFileLibraryDataModel;
             this.mainWindowContextDataModel = mainWindowContextDataModel;
             this.localizationSource = localizationSource;
             this.mapper = mapper;
