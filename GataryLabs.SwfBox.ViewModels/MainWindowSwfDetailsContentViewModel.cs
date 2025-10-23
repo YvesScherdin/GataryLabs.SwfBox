@@ -34,11 +34,6 @@ namespace GataryLabs.SwfBox.ViewModels
         
         public void OnLoaded()
         {
-            Details = new SwfFileDetailsDataModel
-            {
-                FileName = "SomeSWF.swf",
-                Path = "a/b/c"
-            };
         }
 
         public void OnUnloaded()
