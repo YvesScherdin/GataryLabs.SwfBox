@@ -1,9 +1,8 @@
 ﻿using GataryLabs.SwfBox.Domain.Abstractions;
+using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.Generic;
 using System;
-using GataryLabs.SwfBox.Domain.Abstractions.Models;
 
 namespace GataryLabs.SwfBox.Domain.Extensions
 {
@@ -12,6 +11,8 @@ namespace GataryLabs.SwfBox.Domain.Extensions
         public static IServiceCollection AddDomainServices(this IServiceCollection services)
         {
             ArgumentValidator.ThrowIfNull(services, nameof(services));
+
+            services.AddSingleton<ISessionContext, SessionContext>();
 
             services.AddScoped<ISwfFileLibraryService, SwfFileLibraryService>(CreateSwfFileLibraryServiceForDebugging);
 

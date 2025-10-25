@@ -82,6 +82,37 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
             return info;
         }
 
+        public SwfFileDetailsInfo[] ScanFolder(string path, ScanFolderOptions options)
+        {
+            ArgumentValidator.ThrowIfNull(options, nameof(options));
+
+            List<string> swfFilePathes = new List<string>();
+            AccumulateSwfFilesFromDirectory(path, options.Depth, swfFilePathes);
+
+            List<SwfFileDetailsInfo> result = swfFilePathes
+                .ConvertAll(Load)
+                .ToList();
+
+            return result.ToArray();
+        }
+
+        private void AccumulateSwfFilesFromDirectory(string path, int folderDepth, List<string> result)
+        {
+            List<string> list = Directory.GetFiles(path, "*.swf").ToList();
+
+            result.AddRange(list);
+
+            if (folderDepth > 0)
+            {
+                string[] subDirectories = Directory.GetDirectories(path);
+
+                for (int i = 0; i < subDirectories.Length; i++)
+                {
+                    AccumulateSwfFilesFromDirectory(subDirectories[i], folderDepth - 1, result);
+                }
+            }
+        }
+
         public void RegisterFile(SwfFileDetailsInfo info)
         {
             ArgumentValidator.ThrowIfNull(info, nameof(info));

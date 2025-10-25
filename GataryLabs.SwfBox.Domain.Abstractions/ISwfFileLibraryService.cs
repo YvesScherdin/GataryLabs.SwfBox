@@ -11,6 +11,7 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
     {
         bool HasFileWithPath(string path);
         SwfFileDetailsInfo Load(string path);
+        SwfFileDetailsInfo[] ScanFolder(string path, ScanFolderOptions options);
         void RegisterFile(SwfFileDetailsInfo info);
         void UnregisterFile(SwfFileDetailsInfo info);
         SwfFileDetailsInfo GetSingleFileDetails(Guid id);

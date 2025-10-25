@@ -25,6 +25,12 @@
     <system:String x:Key="Loca.Main.Overview.Dialog.SelectAnSwfFile.Title">Wähle eine SWF-Datei aus...</system:String>
     <system:String x:Key="Loca.Main.Overview.Dialog.SwfFileAlreadyAdded.Title">Datei bereits registriert</system:String>
     <system:String x:Key="Loca.Main.Overview.Dialog.SwfFileAlreadyAdded.Message">Eine Datei mit diesem Pfad wurde bereits in die Sammlung aufgenommen.</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.ScanDirectoryForSwfs.Title">Wähle ein Verzeichnis mit SWF-Dateien aus...</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.ScanDirectoryForSwfs.Accept">Scannen</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.NoSwfFilesFound.Title">Keine SWF-Dateien gefunden</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.NoSwfFilesFound.Message">In dem gewählten Ordner (und ggf. in den Unterordnern) befinden sich keine SWF-Dateien.</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.NoNewSwfFilesFound.Title">Im Ordner nichts Neues</system:String>
+    <system:String x:Key="Loca.Main.Overview.Dialog.NoNewSwfFilesFound.Message">Keine neuen SWF-Dateien gefunden.</system:String>
     
     <!-- Details view -->
     

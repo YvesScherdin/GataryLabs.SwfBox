@@ -2,7 +2,9 @@
 using GataryLabs.SwfBox.Views.Abstractions.Models;
 using GataryLabs.SwfBox.Views.Utilities;
 using Microsoft.Win32;
+using PropertyTools.Wpf.Shell32;
 using System.Windows;
+using static PropertyTools.Wpf.Shell32.BrowseForFolderDialog;
 
 namespace GataryLabs.SwfBox.Views
 {
@@ -43,6 +45,40 @@ namespace GataryLabs.SwfBox.Views
             {
                 Accepted = true,
                 FileName = dialog.FileName
+            };
+        }
+
+        public OpenDirectoryDialogResult OpenDirectory(OpenDirectoryDialogOptions options)
+        {
+            BrowseForFolderDialog dialog = new BrowseForFolderDialog();
+
+            if (options.AllowCreateNewFolder)
+                dialog.BrowserDialogFlags |= BrowseInfoFlags.BIF_NONEWFOLDERBUTTON;
+            else
+                dialog.BrowserDialogFlags &= ~BrowseInfoFlags.BIF_NONEWFOLDERBUTTON;
+
+            if (!string.IsNullOrWhiteSpace(options.Title))
+                dialog.Title = options.Title;
+
+            if (!string.IsNullOrWhiteSpace(options.InitialDirectory))
+                dialog.InitialFolder = options.InitialDirectory;
+
+            if (!string.IsNullOrWhiteSpace(options.AcceptButtonText))
+                dialog.OKButtonText = options.AcceptButtonText;
+
+            Window ownerWindow = (options.Owner as Window) ?? WindowUtility.GetFocusedWindow();
+
+            bool? result = (ownerWindow != null)
+                ? dialog.ShowDialog(ownerWindow)
+                : dialog.ShowDialog();
+
+            if (!result.GetValueOrDefault())
+                return new OpenDirectoryDialogResult { Accepted = false };
+
+            return new OpenDirectoryDialogResult
+            {
+                Accepted = true,
+                DirectoryPath = dialog.SelectedFolder
             };
         }
     }

@@ -7,5 +7,7 @@ namespace GataryLabs.SwfBox.Views.Abstractions
         void Alert(AlertOptions options);
 
         OpenFileDialogResult OpenFile(OpenFileDialogOptions options);
+
+        OpenDirectoryDialogResult OpenDirectory(OpenDirectoryDialogOptions options);
     }
 }
