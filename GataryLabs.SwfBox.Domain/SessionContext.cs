@@ -9,19 +9,5 @@ namespace GataryLabs.SwfBox.Domain
         public SessionHistory History { get; set; }
 
         public ScanFolderOptions ScanFolderOptions { get; set; }
-
-        public SessionContext()
-        {
-            History = new SessionHistory();
-
-            ScanFolderOptions = new ScanFolderOptions
-            {
-                Depth = 2,
-                FileNamesToIgnore = new string[]
-                {
-                    "expressInstall.swf"
-                }
-            };
-        }
     }
 }

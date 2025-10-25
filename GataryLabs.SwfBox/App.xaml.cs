@@ -1,4 +1,5 @@
-﻿using GataryLabs.SwfBox.Domain.Extensions;
+﻿using GataryLabs.SwfBox.Configuration.Abstractions;
+using GataryLabs.SwfBox.Domain.Extensions;
 using GataryLabs.SwfBox.Extensions;
 using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views;
@@ -43,14 +44,18 @@ namespace GataryLabs.SwfBox
 
             hostBuilder.ConfigureAppConfiguration(configurationBulder =>
             {
+                configurationBulder.AddEnvironmentVariables();
                 configurationBulder.AddJsonFile("appsettings.json");
             });
 
             hostBuilder.ConfigureAppLogging();
 
-            hostBuilder.ConfigureServices(services =>
+            hostBuilder.ConfigureServices((hostBuilderContext, services) =>
             {
-                services.AddDomainServices();
+                ScanFolderOptions defaultScanFolderOptions = new ScanFolderOptions();
+                hostBuilderContext.Configuration.GetSection("ScanFolderOptions").Bind(defaultScanFolderOptions);
+
+                services.AddDomainServices(defaultScanFolderOptions);
                 services.AddLocalization();
                 services.AddViews();
                 services.AddMvvm();
