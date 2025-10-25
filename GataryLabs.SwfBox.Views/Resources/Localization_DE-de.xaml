@@ -6,7 +6,6 @@
     
     <system:String x:Key="Loca.Misc.Extensions.SwfFiles">SWF-Dateien</system:String>
     
-    
     <!-- Menu bar -->
     
     <system:String x:Key="Loca.Main.MenuBar.Headline.AppTitle">SWF Box</system:String>
@@ -31,6 +30,7 @@
     <system:String x:Key="Loca.Main.Overview.Dialog.NoSwfFilesFound.Message">In dem gewählten Ordner (und ggf. in den Unterordnern) befinden sich keine SWF-Dateien.</system:String>
     <system:String x:Key="Loca.Main.Overview.Dialog.NoNewSwfFilesFound.Title">Im Ordner nichts Neues</system:String>
     <system:String x:Key="Loca.Main.Overview.Dialog.NoNewSwfFilesFound.Message">Keine neuen SWF-Dateien gefunden.</system:String>
+    <system:String x:Key="Loca.Notification.ScanDirectoryForSwfs.Result">Scan erfolgreich. {0} SWF-Datei/en gefunden.</system:String>
     
     <!-- Details view -->
     

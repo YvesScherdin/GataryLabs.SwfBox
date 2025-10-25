@@ -1,6 +1,7 @@
 ﻿using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.Views.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
+using Notification.Wpf;
 using System;
 using System.Windows.Controls;
 
@@ -11,6 +12,8 @@ namespace GataryLabs.SwfBox.Views.Extensions
         public static IServiceCollection AddLocalization(this IServiceCollection services)
         {
             services.AddSingleton<ILocalizationSource, LocalizationSource>();
+            services.AddSingleton<INotificationManager, NotificationManager>();
+            services.AddSingleton<INotificationService, NotificationService>();
 
             return services;
         }

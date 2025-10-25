@@ -87,7 +87,7 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
             ArgumentValidator.ThrowIfNull(options, nameof(options));
 
             List<string> swfFilePathes = new List<string>();
-            AccumulateSwfFilesFromDirectory(path, options.Depth, swfFilePathes);
+            AccumulateSwfFilesFromDirectory(path, options.Depth, swfFilePathes, options);
 
             List<SwfFileDetailsInfo> result = swfFilePathes
                 .ConvertAll(Load)
@@ -96,11 +96,15 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
             return result.ToArray();
         }
 
-        private void AccumulateSwfFilesFromDirectory(string path, int folderDepth, List<string> result)
+        private void AccumulateSwfFilesFromDirectory(string path, int folderDepth, List<string> result, ScanFolderOptions options)
         {
             List<string> list = Directory.GetFiles(path, "*.swf").ToList();
 
-            result.AddRange(list);
+            foreach(string possiblePath in list)
+            {
+                if (!options.FileNamesToIgnore.Any(possiblePath.Contains))
+                    result.Add(possiblePath);
+            }
 
             if (folderDepth > 0)
             {
@@ -108,7 +112,7 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
 
                 for (int i = 0; i < subDirectories.Length; i++)
                 {
-                    AccumulateSwfFilesFromDirectory(subDirectories[i], folderDepth - 1, result);
+                    AccumulateSwfFilesFromDirectory(subDirectories[i], folderDepth - 1, result, options);
                 }
             }
         }

@@ -15,7 +15,7 @@ namespace GataryLabs.SwfBox.Domain
 
             ScanFolderOptions = new ScanFolderOptions
             {
-                Depth = 1,
+                Depth = 2,
                 FileNamesToIgnore = new string[]
                 {
                     "expressInstall.swf"

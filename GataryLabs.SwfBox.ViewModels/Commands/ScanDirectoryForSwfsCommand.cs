@@ -19,6 +19,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
         private IMainWindowContextDataModel mainWindowContextDataModel;
         private ISessionContext sessionContext;
         private ILocalizationSource localizationSource;
+        private INotificationService notificationService;
         private IMapper mapper;
 
         public ScanDirectoryForSwfsCommand(
@@ -26,6 +27,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             ISwfFileLibraryService swfFileLibraryService,
             IMainWindowContextDataModel mainWindowContextDataModel,
             ISessionContext sessionContext,
+            INotificationService notificationService,
             ILocalizationSource localizationSource,
             IMapper mapper)
         {
@@ -33,6 +35,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             this.swfFileLibraryService = swfFileLibraryService;
             this.mainWindowContextDataModel = mainWindowContextDataModel;
             this.sessionContext = sessionContext;
+            this.notificationService = notificationService;
             this.localizationSource = localizationSource;
             this.mapper = mapper;
         }
@@ -109,6 +112,8 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
                 return false;
             }
 
+            string[] negativeFilters = sessionContext.ScanFolderOptions.FileNamesToIgnore;
+
             scannedDetails = scannedDetails
                 .Where(detailsInfo => !swfFileLibraryService.HasFileWithPath(detailsInfo.Path))
                 .ToArray();
@@ -145,6 +150,9 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             }
 
             mainWindowContextDataModel.SelectedSwfFileItem = newBriefDataModelsToAdd.LastOrDefault();
+
+            string notificationMessage = string.Format(localizationSource.GetText("Loca.Notification.ScanDirectoryForSwfs.Result"), newBriefDataModelsToAdd.Length);
+            notificationService.ShowAsToast(notificationMessage);
         }
     }
 }
