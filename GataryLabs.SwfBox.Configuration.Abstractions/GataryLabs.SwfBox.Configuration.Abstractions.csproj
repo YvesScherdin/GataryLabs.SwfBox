@@ -6,8 +6,4 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GataryLabs.SwfBox.Configuration.Abstractions\GataryLabs.SwfBox.Configuration.Abstractions.csproj" />
-  </ItemGroup>
-
 </Project>

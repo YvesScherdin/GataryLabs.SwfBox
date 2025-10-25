@@ -1,4 +1,5 @@
-﻿using GataryLabs.SwfBox.Domain.Abstractions.Models;
+﻿using GataryLabs.SwfBox.Configuration.Abstractions;
+using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using System;
 using System.Collections.Generic;
 

@@ -1,4 +1,5 @@
-﻿using GataryLabs.SwfBox.Domain.Abstractions;
+﻿using GataryLabs.SwfBox.Configuration.Abstractions;
+using GataryLabs.SwfBox.Domain.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
 
 namespace GataryLabs.SwfBox.Domain

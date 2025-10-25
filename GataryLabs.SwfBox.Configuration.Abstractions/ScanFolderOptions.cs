@@ -1,4 +1,4 @@
-﻿namespace GataryLabs.SwfBox.Domain.Abstractions.Models
+﻿namespace GataryLabs.SwfBox.Configuration.Abstractions
 {
     public class ScanFolderOptions
     {
