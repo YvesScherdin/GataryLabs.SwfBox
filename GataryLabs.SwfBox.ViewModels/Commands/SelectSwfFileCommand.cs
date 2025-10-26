@@ -8,36 +8,43 @@ using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.ViewModels.Utils;
 using MapsterMapper;
+using Microsoft.Extensions.Logging;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
     internal class SelectSwfFileCommand : Command<ISwfFileBriefDataModel>, ISelectSwfFileCommand
     {
-        private readonly LazyInstance<IMainWindowContentNavigator> navigatorLazy;
+        private readonly LazyInstance<IMainWindowContentNavigator> mainContentNavigatorLazy;
         private readonly IMainWindowContextDataModel contextDataModel;
         private readonly ISwfFileLibraryService swfFileLibraryService;
+        private readonly ILogger<SelectSwfFileCommand> logger;
         private readonly IMapper mapper;
 
         public SelectSwfFileCommand(
             LazyInstance<IMainWindowContentNavigator> mainContentNavigatorLazy,
             IMainWindowContextDataModel contextDataModel,
             ISwfFileLibraryService swfFileLibraryService,
-            IMapper mapper)
+            ILogger<SelectSwfFileCommand> logger,
+            IMapper mapper
+            )
         {
-            this.navigatorLazy = mainContentNavigatorLazy;
+            this.mainContentNavigatorLazy = mainContentNavigatorLazy;
             this.contextDataModel = contextDataModel;
             this.swfFileLibraryService = swfFileLibraryService;
+            this.logger = logger;
             this.mapper = mapper;
         }
 
         public override bool CanExecute(ISwfFileBriefDataModel parameter)
         {
-            return navigatorLazy.Value.ContentViewModel == navigatorLazy.Value.SwfDetailsContentViewModel
-                || !navigatorLazy.Value.SwfDetailsContentViewModel.DisplaysSwf(parameter);
+            return mainContentNavigatorLazy.Value.ContentViewModel == mainContentNavigatorLazy.Value.SwfDetailsContentViewModel
+                || !mainContentNavigatorLazy.Value.SwfDetailsContentViewModel.DisplaysSwf(parameter);
         }
 
         public override void Execute(ISwfFileBriefDataModel parameter)
         {
+            logger.LogTrace("Execute {@fileTitle}", parameter?.Title);
+
             ArgumentValidator.ThrowIfNull(parameter, nameof(parameter));
             ArgumentValidator.ThrowIfGuidEmpty(parameter.Id, nameof(parameter.Id));
 
@@ -45,7 +52,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             SwfFileDetailsDataModel detailsDataModel = mapper.Map<SwfFileDetailsDataModel>(detailsInfo);
 
             contextDataModel.FileDetails = detailsDataModel;
-            navigatorLazy.Value.ContentViewModel = navigatorLazy.Value.SwfDetailsContentViewModel;
+            mainContentNavigatorLazy.Value.ContentViewModel = mainContentNavigatorLazy.Value.SwfDetailsContentViewModel;
         }
     }
 }

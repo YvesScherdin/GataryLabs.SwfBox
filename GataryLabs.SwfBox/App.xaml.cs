@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -72,12 +73,17 @@ namespace GataryLabs.SwfBox
 
             await host.StartAsync(CancellationToken.None);
 
+            logger = host.Services.GetRequiredService<ILogger<App>>();
+            logger.LogInformation("OnStartup");
+
             MainWindow mainWindow = host.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
         }
 
         protected override async void OnExit(ExitEventArgs e)
         {
+            logger?.LogInformation("OnExit");
+
             await host.StopAsync(CancellationToken.None);
 
             base.OnExit(e);

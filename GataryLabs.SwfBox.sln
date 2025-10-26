@@ -39,7 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "09_MappingTests", "09_Mappi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwfBox.MappingTests", "SwfBox.MappingTests\SwfBox.MappingTests.csproj", "{B53AF1A5-8217-49D0-A5DD-2E9FB7D8DF9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.SwfBox.Configuration.Abstractions", "GataryLabs.SwfBox.Configuration.Abstractions\GataryLabs.SwfBox.Configuration.Abstractions.csproj", "{285B2699-3211-4064-8D60-2CE538E25BE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.SwfBox.Configuration.Abstractions", "GataryLabs.SwfBox.Configuration.Abstractions\GataryLabs.SwfBox.Configuration.Abstractions.csproj", "{285B2699-3211-4064-8D60-2CE538E25BE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
