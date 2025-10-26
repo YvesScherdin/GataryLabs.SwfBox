@@ -82,6 +82,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
                 return false;
             }
 
+            sessionContext.Recent.LastDirectory = result.DirectoryPath;
             sessionContext.History.RecentScanDirectory = result.DirectoryPath;
             directoryPath = result.DirectoryPath;
             return true;

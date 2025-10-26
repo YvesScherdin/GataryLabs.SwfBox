@@ -17,6 +17,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
         private readonly LazyInstance<IMainWindowContentNavigator> mainContentNavigatorLazy;
         private readonly IMainWindowContextDataModel contextDataModel;
         private readonly ISwfFileLibraryService swfFileLibraryService;
+        private readonly ISessionContext sessionContext;
         private readonly ILogger<SelectSwfFileCommand> logger;
         private readonly IMapper mapper;
 
@@ -24,13 +25,14 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             LazyInstance<IMainWindowContentNavigator> mainContentNavigatorLazy,
             IMainWindowContextDataModel contextDataModel,
             ISwfFileLibraryService swfFileLibraryService,
+            ISessionContext sessionContext,
             ILogger<SelectSwfFileCommand> logger,
-            IMapper mapper
-            )
+            IMapper mapper)
         {
             this.mainContentNavigatorLazy = mainContentNavigatorLazy;
             this.contextDataModel = contextDataModel;
             this.swfFileLibraryService = swfFileLibraryService;
+            this.sessionContext = sessionContext;
             this.logger = logger;
             this.mapper = mapper;
         }
@@ -51,6 +53,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             SwfFileDetailsInfo detailsInfo = swfFileLibraryService.GetSingleFileDetails(parameter.Id);
             SwfFileDetailsDataModel detailsDataModel = mapper.Map<SwfFileDetailsDataModel>(detailsInfo);
 
+            sessionContext.Recent.LastFileInspected = detailsInfo.Id;
             contextDataModel.FileDetails = detailsDataModel;
             mainContentNavigatorLazy.Value.ContentViewModel = mainContentNavigatorLazy.Value.SwfDetailsContentViewModel;
         }

@@ -24,6 +24,8 @@ namespace GataryLabs.SwfBox.ViewModels
         public void OnLoaded()
         {
             Debug.WriteLine("On loaded - MainWindowViewModel");
+
+            contentNavigatorLazy.Value.ContentViewModel = contentNavigatorLazy.Value.OverviewContentViewModel;
         }
 
         public void OnUnloaded()

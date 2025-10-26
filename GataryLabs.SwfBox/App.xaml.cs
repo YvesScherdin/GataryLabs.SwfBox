@@ -1,6 +1,8 @@
 ﻿using GataryLabs.SwfBox.Configuration.Abstractions;
+using GataryLabs.SwfBox.Domain.Abstractions;
 using GataryLabs.SwfBox.Domain.Extensions;
 using GataryLabs.SwfBox.Extensions;
+using GataryLabs.SwfBox.Persistence.Extensions;
 using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views;
 using GataryLabs.SwfBox.Views.Extensions;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -53,10 +56,15 @@ namespace GataryLabs.SwfBox
 
             hostBuilder.ConfigureServices((hostBuilderContext, services) =>
             {
-                ScanFolderOptions defaultScanFolderOptions = new ScanFolderOptions();
-                hostBuilderContext.Configuration.GetSection("ScanFolderOptions").Bind(defaultScanFolderOptions);
+                UserSettings defaultSettings = new UserSettings();
+                hostBuilderContext.Configuration.GetSection("DefaultSettings").Bind(defaultSettings);
 
-                services.AddDomainServices(defaultScanFolderOptions);
+                string userDataPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                    "GataryLabs", "SwfBox");
+
+                services.AddPersistence(userDataPath, defaultSettings);
+                services.AddDomainServices();
                 services.AddLocalization();
                 services.AddViews();
                 services.AddMvvm();
@@ -76,6 +84,9 @@ namespace GataryLabs.SwfBox
             logger = host.Services.GetRequiredService<ILogger<App>>();
             logger.LogInformation("OnStartup");
 
+            ISessionContext sessionContext = host.Services.GetRequiredService<ISessionContext>();
+            await sessionContext.LoadUserData();
+
             MainWindow mainWindow = host.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
         }
@@ -83,6 +94,9 @@ namespace GataryLabs.SwfBox
         protected override async void OnExit(ExitEventArgs e)
         {
             logger?.LogInformation("OnExit");
+
+            ISessionContext sessionContext = host?.Services.GetRequiredService<ISessionContext>();
+            await sessionContext?.SaveUserData();
 
             await host.StopAsync(CancellationToken.None);
 
@@ -99,6 +113,5 @@ namespace GataryLabs.SwfBox
         {
             host.LogUnhandledException(e.ExceptionObject);
         }
-
     }
 }

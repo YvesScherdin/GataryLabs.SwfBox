@@ -30,6 +30,7 @@ namespace GataryLabs.SwfBox.ViewModels
         }
 
         public ICommand PlayCommand => playCommand;
+
         public ICommand AnalyzeCommand => analyzeCommand;
         
         public void OnLoaded()

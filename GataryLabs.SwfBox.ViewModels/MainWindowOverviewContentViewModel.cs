@@ -8,19 +8,19 @@ namespace GataryLabs.SwfBox.ViewModels
 {
     internal class MainWindowOverviewContentViewModel : ObservableObject, IMainWindowOverviewContentViewModel
     {
-        private IPickNewSwfFileCommand pickNewSwfFileCommand;
-        private IScanDirectoryForSwfsCommand scanDirectoryCommand;
-        private ISelectSwfFileCommand selectSwfFileCommand;
         private IRecentSwfFileLibraryDataModel recentSwfFiles;
+        private IScanDirectoryForSwfsCommand scanDirectoryCommand;
+        private IPickNewSwfFileCommand pickNewSwfFileCommand;
+        private ISelectSwfFileCommand selectSwfFileCommand;
 
         public MainWindowOverviewContentViewModel(
             IRecentSwfFileLibraryDataModel recentSwfFiles,
             IPickNewSwfFileCommand pickNewSwfFileCommand,
-            IScanDirectoryForSwfsCommand scanDirectoryForSwfsCommand,
+            IScanDirectoryForSwfsCommand scanDirectoryCommand,
             ISelectSwfFileCommand selectSwfFileCommand)
         {
             this.recentSwfFiles = recentSwfFiles;
-            this.scanDirectoryCommand = scanDirectoryForSwfsCommand;
+            this.scanDirectoryCommand = scanDirectoryCommand;
             this.pickNewSwfFileCommand = pickNewSwfFileCommand;
             this.selectSwfFileCommand = selectSwfFileCommand;
         }

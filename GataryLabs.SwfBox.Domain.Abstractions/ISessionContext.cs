@@ -1,5 +1,6 @@
 ﻿using GataryLabs.SwfBox.Configuration.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
+using System.Threading.Tasks;
 
 namespace GataryLabs.SwfBox.Domain.Abstractions
 {
@@ -7,6 +8,13 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
     {
         SessionHistory History { get; set; }
 
-        ScanFolderOptions ScanFolderOptions { get; set; }
+        AppRecentData Recent { get; }
+        ScanFolderOptions ScanFolderOptions { get; }
+        FileAnalysisOptions AnalysisOptions { get; }
+        PlayerOptions PlayerOptions { get; }
+
+        Task LoadUserData();
+
+        Task SaveUserData();
     }
 }

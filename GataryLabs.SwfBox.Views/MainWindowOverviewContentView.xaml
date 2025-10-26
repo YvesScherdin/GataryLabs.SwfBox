@@ -10,6 +10,7 @@
              d:DataContext="{d:DesignInstance viewModels:IMainWindowOverviewContentViewModel, IsDesignTimeCreatable=False}"
              x:Name="OverviewContentView">
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="120"/>
@@ -17,13 +18,13 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            
+
             <Label Content="{StaticResource Loca.Main.Overview.Headline}"
                    Style="{StaticResource Main.Headline.Big}"
                    HorizontalAlignment="Center"/>
-            
+
         </Grid>
-        
+
         <Grid Grid.Row="1"
               Name="searchPanel"
               Style="{StaticResource Main.Panel.Card}">
@@ -60,7 +61,7 @@
                                 Grid.Column="1"/>
                     </Grid>
                 </Grid>
-                
+
             </Border>
 
         </Grid>
@@ -99,24 +100,26 @@
                                        Style="{StaticResource Main.Headline.Medium}"
                                        Grid.Row="0"/>
 
-                                <ListBox ItemsSource="{Binding RecentSwfFiles.Files}"
-                                         Name="recentFilesListBox"
-                                         ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                         ScrollViewer.VerticalScrollBarVisibility="Visible"
-                                         HorizontalAlignment="Stretch"
-                                         VerticalAlignment="Stretch"
-                                         Style="{StaticResource Main.Overview.ListBox}"
-                                         ItemContainerStyle="{StaticResource Main.Overview.ListBox.ItemContainer}"
-                                         Grid.Row="1">
+                                <ListView ItemsSource="{Binding RecentSwfFiles.Files}"
+                                          ScrollViewer.CanContentScroll="False"
+                                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                          ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                          ScrollViewer.IsDeferredScrollingEnabled="True"
+                                          Name="recentFilesListBox"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch"
+                                          Style="{StaticResource Main.Overview.ListBox}"
+                                          ItemContainerStyle="{StaticResource Main.Overview.ListBox.ItemContainer}"
+                                          Grid.Row="1">
 
-                                    <ListBox.ItemsPanel>
+                                    <ListView.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel Orientation="Horizontal" 
-                                                       Width="{Binding ActualWidth, ElementName=recentFilesListBox}"/>
+                                                Width="{Binding ActualWidth, ElementName=recentFilesListBox}"/>
                                         </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
+                                    </ListView.ItemsPanel>
 
-                                    <ListBox.ItemTemplate>
+                                    <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Grid ToolTip="{Binding Path}">
 
@@ -139,12 +142,12 @@
                                                         </Grid.ColumnDefinitions>
                                                         <Image Source="{Binding Image}"
                                                                Grid.RowSpan="2" Grid.Column="0" Width="42" Height="42"/>
-                                                        
+
                                                         <Label Content="{Binding Title}"
                                                                Grid.Column="1" Grid.Row="0"
                                                                Style="{StaticResource Main.MenuBar.ListItem.Text}"
                                                                VerticalAlignment="Bottom"/>
-                                                        
+
                                                         <Label Content="{Binding Path}"
                                                                Grid.Column="1" Grid.Row="1"
                                                                Style="{StaticResource Main.MenuBar.ListItem.Text}"
@@ -153,19 +156,20 @@
                                                 </Border>
                                             </Grid>
                                         </DataTemplate>
-                                    </ListBox.ItemTemplate>
+                                    </ListView.ItemTemplate>
 
-                                </ListBox>
+                                </ListView>
                             </Grid>
-                            
+
                         </Border>
-                        
+
                     </Grid>
 
                 </Grid>
-                
+
             </Border>
 
         </Grid>
+
     </Grid>
 </views:ContentView>

@@ -16,6 +16,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
         private IDialogService dialogService;
         private ISwfFileLibraryService swfFileLibraryService;
         private IMainWindowContextDataModel mainWindowContextDataModel;
+        private ISessionContext sessionContext;
         private ILocalizationSource localizationSource;
         private IMapper mapper;
 
@@ -23,12 +24,14 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             IDialogService dialogService,
             ISwfFileLibraryService swfFileLibraryService,
             IMainWindowContextDataModel mainWindowContextDataModel,
+            ISessionContext sessionContext,
             ILocalizationSource localizationSource,
             IMapper mapper)
         {
             this.dialogService = dialogService;
             this.swfFileLibraryService = swfFileLibraryService;
             this.mainWindowContextDataModel = mainWindowContextDataModel;
+            this.sessionContext = sessionContext;
             this.localizationSource = localizationSource;
             this.mapper = mapper;
         }
@@ -90,6 +93,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
 
             ISwfFileBriefDataModel brieftDataModel = mapper.Map<SwfFileBriefDataModel>(detailsInfo);
 
+            sessionContext.Recent.LastFileInspected = detailsInfo.Id;
             mainWindowContextDataModel.RecentSwfFiles.Files.Insert(0, brieftDataModel);
             mainWindowContextDataModel.SelectedSwfFileItem = brieftDataModel;
         }

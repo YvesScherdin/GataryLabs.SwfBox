@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GataryLabs.SwfBox.Domain.Abstractions\GataryLabs.SwfBox.Domain.Abstractions.csproj" />
     <ProjectReference Include="..\GataryLabs.SwfBox.Infrastructure\GataryLabs.SwfBox.Infrastructure.csproj" />
+    <ProjectReference Include="..\GataryLabs.SwfBox.Persistence.Abstractions\GataryLabs.SwfBox.Persistence.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

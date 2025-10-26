@@ -9,27 +9,15 @@ namespace GataryLabs.SwfBox.Domain.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddDomainServices(this IServiceCollection services, ScanFolderOptions defaultScanFolderOptions)
+        public static IServiceCollection AddDomainServices(this IServiceCollection services)
         {
             ArgumentValidator.ThrowIfNull(services, nameof(services));
 
-            services.AddSingleton<ISessionContext, SessionContext>(
-                serviceProvider => CreateSessionContext(serviceProvider, defaultScanFolderOptions));
+            services.AddSingleton<ISessionContext, SessionContext>();
 
             services.AddScoped<ISwfFileLibraryService, SwfFileLibraryService>(CreateSwfFileLibraryServiceForDebugging);
 
             return services;
-        }
-
-        private static SessionContext CreateSessionContext(IServiceProvider serviceProvider, ScanFolderOptions defaultScanFolderOptions)
-        {
-            SessionContext sessionContext = new SessionContext
-            {
-                History = new SessionHistory(),
-                ScanFolderOptions = defaultScanFolderOptions
-            };
-
-            return sessionContext;
         }
 
         private static SwfFileLibraryService CreateSwfFileLibraryServiceForDebugging(IServiceProvider provider)

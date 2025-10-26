@@ -37,14 +37,18 @@
                                                Panel.ZIndex="1000">
 
                     </controls:NotificationArea>
-                    
+
                     <Border Style="{StaticResource Main.MainRegion.Border}">
 
-                        <ContentControl Content="{Binding ContentNavigator.ContentViewModel}"
-                                        ContentTemplateSelector="{StaticResource DataTemplateSelector.ViewModels}"/>
+                        <ScrollViewer>
+
+                            <ContentControl Content="{Binding ContentNavigator.ContentViewModel}"
+                                            ContentTemplateSelector="{StaticResource DataTemplateSelector.ViewModels}"/>
+
+                        </ScrollViewer>
 
                     </Border>
-
+                    
                 </Grid>
                 
             </Grid>
