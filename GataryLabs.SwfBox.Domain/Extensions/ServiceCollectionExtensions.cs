@@ -15,7 +15,7 @@ namespace GataryLabs.SwfBox.Domain.Extensions
 
             services.AddSingleton<ISessionContext, SessionContext>();
 
-            services.AddScoped<ISwfFileLibraryService, SwfFileLibraryService>(CreateSwfFileLibraryServiceForDebugging);
+            services.AddSingleton<ISwfFileLibraryService, SwfFileLibraryService>(CreateSwfFileLibraryServiceForDebugging);
 
             return services;
         }

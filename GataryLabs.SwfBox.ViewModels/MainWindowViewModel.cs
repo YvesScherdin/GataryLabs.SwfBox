@@ -5,7 +5,9 @@ using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Utils;
 using MapsterMapper;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace GataryLabs.SwfBox.ViewModels
 {
@@ -41,6 +43,25 @@ namespace GataryLabs.SwfBox.ViewModels
         {
             Debug.WriteLine("On loaded");
 
+            RefreshTotally();
+        }
+
+        public void OnUnloaded()
+        {
+            Debug.WriteLine("On unloaded");
+        }
+
+        private void RefreshTotally()
+        {
+            List<SwfFileBriefDataModel> detailsDataModelList = libraryService
+                .GetFiles(x => true)
+                .Select(x => mapper.Map<SwfFileBriefDataModel>(x))
+                .ToList();
+
+            contextDataModel.Value.RecentSwfFiles.Files.Clear();
+            foreach (SwfFileBriefDataModel briefdataModel in detailsDataModelList)
+                contextDataModel.Value.RecentSwfFiles.Files.Add(briefdataModel);
+
             if (libraryService.HasAnyFile(x => x.Id == sessionContext.History.RecentSwfFile))
             {
                 SwfFileDetailsInfo detailsInfo = libraryService.GetSingleFileDetails(sessionContext.History.RecentSwfFile);
@@ -54,11 +75,6 @@ namespace GataryLabs.SwfBox.ViewModels
             {
                 contentNavigatorLazy.Value.ContentViewModel = contentNavigatorLazy.Value.OverviewContentViewModel;
             }
-        }
-
-        public void OnUnloaded()
-        {
-            Debug.WriteLine("On unloaded");
         }
     }
 }

@@ -9,6 +9,9 @@ namespace GataryLabs.SwfBox.Persistence
     {
         public async Task<TSettings> LoadAsync(string path, CancellationToken cancellationToken)
         {
+            if (!File.Exists(path))
+                return default;
+
             string rawData = await ReadTextFileAsync(path, cancellationToken);
 
             if (string.IsNullOrWhiteSpace(rawData))

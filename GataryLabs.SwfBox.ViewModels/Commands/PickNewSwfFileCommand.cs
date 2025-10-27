@@ -8,6 +8,7 @@ using GataryLabs.SwfBox.ViewModels.Extensions;
 using GataryLabs.SwfBox.Views.Abstractions;
 using GataryLabs.SwfBox.Views.Abstractions.Models;
 using MapsterMapper;
+using System.Threading;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
@@ -96,6 +97,8 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             sessionContext.History.RecentSwfFile = detailsInfo.Id;
             mainWindowContextDataModel.RecentSwfFiles.Files.Insert(0, brieftDataModel);
             mainWindowContextDataModel.SelectedSwfFileItem = brieftDataModel;
+
+            sessionContext.SaveLibraryData(CancellationToken.None);
         }
     }
 }

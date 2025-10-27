@@ -14,7 +14,6 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -85,7 +84,8 @@ namespace GataryLabs.SwfBox
             logger.LogInformation("OnStartup");
 
             ISessionContext sessionContext = host.Services.GetRequiredService<ISessionContext>();
-            await sessionContext.LoadUserData();
+            await sessionContext.LoadUserData(CancellationToken.None);
+            await sessionContext.LoadLibraryData(CancellationToken.None);
 
             MainWindow mainWindow = host.Services.GetRequiredService<MainWindow>();
             mainWindow.Show();
@@ -96,7 +96,7 @@ namespace GataryLabs.SwfBox
             logger?.LogInformation("OnExit");
 
             ISessionContext sessionContext = host?.Services.GetRequiredService<ISessionContext>();
-            await sessionContext?.SaveUserData();
+            await sessionContext?.SaveUserData(CancellationToken.None);
 
             await host.StopAsync(CancellationToken.None);
 

@@ -10,6 +10,7 @@ using GataryLabs.SwfBox.Views.Abstractions.Models;
 using MapsterMapper;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
@@ -155,7 +156,8 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             string notificationMessage = string.Format(localizationSource.GetText("Loca.Notification.ScanDirectoryForSwfs.Result"), newBriefDataModelsToAdd.Length);
             notificationService.ShowAsToast(notificationMessage);
 
-            sessionContext.SaveUserData();
+            sessionContext.SaveUserData(CancellationToken.None);
+            sessionContext.SaveLibraryData(CancellationToken.None);
         }
     }
 }

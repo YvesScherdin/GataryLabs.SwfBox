@@ -15,6 +15,9 @@ namespace GataryLabs.SwfBox.Persistence.Extensions
         {
             services.AddSingleton<IUserDataService, UserDataService>(serviceProvider =>
                 CreateUserDataService(serviceProvider, userDataDirectory, defaultUserSettings));
+            
+            services.AddSingleton<ILibraryDataService, LibraryDataService>(serviceProvider =>
+                CreateLibraryDataService(serviceProvider, userDataDirectory));
 
             return services;
         }
@@ -24,6 +27,11 @@ namespace GataryLabs.SwfBox.Persistence.Extensions
             IMapper mapper = serviceProvider.GetRequiredService<IMapper>();
 
             return new UserDataService(userDataDirectory, defaultUserSettings, mapper);
+        }
+
+        private static LibraryDataService CreateLibraryDataService(IServiceProvider serviceProvider, string userDataDirectory)
+        {
+            return new LibraryDataService(userDataDirectory);
         }
     }
 }
