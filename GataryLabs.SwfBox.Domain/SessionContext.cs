@@ -28,10 +28,16 @@ namespace GataryLabs.SwfBox.Domain
         {
             await userDataService.LoadAsync(CancellationToken.None)
                 .ConfigureAwait(false);
+
+            History.RecentSwfFile = userDataService.Settings.Recent.LastFileInspected;
+            History.RecentScanDirectory = userDataService.Settings.Recent.LastDirectory;
         }
 
         public async Task SaveUserData()
         {
+            userDataService.Settings.Recent.LastFileInspected = History.RecentSwfFile;
+            userDataService.Settings.Recent.LastDirectory = History.RecentScanDirectory;
+
             await userDataService.SaveAsync(CancellationToken.None)
                 .ConfigureAwait(false);
         }

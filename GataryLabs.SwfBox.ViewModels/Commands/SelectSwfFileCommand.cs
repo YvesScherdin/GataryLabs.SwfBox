@@ -53,7 +53,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             SwfFileDetailsInfo detailsInfo = swfFileLibraryService.GetSingleFileDetails(parameter.Id);
             SwfFileDetailsDataModel detailsDataModel = mapper.Map<SwfFileDetailsDataModel>(detailsInfo);
 
-            sessionContext.Recent.LastFileInspected = detailsInfo.Id;
+            sessionContext.History.RecentSwfFile = detailsInfo.Id;
             contextDataModel.FileDetails = detailsDataModel;
             mainContentNavigatorLazy.Value.ContentViewModel = mainContentNavigatorLazy.Value.SwfDetailsContentViewModel;
         }

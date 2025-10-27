@@ -1,6 +1,7 @@
 ﻿using GataryLabs.SwfBox.Configuration.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.Infrastructure;
+using GataryLabs.SwfBox.Persistence.Abstractions.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -58,6 +59,24 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
 
             bool result = allDetails.Values
                 .Any(details => details.Path?.Equals(path, StringComparison.InvariantCultureIgnoreCase) ?? false);
+
+            return result;
+        }
+        
+        public bool HasAnyFile(Func<SwfFileDetailsInfo, bool> condition)
+        {
+            ArgumentValidator.ThrowIfNull(condition, nameof(condition));
+
+            bool result = allDetails.Values.Any(condition);
+
+            return result;
+        }
+        
+        public List<SwfFileDetailsInfo> GetFiles(Func<SwfFileDetailsInfo, bool> condition)
+        {
+            ArgumentValidator.ThrowIfNull(condition, nameof(condition));
+
+            List<SwfFileDetailsInfo> result = allDetails.Values.Where(condition).ToList();
 
             return result;
         }

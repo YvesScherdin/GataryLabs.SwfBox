@@ -82,7 +82,6 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
                 return false;
             }
 
-            sessionContext.Recent.LastDirectory = result.DirectoryPath;
             sessionContext.History.RecentScanDirectory = result.DirectoryPath;
             directoryPath = result.DirectoryPath;
             return true;
@@ -155,6 +154,8 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
 
             string notificationMessage = string.Format(localizationSource.GetText("Loca.Notification.ScanDirectoryForSwfs.Result"), newBriefDataModelsToAdd.Length);
             notificationService.ShowAsToast(notificationMessage);
+
+            sessionContext.SaveUserData();
         }
     }
 }

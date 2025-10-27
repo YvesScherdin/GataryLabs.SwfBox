@@ -93,7 +93,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
 
             ISwfFileBriefDataModel brieftDataModel = mapper.Map<SwfFileBriefDataModel>(detailsInfo);
 
-            sessionContext.Recent.LastFileInspected = detailsInfo.Id;
+            sessionContext.History.RecentSwfFile = detailsInfo.Id;
             mainWindowContextDataModel.RecentSwfFiles.Files.Insert(0, brieftDataModel);
             mainWindowContextDataModel.SelectedSwfFileItem = brieftDataModel;
         }

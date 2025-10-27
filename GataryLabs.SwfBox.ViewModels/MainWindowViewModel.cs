@@ -1,6 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using GataryLabs.SwfBox.Domain.Abstractions;
+using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
+using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Utils;
+using MapsterMapper;
 using System.Diagnostics;
 
 namespace GataryLabs.SwfBox.ViewModels
@@ -9,13 +13,25 @@ namespace GataryLabs.SwfBox.ViewModels
     {
         private readonly IMainWindowMenuBarViewModel mainWindowMenuBarViewModel;
         private readonly LazyInstance<IMainWindowContentNavigator> contentNavigatorLazy;
+        private readonly LazyInstance<IMainWindowContextDataModel> contextDataModel;
+        private readonly ISessionContext sessionContext;
+        private readonly ISwfFileLibraryService libraryService;
+        private readonly IMapper mapper;
 
         public MainWindowViewModel(
             IMainWindowMenuBarViewModel mainWindowMenuBarViewModel,
-            LazyInstance<IMainWindowContentNavigator> contentNavigatorLazy)
+            LazyInstance<IMainWindowContentNavigator> contentNavigatorLazy,
+            LazyInstance<IMainWindowContextDataModel> contextDataModel,
+            ISwfFileLibraryService libraryService,
+            ISessionContext sessionContext,
+            IMapper mapper)
         {
             this.mainWindowMenuBarViewModel = mainWindowMenuBarViewModel;
             this.contentNavigatorLazy = contentNavigatorLazy;
+            this.contextDataModel = contextDataModel;
+            this.libraryService = libraryService;
+            this.sessionContext = sessionContext;
+            this.mapper = mapper;
         }
 
         public IMainWindowMenuBarViewModel MenuBarViewModel => mainWindowMenuBarViewModel;
@@ -23,14 +39,26 @@ namespace GataryLabs.SwfBox.ViewModels
         
         public void OnLoaded()
         {
-            Debug.WriteLine("On loaded - MainWindowViewModel");
+            Debug.WriteLine("On loaded");
 
-            contentNavigatorLazy.Value.ContentViewModel = contentNavigatorLazy.Value.OverviewContentViewModel;
+            if (libraryService.HasAnyFile(x => x.Id == sessionContext.History.RecentSwfFile))
+            {
+                SwfFileDetailsInfo detailsInfo = libraryService.GetSingleFileDetails(sessionContext.History.RecentSwfFile);
+                SwfFileDetailsDataModel detailsDataModel = mapper.Map<SwfFileDetailsDataModel>(detailsInfo);
+
+                sessionContext.History.RecentSwfFile = detailsInfo.Id;
+                contextDataModel.Value.FileDetails = detailsDataModel;
+                contentNavigatorLazy.Value.ContentViewModel = contentNavigatorLazy.Value.SwfDetailsContentViewModel;
+            }
+            else
+            {
+                contentNavigatorLazy.Value.ContentViewModel = contentNavigatorLazy.Value.OverviewContentViewModel;
+            }
         }
 
         public void OnUnloaded()
         {
-            Debug.WriteLine("On unloaded - MainWIndowViewModel");
+            Debug.WriteLine("On unloaded");
         }
     }
 }

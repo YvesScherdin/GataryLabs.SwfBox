@@ -11,6 +11,9 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
     public interface ISwfFileLibraryService
     {
         bool HasFileWithPath(string path);
+        bool HasAnyFile(Func<SwfFileDetailsInfo, bool> condition);
+        List<SwfFileDetailsInfo> GetFiles(Func<SwfFileDetailsInfo, bool> condition);
+
         SwfFileDetailsInfo Load(string path);
         SwfFileDetailsInfo[] ScanFolder(string path, ScanFolderOptions options);
         void RegisterFile(SwfFileDetailsInfo info);
