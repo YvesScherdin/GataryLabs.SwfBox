@@ -1,9 +1,6 @@
-﻿using GataryLabs.SwfBox.Configuration.Abstractions;
-using GataryLabs.SwfBox.Domain.Abstractions;
-using GataryLabs.SwfBox.Domain.Abstractions.Models;
+﻿using GataryLabs.SwfBox.Domain.Abstractions;
 using GataryLabs.SwfBox.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace GataryLabs.SwfBox.Domain.Extensions
 {
@@ -15,35 +12,9 @@ namespace GataryLabs.SwfBox.Domain.Extensions
 
             services.AddSingleton<ISessionContext, SessionContext>();
 
-            services.AddSingleton<ISwfFileLibraryService, SwfFileLibraryService>(CreateSwfFileLibraryServiceForDebugging);
+            services.AddSingleton<ISwfFileLibraryService, SwfFileLibraryService>();
 
             return services;
-        }
-
-        private static SwfFileLibraryService CreateSwfFileLibraryServiceForDebugging(IServiceProvider provider)
-        {
-            SwfFileLibraryService swfFileLibraryService = new SwfFileLibraryService();
-
-            swfFileLibraryService.RegisterFile(new SwfFileDetailsInfo
-            {
-                Id = Guid.NewGuid(),
-                FileName = "SomeFile.swf",
-                Path = "path/to/SomeFile.swf"
-            });
-            swfFileLibraryService.RegisterFile(new SwfFileDetailsInfo
-            {
-                Id = Guid.NewGuid(),
-                FileName = "SomeFile.swf",
-                Path = "path/to/SomeFile.swf"
-            });
-            swfFileLibraryService.RegisterFile(new SwfFileDetailsInfo
-            {
-                Id = Guid.NewGuid(),
-                FileName = "SomeFile.swf",
-                Path = "path/to/SomeFile.swf"
-            });
-
-            return swfFileLibraryService;
         }
     }
 }
