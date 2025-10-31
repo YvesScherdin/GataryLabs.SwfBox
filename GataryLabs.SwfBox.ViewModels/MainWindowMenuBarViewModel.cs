@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using GataryLabs.Mvvm.ViewModels.Utils;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
-using GataryLabs.SwfBox.ViewModels.Utils;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Input;

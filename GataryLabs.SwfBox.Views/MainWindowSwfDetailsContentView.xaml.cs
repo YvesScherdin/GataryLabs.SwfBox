@@ -1,4 +1,6 @@
-﻿namespace GataryLabs.SwfBox.Views
+﻿using GataryLabs.Mvvm.Views;
+
+namespace GataryLabs.SwfBox.Views
 {
     /// <summary>
     /// Interaction logic for MainWindowSwfDetailsContentView.xaml

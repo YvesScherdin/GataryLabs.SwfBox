@@ -1,12 +1,13 @@
-﻿using GataryLabs.SwfBox.Configuration.Abstractions;
+﻿using GataryLabs.Mvvm.Services.Abstractions;
+using GataryLabs.Mvvm.Services.Abstractions.Models;
+using GataryLabs.Mvvm.ViewModels.Commands;
+using GataryLabs.SwfBox.Configuration.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 using GataryLabs.SwfBox.ViewModels.DataModel;
-using GataryLabs.SwfBox.Views.Abstractions;
-using GataryLabs.SwfBox.Views.Abstractions.Models;
 using MapsterMapper;
 using System.IO;
 using System.Linq;

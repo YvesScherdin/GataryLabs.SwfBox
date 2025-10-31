@@ -1,4 +1,6 @@
-﻿using GataryLabs.SwfBox.Domain.Abstractions;
+﻿using GataryLabs.Mvvm.ViewModels.Commands;
+using GataryLabs.Mvvm.ViewModels.Utils;
+using GataryLabs.SwfBox.Domain.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.Infrastructure;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
@@ -6,7 +8,6 @@ using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 using GataryLabs.SwfBox.ViewModels.DataModel;
 using GataryLabs.SwfBox.ViewModels.Extensions;
-using GataryLabs.SwfBox.ViewModels.Utils;
 using MapsterMapper;
 using Microsoft.Extensions.Logging;
 

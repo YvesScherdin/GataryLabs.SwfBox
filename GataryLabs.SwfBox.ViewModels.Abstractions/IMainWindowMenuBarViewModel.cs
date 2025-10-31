@@ -1,4 +1,5 @@
-﻿using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
+﻿using GataryLabs.Mvvm.ViewModels.Abstractions;
+using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using System.Windows.Input;
 
 namespace GataryLabs.SwfBox.ViewModels.Abstractions

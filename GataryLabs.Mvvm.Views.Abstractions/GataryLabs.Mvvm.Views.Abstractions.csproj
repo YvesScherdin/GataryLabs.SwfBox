@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GataryLabs.Mvvm.ViewModels.Abstractions\GataryLabs.Mvvm.ViewModels.Abstractions.csproj" />
+  </ItemGroup>
+
 </Project>

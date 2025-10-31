@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GataryLabs.Mvvm.Views.Abstractions\GataryLabs.Mvvm.Views.Abstractions.csproj" />
     <ProjectReference Include="..\GataryLabs.SwfBox.ViewModels.Abstractions\GataryLabs.SwfBox.ViewModels.Abstractions.csproj" />
   </ItemGroup>
 

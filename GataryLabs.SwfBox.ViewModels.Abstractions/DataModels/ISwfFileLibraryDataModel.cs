@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using GataryLabs.Mvvm.ViewModels.Abstractions.DataModels;
+using System.Collections.ObjectModel;
 
 namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
 {

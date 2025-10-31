@@ -1,9 +1,10 @@
-﻿using GataryLabs.SwfBox.ViewModels.Abstractions;
+﻿using GataryLabs.Mvvm.ViewModels.Utils;
+using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 using GataryLabs.SwfBox.ViewModels.Commands;
 using GataryLabs.SwfBox.ViewModels.DataModel;
-using GataryLabs.SwfBox.ViewModels.Utils;
+using GataryLabs.SwfBox.ViewModels.Mappings;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GataryLabs.SwfBox.ViewModels.Extensions

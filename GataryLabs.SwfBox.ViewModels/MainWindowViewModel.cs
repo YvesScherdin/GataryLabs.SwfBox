@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using GataryLabs.Mvvm.ViewModels.Utils;
 using GataryLabs.SwfBox.Domain.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.DataModel;
-using GataryLabs.SwfBox.ViewModels.Utils;
 using MapsterMapper;
 using System.Collections.Generic;
 using System.Diagnostics;

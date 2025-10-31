@@ -1,5 +1,6 @@
-﻿<views:ContentView x:Class="GataryLabs.SwfBox.Views.MainWindowSwfDetailsContentView"
+﻿<mvvmViews:ContentView x:Class="GataryLabs.SwfBox.Views.MainWindowSwfDetailsContentView"
              xmlns:views="clr-namespace:GataryLabs.SwfBox.Views"
+             xmlns:mvvmViews="clr-namespace:GataryLabs.Mvvm.Views;assembly=GataryLabs.Mvvm.Views"
              xmlns:viewModels="clr-namespace:GataryLabs.SwfBox.ViewModels.Abstractions;assembly=GataryLabs.SwfBox.ViewModels.Abstractions"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -170,4 +171,4 @@
             </Grid>
         </ScrollViewer>
     </Grid>
-</views:ContentView>
+</mvvmViews:ContentView>

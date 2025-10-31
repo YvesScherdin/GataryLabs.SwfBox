@@ -1,4 +1,6 @@
-﻿namespace GataryLabs.SwfBox.ViewModels.Abstractions
+﻿using GataryLabs.Mvvm.ViewModels.Abstractions;
+
+namespace GataryLabs.SwfBox.ViewModels.Abstractions
 {
     public interface IMainWindowViewModel : IViewModel
     {

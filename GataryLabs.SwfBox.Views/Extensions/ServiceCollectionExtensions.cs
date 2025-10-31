@@ -1,5 +1,7 @@
-﻿using GataryLabs.SwfBox.ViewModels.Abstractions;
-using GataryLabs.SwfBox.Views.Abstractions;
+﻿using GataryLabs.Mvvm.Services;
+using GataryLabs.Mvvm.Services.Abstractions;
+using GataryLabs.Mvvm.ViewModels.Abstractions;
+using GataryLabs.SwfBox.ViewModels.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using Notification.Wpf;
 using System;

@@ -1,4 +1,4 @@
-﻿using GataryLabs.SwfBox.Views.Abstractions.Models;
+﻿using GataryLabs.Mvvm.Services.Abstractions.Models;
 using System.Collections.Generic;
 
 namespace GataryLabs.SwfBox.ViewModels.Extensions

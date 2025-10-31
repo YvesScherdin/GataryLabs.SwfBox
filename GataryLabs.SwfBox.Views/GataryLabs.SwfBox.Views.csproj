@@ -38,6 +38,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GataryLabs.Mvvm.Services\GataryLabs.Mvvm.Services.csproj" />
+    <ProjectReference Include="..\GataryLabs.Mvvm.Views\GataryLabs.Mvvm.Views.csproj" />
     <ProjectReference Include="..\GataryLabs.SwfBox.ViewModels.Abstractions\GataryLabs.SwfBox.ViewModels.Abstractions.csproj" />
     <ProjectReference Include="..\GataryLabs.SwfBox.Views.Abstractions\GataryLabs.SwfBox.Views.Abstractions.csproj" />
   </ItemGroup>

@@ -1,4 +1,6 @@
-﻿namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
+﻿using GataryLabs.Mvvm.ViewModels.Abstractions.DataModels;
+
+namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
 {
     public interface IPropertyDataModel : IDataModel
     {
