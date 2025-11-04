@@ -1,9 +1,10 @@
-﻿namespace GataryLabs.SwfBox.Domain.Abstractions.Models
+﻿using System.Collections.Generic;
+
+namespace GataryLabs.SwfBox.Domain.Abstractions.Models
 {
     public class SwfAnalysisInfo
     {
-        public string Format { get; set; }
-        public string Version { get; set; }
-        public uint FileLength { get; set; }
+        public SwfAnalysisBasicInfo Info { get; set; }
+        public List<AnalysisPropertyInfo> Tags { get; set; }
     }
 }

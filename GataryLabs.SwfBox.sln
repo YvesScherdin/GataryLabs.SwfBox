@@ -55,6 +55,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.Mvvm.ViewModels"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GataryLabs.Mvvm.ViewModels.Abstractions", "GataryLabs.Mvvm.ViewModels.Abstractions\GataryLabs.Mvvm.ViewModels.Abstractions.csproj", "{F51933DC-F824-4247-B4E5-21B070D77B29}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GataryLabs.Collections", "GataryLabs.Collections\GataryLabs.Collections.csproj", "{932E6DAC-9426-48FC-8D6D-55301653FC52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,10 @@ Global
 		{F51933DC-F824-4247-B4E5-21B070D77B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F51933DC-F824-4247-B4E5-21B070D77B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F51933DC-F824-4247-B4E5-21B070D77B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{932E6DAC-9426-48FC-8D6D-55301653FC52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932E6DAC-9426-48FC-8D6D-55301653FC52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932E6DAC-9426-48FC-8D6D-55301653FC52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932E6DAC-9426-48FC-8D6D-55301653FC52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -161,6 +167,7 @@ Global
 		{1C429A94-CAB7-4F78-96EC-D4E86282270C} = {CF120276-559C-4355-80CC-69289F9C1B53}
 		{DBEE9F56-776D-4FE3-BBC2-D929B9876355} = {CF120276-559C-4355-80CC-69289F9C1B53}
 		{F51933DC-F824-4247-B4E5-21B070D77B29} = {CF120276-559C-4355-80CC-69289F9C1B53}
+		{932E6DAC-9426-48FC-8D6D-55301653FC52} = {CF120276-559C-4355-80CC-69289F9C1B53}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6BBC8E20-6E94-4EA5-B71C-CB29F3D32248}

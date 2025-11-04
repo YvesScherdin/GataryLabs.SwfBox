@@ -22,16 +22,6 @@ namespace GataryLabs.SwfBox.ViewModels.Mappings
             TypeAdapterConfig<SwfMetaDataInfo, SwfMetaDataModel>.NewConfig()
                 .Inherits<SwfMetaDataInfo, ISwfMetaDataModel>();
 
-            TypeAdapterConfig<SwfAnalysisInfo, ISwfAnalysisDataModel>.NewConfig()
-                .ConstructUsing(() => new SwfAnalysisDataModel())
-                .Map(d => d.FileLength, s => s.FileLength)
-                .Map(d => d.Format, s => s.Format)
-                .Map(d => d.Version, s => s.Version)
-                .TwoWays();
-
-            TypeAdapterConfig<SwfAnalysisInfo, SwfAnalysisDataModel>.NewConfig()
-                .Inherits<SwfAnalysisInfo, ISwfAnalysisDataModel>();
-
             TypeAdapterConfig<SwfActivityInfo, ISwfActivityDataModel>.NewConfig()
                 .ConstructUsing(() => new SwfActivityDataModel())
                 .Map(d => d.AverageExecutionDuration, s => s.AverageExecutionDuration)
@@ -42,6 +32,8 @@ namespace GataryLabs.SwfBox.ViewModels.Mappings
 
             TypeAdapterConfig<SwfActivityInfo, SwfActivityDataModel>.NewConfig()
                 .Inherits<SwfActivityInfo, ISwfActivityDataModel>();
+
+            SwfAnalysisDataModelMappingProfile.Register();
 
             TypeAdapterConfig<SwfFileDetailsInfo, ISwfFileDetailsDataModel>.NewConfig()
                 .ConstructUsing(() => new SwfFileDetailsDataModel())
@@ -66,7 +58,6 @@ namespace GataryLabs.SwfBox.ViewModels.Mappings
 
             TypeAdapterConfig<SwfFileDetailsInfo, SwfFileBriefDataModel>.NewConfig()
                 .Inherits<SwfFileDetailsInfo, ISwfFileBriefDataModel>();
-
         }
 
         private static object ConvertMataDataToImage(SwfMetaDataInfo metaData)

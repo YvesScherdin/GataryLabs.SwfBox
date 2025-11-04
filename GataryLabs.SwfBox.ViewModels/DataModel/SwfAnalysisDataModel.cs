@@ -1,30 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
+using System.Collections.ObjectModel;
 
 namespace GataryLabs.SwfBox.ViewModels.DataModel
 {
     internal class SwfAnalysisDataModel : ObservableObject, ISwfAnalysisDataModel
     {
-        private string format;
-        private string version;
-        private uint fileLength;
+        private ObservableCollection<IAnalysisPropertyDataModel> properties = new ObservableCollection<IAnalysisPropertyDataModel>();
 
-        public string Format
+        public ObservableCollection<IAnalysisPropertyDataModel> Properties
         {
-            get => format;
-            set => SetProperty(ref format, value);
-        }
-
-        public string Version
-        {
-            get => version;
-            set => SetProperty(ref version, value);
-        }
-
-        public uint FileLength
-        {
-            get => fileLength;
-            set => SetProperty(ref fileLength, value);
+            get => properties;
+            set => SetProperty(ref properties, value);
         }
     }
 }

@@ -15,6 +15,6 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions.DataModels
 
         ISwfActivityDataModel Activity { get; }
 
-        ISwfAnalysisDataModel Analysis { get; }
+        ISwfAnalysisDataModel Analysis { get; set; }
     }
 }
