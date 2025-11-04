@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GataryLabs.Collections\GataryLabs.Collections.csproj" />
     <ProjectReference Include="..\GataryLabs.Mvvm.ViewModels.Abstractions\GataryLabs.Mvvm.ViewModels.Abstractions.csproj" />
   </ItemGroup>
 
