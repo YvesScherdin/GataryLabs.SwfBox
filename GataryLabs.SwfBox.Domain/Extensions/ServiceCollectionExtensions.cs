@@ -11,8 +11,8 @@ namespace GataryLabs.SwfBox.Domain.Extensions
             ArgumentValidator.ThrowIfNull(services, nameof(services));
 
             services.AddSingleton<ISessionContext, SessionContext>();
-
             services.AddSingleton<ISwfFileLibraryService, SwfFileLibraryService>();
+            services.AddSingleton<ISwfFileAnalyzer, SwfFileAnalyzer>();
 
             return services;
         }

@@ -1,10 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
+using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Windows.Input;
 
 namespace GataryLabs.SwfBox.ViewModels
 {
@@ -12,15 +10,17 @@ namespace GataryLabs.SwfBox.ViewModels
     {
         private ISwfFileDetailsDataModel details;
         private IMainWindowContextDataModel contextData;
-        private RelayCommand playCommand;
-        private RelayCommand analyzeCommand;
+        private IPlaySwfFileCommand playCommand;
+        private IAnalyzeSwfFileCommand analyzeCommand;
 
-        public MainWindowSwfDetailsContentViewModel(IMainWindowContextDataModel contextData)
+        public MainWindowSwfDetailsContentViewModel(
+            IMainWindowContextDataModel contextData,
+            IAnalyzeSwfFileCommand analyzeCommand,
+            IPlaySwfFileCommand playCommand)
         {
             this.contextData = contextData;
-
-            playCommand = new RelayCommand(() => Debug.WriteLine("File is played!"));
-            analyzeCommand = new RelayCommand(() => Debug.WriteLine("File gets analyzed!"));
+            this.analyzeCommand = analyzeCommand;
+            this.playCommand = playCommand;
         }
 
         public ISwfFileDetailsDataModel Details
@@ -29,9 +29,9 @@ namespace GataryLabs.SwfBox.ViewModels
             set => SetProperty(ref details, value);
         }
 
-        public ICommand PlayCommand => playCommand;
+        public IPlaySwfFileCommand PlayCommand => playCommand;
 
-        public ICommand AnalyzeCommand => analyzeCommand;
+        public IAnalyzeSwfFileCommand AnalyzeCommand => analyzeCommand;
         
         public void OnLoaded()
         {

@@ -45,6 +45,7 @@
                         
                             <Button Content="{StaticResource Loca.Main.SwfDetails.Button.Play.Text}"
                                     Command="{Binding PlayCommand}"
+                                    CommandParameter="{Binding Details}"
                                     Style="{StaticResource Main.ActionButton.Big}"/>
                         
                         </StackPanel>
@@ -141,6 +142,7 @@
 
                                         <Button Content="{StaticResource Loca.Main.SwfDetails.Button.Analyze.Text}"
                                                 Command="{Binding AnalyzeCommand}"
+                                                CommandParameter="{Binding Details}"
                                                 Style="{StaticResource Main.ActionButton.Small}"
                                                 HorizontalAlignment="Right"
                                                 VerticalAlignment="Center"/>

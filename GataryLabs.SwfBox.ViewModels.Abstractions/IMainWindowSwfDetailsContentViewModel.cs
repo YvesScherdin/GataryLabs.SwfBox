@@ -1,5 +1,5 @@
-﻿using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
-using System.Windows.Input;
+﻿using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
+using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 
 namespace GataryLabs.SwfBox.ViewModels.Abstractions
 {
@@ -7,8 +7,8 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions
     {
         ISwfFileDetailsDataModel Details { get; set; }
 
-        ICommand PlayCommand { get; }
+        IPlaySwfFileCommand PlayCommand { get; }
 
-        ICommand AnalyzeCommand { get; }
+        IAnalyzeSwfFileCommand AnalyzeCommand { get; }
     }
 }
