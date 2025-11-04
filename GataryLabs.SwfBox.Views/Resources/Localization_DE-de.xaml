@@ -42,6 +42,10 @@
         Analysieren
     </system:String>
 
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Explore.Text">
+        Ordner öffnen
+    </system:String>
+
     <system:String x:Key="Loca.Main.SwfDetails.Headline.Activity">
         Bisherige Aktivität
     </system:String>

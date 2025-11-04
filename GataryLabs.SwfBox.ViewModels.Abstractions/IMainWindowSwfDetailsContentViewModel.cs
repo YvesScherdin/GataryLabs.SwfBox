@@ -10,5 +10,7 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions
         IPlaySwfFileCommand PlayCommand { get; }
 
         IAnalyzeSwfFileCommand AnalyzeCommand { get; }
+
+        IExploreCommand ExploreCommand { get; }
     }
 }

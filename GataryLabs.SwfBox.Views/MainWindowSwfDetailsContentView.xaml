@@ -52,7 +52,6 @@
                         </StackPanel>
                     </StackPanel>
                    
-                    
                 </Grid>
 
                 <Grid Grid.Row="1"
@@ -105,22 +104,38 @@
                               Style="{StaticResource Main.Panel.Card}">
 
                             <Border Style="{StaticResource Main.Panel.Card.Border}">
-                                <StackPanel>
+                                <DockPanel>
 
-                                    <Label Style="{StaticResource Main.Headline.Medium}"
-                                           HorizontalContentAlignment="Left"
-                                           Content="{StaticResource Loca.Main.SwfDetails.Headline.MetaData}"/>
-                                    
-                                    <!-- Info items -->
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                        <Label Content="{StaticResource Loca.Main.SwfDetails.MetaData.FileSize}"
-                                               Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150"/>
-                                        <Label Content="---"
-                                               Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50"/>
+                                    <StackPanel DockPanel.Dock="Top"
+                                                Orientation="Horizontal">
+
+                                        <Label Style="{StaticResource Main.Headline.Medium}"
+                                               HorizontalContentAlignment="Left"
+                                               Content="{StaticResource Loca.Main.SwfDetails.Headline.MetaData}"/>
+
+                                        <Grid Width="{StaticResource Theme.Spacing.Small}"/>
+
+                                        <Button Content="{StaticResource Loca.Main.SwfDetails.Button.Explore.Text}"
+                                                Command="{Binding ExploreCommand}"
+                                                CommandParameter="{Binding Details}"
+                                                Style="{StaticResource Main.ActionButton.Small}"
+                                                HorizontalAlignment="Right"
+                                                VerticalAlignment="Center"/>
+
                                     </StackPanel>
-                                    <!-- ... -->
-                                    
-                                </StackPanel>
+
+                                    <Grid DockPanel.Dock="Bottom">
+                                        <!-- Info items -->
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <Label Content="{StaticResource Loca.Main.SwfDetails.MetaData.FileSize}"
+                                               Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150"/>
+                                            <Label Content="---"
+                                               Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50"/>
+                                        </StackPanel>
+                                        <!-- ... -->
+                                    </Grid>
+
+                                </DockPanel>
                             </Border>
                         </Grid>
 

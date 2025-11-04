@@ -9,17 +9,20 @@ namespace GataryLabs.SwfBox.ViewModels
     internal class MainWindowSwfDetailsContentViewModel : ObservableObject, IMainWindowSwfDetailsContentViewModel
     {
         private ISwfFileDetailsDataModel details;
-        private IMainWindowContextDataModel contextData;
-        private IPlaySwfFileCommand playCommand;
-        private IAnalyzeSwfFileCommand analyzeCommand;
+        private readonly IMainWindowContextDataModel contextData;
+        private readonly IPlaySwfFileCommand playCommand;
+        private readonly IAnalyzeSwfFileCommand analyzeCommand;
+        private readonly IExploreCommand exploreCommand;
 
         public MainWindowSwfDetailsContentViewModel(
             IMainWindowContextDataModel contextData,
             IAnalyzeSwfFileCommand analyzeCommand,
+            IExploreCommand exploreCommand,
             IPlaySwfFileCommand playCommand)
         {
             this.contextData = contextData;
             this.analyzeCommand = analyzeCommand;
+            this.exploreCommand = exploreCommand;
             this.playCommand = playCommand;
         }
 
@@ -32,6 +35,8 @@ namespace GataryLabs.SwfBox.ViewModels
         public IPlaySwfFileCommand PlayCommand => playCommand;
 
         public IAnalyzeSwfFileCommand AnalyzeCommand => analyzeCommand;
+
+        public IExploreCommand ExploreCommand => exploreCommand;
         
         public void OnLoaded()
         {
