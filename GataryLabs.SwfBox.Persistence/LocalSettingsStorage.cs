@@ -7,6 +7,8 @@ namespace GataryLabs.SwfBox.Persistence
 {
     internal class LocalSettingsStorage<TSettings> where TSettings : new()
     {
+        private readonly SemaphoreSlim semaphor = new SemaphoreSlim(1, 1);
+
         public async Task<TSettings> LoadAsync(string path, CancellationToken cancellationToken)
         {
             if (!File.Exists(path))
@@ -25,9 +27,18 @@ namespace GataryLabs.SwfBox.Persistence
 
         private async Task<string> ReadTextFileAsync(string path, CancellationToken cancellationToken)
         {
-            using (StreamReader reader = new StreamReader(path))
+            await semaphor.WaitAsync();
+
+            try
             {
-                return await reader.ReadToEndAsync(cancellationToken);
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    return await reader.ReadToEndAsync(cancellationToken);
+                }
+            }
+            finally
+            {
+                semaphor.Release();
             }
         }
 
@@ -40,9 +51,18 @@ namespace GataryLabs.SwfBox.Persistence
 
         private async Task WriteTextFileAsync(string text, string path, CancellationToken cancellationToken)
         {
-            using (StreamWriter writer = new StreamWriter(path, false))
+            await semaphor.WaitAsync();
+
+            try
             {
-                await writer.WriteAsync(text.ToCharArray(), cancellationToken);
+                using (StreamWriter writer = new StreamWriter(path, false))
+                {
+                    await writer.WriteAsync(text.ToCharArray(), cancellationToken);
+                }
+            }
+            finally
+            {
+                semaphor.Release();
             }
         }
     }

@@ -35,6 +35,7 @@ namespace GataryLabs.SwfBox.Persistence
                     Libraries = new SwfFileLibraryData[0]
                 };
                 ValidateSettings(loadedLibraryData);
+
                 await settingsStorage.SaveAsync(loadedLibraryData, GetLibraryFileDataPath(), cancellationToken);
             }
             else

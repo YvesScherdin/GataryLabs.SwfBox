@@ -37,7 +37,7 @@
 
                         <Label Style="{StaticResource Main.Paragraph.Top}"
                                HorizontalContentAlignment="Center"
-                               Content="{Binding Details.Path}"
+                               Content="{Binding Details.Path, Converter={StaticResource Converter.FilePathObfuscator}}"
                                Effect="{StaticResource Theme.DropShadowEffect.TopText}"/>
 
                         <Label Style="{StaticResource Main.Paragraph}"
