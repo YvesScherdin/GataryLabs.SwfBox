@@ -21,8 +21,11 @@
         <Grid Grid.Row="0">
 
             <Label Content="{StaticResource Loca.Main.Overview.Headline}"
-                   Style="{StaticResource Main.Headline.Big}"
-                   HorizontalAlignment="Center"/>
+                   Style="{StaticResource Main.Headline.Big.Top}"
+                   HorizontalAlignment="Center"
+                   Effect="{StaticResource Theme.DropShadowEffect.TopText}">
+
+            </Label>
 
         </Grid>
 

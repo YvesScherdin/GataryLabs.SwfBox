@@ -13,7 +13,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -80,27 +82,46 @@ namespace GataryLabs.SwfBox
 
             await host.StartAsync(CancellationToken.None);
 
-            logger = host.Services.GetRequiredService<ILogger<App>>();
+            InitializeLogger();
             logger.LogInformation("OnStartup");
-
-            ISessionContext sessionContext = host.Services.GetRequiredService<ISessionContext>();
-            await sessionContext.LoadUserData(CancellationToken.None);
-            await sessionContext.LoadLibraryData(CancellationToken.None);
-
-            MainWindow mainWindow = host.Services.GetRequiredService<MainWindow>();
-            mainWindow.Show();
+            await InitializeSessionAsync();
+            InitializeUI();
         }
 
         protected override async void OnExit(ExitEventArgs e)
         {
             logger?.LogInformation("OnExit");
 
-            ISessionContext sessionContext = host?.Services.GetRequiredService<ISessionContext>();
-            await sessionContext?.SaveUserData(CancellationToken.None);
+            await SaveDataOnExitAsync();
 
             await host.StopAsync(CancellationToken.None);
 
             base.OnExit(e);
+        }
+
+        private void InitializeLogger()
+        {
+            logger = host.Services.GetRequiredService<ILogger<App>>();
+        }
+
+        private async Task InitializeSessionAsync()
+        {
+            ISessionContext sessionContext = host.Services.GetRequiredService<ISessionContext>();
+            await sessionContext.LoadUserData(CancellationToken.None);
+            await sessionContext.LoadLibraryData(CancellationToken.None);
+        }
+
+        private void InitializeUI()
+        {
+            host.PrepareViewServices();
+            MainWindow mainWindow = host.Services.GetRequiredService<MainWindow>();
+            mainWindow.Show();
+        }
+
+        private async Task SaveDataOnExitAsync()
+        {
+            ISessionContext sessionContext = host?.Services.GetRequiredService<ISessionContext>();
+            await sessionContext?.SaveUserData(CancellationToken.None);
         }
 
         private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

@@ -7,6 +7,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pt="http://propertytools.org/wpf"
+             xmlns:templates="clr-namespace:GataryLabs.SwfBox.Views.Templates"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              d:DataContext="{d:DesignInstance viewModels:IMainWindowSwfDetailsContentViewModel, IsDesignTimeCreatable=False}">
@@ -28,19 +30,22 @@
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center">
 
-                        <Label Style="{StaticResource Main.Headline.Big}"
-                           HorizontalContentAlignment="Center"
-                           Content="{Binding Details.FileName}"/>
+                        <Label Style="{StaticResource Main.Headline.Big.Top}"
+                               HorizontalContentAlignment="Center"
+                               Content="{Binding Details.FileName}"
+                               Effect="{StaticResource Theme.DropShadowEffect.TopText}"/>
+
+                        <Label Style="{StaticResource Main.Paragraph.Top}"
+                               HorizontalContentAlignment="Center"
+                               Content="{Binding Details.Path}"
+                               Effect="{StaticResource Theme.DropShadowEffect.TopText}"/>
 
                         <Label Style="{StaticResource Main.Paragraph}"
-                           HorizontalContentAlignment="Center"
-                           Content="{Binding Details.Path}"/>
+                               HorizontalContentAlignment="Center"
+                               Content="{Binding Details.Description}"
+                               Effect="{StaticResource Theme.DropShadowEffect.TopText}"/>
 
-                        <Label Style="{StaticResource Main.Paragraph}"
-                           HorizontalContentAlignment="Center"
-                           Content="{Binding Details.Description}"/>
-                        
-                        <StackPanel Orientation="Vertical"
+                        <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Bottom">
                         
@@ -48,7 +53,16 @@
                                     Command="{Binding PlayCommand}"
                                     CommandParameter="{Binding Details}"
                                     Style="{StaticResource Main.ActionButton.Big}"/>
-                        
+
+                            <Grid Width="{StaticResource Theme.Spacing.Tiny}"/>
+
+                            <Button ToolTip="{StaticResource Loca.Main.SwfDetails.Button.Explore.Text}"
+                                    Command="{Binding ExploreCommand}"
+                                    CommandParameter="{Binding Details}"
+                                    Style="{StaticResource Main.ActionButton.BigSquared}">
+                                <Image Source="pack://application:,,,/GataryLabs.SwfBox.Views;component/Resources/Icon_Explore_32x32.png" />
+                            </Button>
+
                         </StackPanel>
                     </StackPanel>
                    
@@ -115,9 +129,8 @@
 
                                         <Grid Width="{StaticResource Theme.Spacing.Small}"/>
 
-                                        <Button Content="{StaticResource Loca.Main.SwfDetails.Button.Explore.Text}"
-                                                Command="{Binding ExploreCommand}"
-                                                CommandParameter="{Binding Details}"
+                                        <Button Content="{StaticResource Loca.Main.SwfDetails.Button.Save.Text}"
+                                                Command="{Binding SaveMetaDataCommand}"
                                                 Style="{StaticResource Main.ActionButton.Small}"
                                                 HorizontalAlignment="Right"
                                                 VerticalAlignment="Center"/>
@@ -125,14 +138,21 @@
                                     </StackPanel>
 
                                     <Grid DockPanel.Dock="Bottom">
-                                        <!-- Info items -->
-                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                            <Label Content="{StaticResource Loca.Main.SwfDetails.MetaData.FileSize}"
-                                               Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="150"/>
-                                            <Label Content="---"
-                                               Style="{StaticResource Main.Paragraph}" HorizontalAlignment="Left" Width="50"/>
-                                        </StackPanel>
-                                        <!-- ... -->
+
+                                        <Grid.Resources>
+                                            <templates:MetaDataPropertyGridControlFactory x:Key="MetaDataControlFactory"/>
+                                            <DataTemplate x:Key="EmptyMetaDataHeader">
+                                                <Grid Visibility="Collapsed" Width="0" Height="0"></Grid>
+                                            </DataTemplate>
+                                        </Grid.Resources>
+
+                                        <pt:PropertyGrid SelectedObject="{Binding EditableMetaData}"
+                                                         TabVisibility="Collapsed"
+                                                         CategoryHeaderTemplate="{StaticResource EmptyMetaDataHeader}"
+                                                         ControlFactory="{StaticResource MetaDataControlFactory}">
+
+                                        </pt:PropertyGrid>
+
                                     </Grid>
 
                                 </DockPanel>

@@ -7,5 +7,7 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions
         IMainWindowMenuBarViewModel MenuBarViewModel { get; }
 
         IMainWindowContentNavigator ContentNavigator { get; }
+
+        IMainWindowContextDataModel ContextDataModel { get; }
     }
 }

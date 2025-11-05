@@ -9,6 +9,7 @@ namespace GataryLabs.SwfBox.ViewModels.DataModel
         private ISwfFileBriefDataModel selectedSwfFileItem;
         private IRecentSwfFileLibraryDataModel recentSwfFiles;
         private ISwfFileDetailsDataModel fileDetails;
+        private string backgroundImage;
 
         public MainWindowContextDataModel(IRecentSwfFileLibraryDataModel recentSwfFiles)
         {
@@ -31,6 +32,12 @@ namespace GataryLabs.SwfBox.ViewModels.DataModel
         {
             get => fileDetails;
             set => SetProperty(ref fileDetails, value);
+        }
+
+        public string BackgroundImage
+        {
+            get => backgroundImage;
+            set => SetProperty(ref backgroundImage, value);
         }
     }
 }

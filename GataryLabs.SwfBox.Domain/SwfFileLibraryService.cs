@@ -1,7 +1,6 @@
 ﻿using GataryLabs.SwfBox.Configuration.Abstractions;
 using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.Infrastructure;
-using GataryLabs.SwfBox.Persistence.Abstractions.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -120,7 +119,7 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
         {
             List<string> list = Directory.GetFiles(path, "*.swf").ToList();
 
-            foreach(string possiblePath in list)
+            foreach (string possiblePath in list)
             {
                 if (!options.FileNamesToIgnore.Any(possiblePath.Contains))
                     result.Add(possiblePath);

@@ -40,6 +40,7 @@ namespace GataryLabs.SwfBox.ViewModels.Extensions
             services.AddTransient<IAnalyzeSwfFileCommand, AnalyzeSwfFileCommand>();
             services.AddTransient<IPlaySwfFileCommand, PlaySwfFileCommand>();
             services.AddTransient<IExploreCommand, ExploreCommand>();
+            services.AddTransient<ISaveMetaDataCommand, SaveMetaDataCommand>();
 
             return services;
         }

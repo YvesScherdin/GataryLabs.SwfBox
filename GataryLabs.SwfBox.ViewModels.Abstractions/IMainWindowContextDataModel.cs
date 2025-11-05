@@ -8,5 +8,6 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions
         ISwfFileBriefDataModel SelectedSwfFileItem { get; set; }
         IRecentSwfFileLibraryDataModel RecentSwfFiles { get; set; }
         ISwfFileDetailsDataModel FileDetails { get; set; }
+        string BackgroundImage { get; set; }
     }
 }

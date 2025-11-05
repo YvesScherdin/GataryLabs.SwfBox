@@ -29,8 +29,17 @@
 
             </Grid>
 
-            <Grid DockPanel.Dock="Right">
+            <Grid DockPanel.Dock="Right"
+                  Style="{StaticResource Main.MainRegion.Border.Background}">
 
+                <Grid Grid.Column="0" Grid.Row="0" Panel.ZIndex="-1" Margin="30">
+                    <Image Source="{Binding ContextDataModel.BackgroundImage}" HorizontalAlignment="Stretch">
+                        <Image.BitmapEffect>
+                            <BlurBitmapEffect Radius="40" KernelType="Gaussian"/>
+                        </Image.BitmapEffect>
+                    </Image>
+                </Grid>
+                
                 <Grid>
                     <controls:NotificationArea x:Name="ContentNotificationArea"
                                                Position="TopCenter"

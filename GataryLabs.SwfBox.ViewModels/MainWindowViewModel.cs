@@ -38,7 +38,8 @@ namespace GataryLabs.SwfBox.ViewModels
 
         public IMainWindowMenuBarViewModel MenuBarViewModel => mainWindowMenuBarViewModel;
         public IMainWindowContentNavigator ContentNavigator => contentNavigatorLazy.Value;
-        
+        public IMainWindowContextDataModel ContextDataModel => contextDataModel.Value;
+
         public void OnLoaded()
         {
             Debug.WriteLine("On loaded");

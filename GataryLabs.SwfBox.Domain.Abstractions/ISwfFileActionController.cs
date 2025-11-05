@@ -1,5 +1,7 @@
 ﻿using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace GataryLabs.SwfBox.Domain.Abstractions
 {
@@ -9,8 +11,9 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
     /// </summary>
     public interface ISwfFileActionController
     {
-        void Analyze(SwfFileDetailsInfo info);
-        void EditMetaData(Guid id, SwfMetaDataInfo delta);
+        //void Analyze(SwfFileDetailsInfo info);
+
+        Task UpdateMetaDataAsync(Guid id, SwfMetaDataInfo metaData, CancellationToken cancellationToken);
         void Play(Guid id);
     }
 }

@@ -14,6 +14,7 @@ namespace GataryLabs.SwfBox.Domain.Extensions
             services.AddSingleton<ISessionContext, SessionContext>();
             services.AddSingleton<ISwfFileLibraryService, SwfFileLibraryService>();
             services.AddSingleton<ISwfFileAnalyzer, SwfFileAnalyzer>();
+            services.AddSingleton<ISwfFileActionController, SwfFileActionController>();
 
             DomainMappingProfile.Register();
 

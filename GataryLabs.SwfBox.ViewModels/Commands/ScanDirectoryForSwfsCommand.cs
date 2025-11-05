@@ -9,6 +9,7 @@ using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
 using GataryLabs.SwfBox.ViewModels.DataModel;
 using MapsterMapper;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -50,7 +51,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
 
         public override void Execute(object parameter)
         {
-            if (!PromptFileSelection(out string selectedDirectoryPath))
+            if (!PromptFolderSelection(out string selectedDirectoryPath))
                 return;
 
             SwfFileDetailsInfo[] files = ScanForSwfFiles(selectedDirectoryPath);
@@ -61,7 +62,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
             ProcessSelection(files);
         }
 
-        private bool PromptFileSelection(out string directoryPath)
+        private bool PromptFolderSelection(out string directoryPath)
         {
             string recentFolder = sessionContext.History.RecentScanDirectory;
 

@@ -5,6 +5,7 @@
     <!-- File dialogs -->
     
     <system:String x:Key="Loca.Misc.Extensions.SwfFiles">SWF-Dateien</system:String>
+    <system:String x:Key="Loca.Misc.Extensions.ImageFiles">Bild-Dateien</system:String>
     
     <!-- Menu bar -->
     
@@ -33,18 +34,20 @@
     <system:String x:Key="Loca.Notification.ScanDirectoryForSwfs.Result">Scan erfolgreich. {0} SWF-Datei/en gefunden.</system:String>
     
     <!-- Details view -->
+
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Play.Text">Start</system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Analyze.Text">Analysieren</system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Explore.Text">Ordner öffnen</system:String>
+
+    <system:String x:Key="Loca.Main.SwfDetails.Button.Save.Text">Speichern</system:String>
     
-    <system:String x:Key="Loca.Main.SwfDetails.Button.Play.Text">
-        Start
-    </system:String>
-
-    <system:String x:Key="Loca.Main.SwfDetails.Button.Analyze.Text">
-        Analysieren
-    </system:String>
-
-    <system:String x:Key="Loca.Main.SwfDetails.Button.Explore.Text">
-        Ordner öffnen
-    </system:String>
+    <system:String x:Key="Loca.Main.SwfDetails.MetaData.Image">Bild</system:String>
+    <system:String x:Key="Loca.Main.SwfDetails.MetaData.Title">Titel</system:String>
+    <system:String x:Key="Loca.Main.SwfDetails.MetaData.Developer">Entwickler</system:String>
+    <system:String x:Key="Loca.Main.SwfDetails.MetaData.DeveloperLogo">Entwickler-Logo</system:String>
+    <system:String x:Key="Loca.Main.SwfDetails.MetaData.Description">Beschreibung</system:String>
 
     <system:String x:Key="Loca.Main.SwfDetails.Headline.Activity">
         Bisherige Aktivität

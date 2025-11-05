@@ -2,6 +2,7 @@
 using GataryLabs.Mvvm.Services.Abstractions;
 using GataryLabs.Mvvm.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
+using GataryLabs.SwfBox.Views.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Notification.Wpf;
 using System;
@@ -38,6 +39,7 @@ namespace GataryLabs.SwfBox.Views.Extensions
         private static IServiceCollection AddMvvmUtilityServices(this IServiceCollection services)
         {
             services.AddSingleton<IDialogService, DialogService>();
+            services.AddSingleton<SwfBoxViewContext>();
 
             return services;
         }
