@@ -1,4 +1,7 @@
 ﻿using GataryLabs.Mvvm.Views;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace GataryLabs.SwfBox.Views
 {
@@ -11,5 +14,14 @@ namespace GataryLabs.SwfBox.Views
         {
             InitializeComponent();
         }
+
+        private void HandleChange(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (analysisTreeView.Items.Count < 1)
+                return;
+
+            ((TreeViewItem)analysisTreeView.Items[0]).IsSelected = true;
+        }
+        
     }
 }

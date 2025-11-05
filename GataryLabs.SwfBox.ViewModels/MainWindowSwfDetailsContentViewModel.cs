@@ -14,6 +14,8 @@ namespace GataryLabs.SwfBox.ViewModels
         private readonly IAnalyzeSwfFileCommand analyzeCommand;
         private readonly IExploreCommand exploreCommand;
 
+        private string selectedAnalysisDataPath;
+
         public MainWindowSwfDetailsContentViewModel(
             IMainWindowContextDataModel contextData,
             IAnalyzeSwfFileCommand analyzeCommand,
@@ -30,6 +32,12 @@ namespace GataryLabs.SwfBox.ViewModels
         {
             get => details;
             set => SetProperty(ref details, value);
+        }
+        
+        public string SelectedAnalysisDataPath
+        {
+            get => selectedAnalysisDataPath;
+            set => SetProperty(ref selectedAnalysisDataPath, value);
         }
 
         public IPlaySwfFileCommand PlayCommand => playCommand;

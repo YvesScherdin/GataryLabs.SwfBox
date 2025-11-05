@@ -144,7 +144,7 @@ namespace GataryLabs.SwfBox.Domain
             result.FileLength = swfFile.FileInfo.FileLength;
             result.FrameRate = swfFile.Header.FrameRate;
             result.FrameCount = swfFile.Header.FrameCount;
-            result.FrameSize = swfFile.Header.FrameSize.ToRectangle();
+            result.FrameSize = swfFile.Header.FrameSize.ToString();
 
             return result;
         }

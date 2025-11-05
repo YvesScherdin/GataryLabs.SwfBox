@@ -36,6 +36,7 @@ namespace GataryLabs.SwfBox.Domain
         public ScanFolderOptions ScanFolderOptions => userDataService.Settings?.Scanning;
         public FileAnalysisOptions AnalysisOptions => userDataService.Settings?.Analysis;
         public PlayerOptions PlayerOptions => userDataService.Settings?.Player;
+        public ISwfFileLibraryService LibraryService => libraryService;
 
         public async Task LoadUserData(CancellationToken cancellationToken)
         {

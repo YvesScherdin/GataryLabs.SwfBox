@@ -2,8 +2,11 @@
 {
     public class SwfAnalysisData
     {
-        public string Format { get; set; }
-        public string Version { get; set; }
+        public byte FlashPlayerVersion { get; set; }
+        public string SwfFormat { get; set; }
         public uint FileLength { get; set; }
+        public string FrameSize { get; set; }
+        public double FrameRate { get; set; }
+        public ushort FrameCount { get; set; }
     }
 }

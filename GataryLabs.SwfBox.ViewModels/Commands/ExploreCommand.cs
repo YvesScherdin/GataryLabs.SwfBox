@@ -1,8 +1,7 @@
 ﻿using GataryLabs.Mvvm.ViewModels.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
-using System.Diagnostics;
-using System.IO;
+using GataryLabs.SwfBox.ViewModels.Utilities;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
@@ -15,13 +14,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
 
         public override void Execute(ISwfFileDetailsDataModel parameter)
         {
-            string folderPath = Path.GetDirectoryName(parameter.Path);
-
-            ProcessStartInfo processStartInfo = new ProcessStartInfo(
-                "Explorer.exe", folderPath
-            );
-
-            Process.Start(processStartInfo);
+            ExternalProcessUtility.OpenInExplorer(parameter.Path);
         }
     }
 }

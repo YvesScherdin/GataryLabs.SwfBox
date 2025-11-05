@@ -13,6 +13,7 @@ namespace GataryLabs.SwfBox.Domain.Abstractions
         ScanFolderOptions ScanFolderOptions { get; }
         FileAnalysisOptions AnalysisOptions { get; }
         PlayerOptions PlayerOptions { get; }
+        ISwfFileLibraryService LibraryService { get; }
 
         Task LoadUserData(CancellationToken cancellationToken);
         Task SaveUserData(CancellationToken cancellationToken);

@@ -163,6 +163,8 @@
                                                 HorizontalAlignment="Right"
                                                 VerticalAlignment="Center"/>
 
+                                        <Label Content="{Binding SelectedAnalysisDataPath}" HorizontalAlignment="Right"/>
+
                                     </StackPanel>
                                     
                                     <Grid DockPanel.Dock="Bottom"
@@ -186,7 +188,10 @@
                                                       VerticalScrollBarVisibility="Auto"
                                                       CanContentScroll="True">
 
-                                                <TreeView ItemsSource="{Binding Details.Analysis.Properties}">
+                                                <TreeView ItemsSource="{Binding Details.Analysis.Properties}"
+                                                          x:Name="analysisTreeView"
+                                                          SelectedValuePath="{Binding SelectedAnalysisDataPath, Mode=TwoWay}">
+
                                                     <TreeView.ItemTemplate>
                                                         <HierarchicalDataTemplate
                                                     DataType="{x:Type dataModels:IAnalysisPropertyDataModel}"

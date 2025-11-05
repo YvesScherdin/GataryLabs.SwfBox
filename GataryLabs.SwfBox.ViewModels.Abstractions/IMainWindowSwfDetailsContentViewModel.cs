@@ -12,5 +12,7 @@ namespace GataryLabs.SwfBox.ViewModels.Abstractions
         IAnalyzeSwfFileCommand AnalyzeCommand { get; }
 
         IExploreCommand ExploreCommand { get; }
+
+        string SelectedAnalysisDataPath { get; set; }
     }
 }

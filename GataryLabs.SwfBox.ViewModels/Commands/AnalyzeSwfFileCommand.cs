@@ -5,8 +5,10 @@ using GataryLabs.SwfBox.Domain.Abstractions.Models;
 using GataryLabs.SwfBox.ViewModels.Abstractions;
 using GataryLabs.SwfBox.ViewModels.Abstractions.Commands;
 using GataryLabs.SwfBox.ViewModels.Abstractions.DataModels;
+using GataryLabs.SwfBox.ViewModels.Utilities;
 using MapsterMapper;
-using System.Collections.Generic;
+using System;
+using System.Threading;
 
 namespace GataryLabs.SwfBox.ViewModels.Commands
 {
@@ -14,6 +16,7 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
     {
         private ISwfFileAnalyzer swfFileAnalyzer;
         private IMainWindowContextDataModel contextDataModel;
+        private ISessionContext sessionContext;
         private IDialogService dialogService;
         private ILocalizationSource localizationSource;
         private IMapper mapper;
@@ -21,12 +24,14 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
         public AnalyzeSwfFileCommand(
             ISwfFileAnalyzer swfFileAnalyzer,
             IMainWindowContextDataModel contextDataModel,
+            ISessionContext sessionContext,
             IDialogService dialogService,
             ILocalizationSource localizationSource,
             IMapper mapper)
         {
             this.swfFileAnalyzer = swfFileAnalyzer;
             this.contextDataModel = contextDataModel;
+            this.sessionContext = sessionContext;
             this.dialogService = dialogService;
             this.localizationSource = localizationSource;
             this.mapper = mapper;
@@ -39,58 +44,29 @@ namespace GataryLabs.SwfBox.ViewModels.Commands
 
         public override void Execute(ISwfFileDetailsDataModel parameter)
         {
-            SwfAnalysisInfo result = swfFileAnalyzer.AnalyzeSwfFile(parameter.Path);
-
-            Clusterize(result.Tags);
-
-            ISwfAnalysisDataModel analysisDataModel = mapper.Map<ISwfAnalysisDataModel>(result);
-
-            contextDataModel.FileDetails.Analysis = analysisDataModel;
+            SwfAnalysisInfo analysis = Analyze(parameter.Path);
+            UpdateLibrary(parameter.Id, analysis);
+            UpdateUI(analysis);
         }
 
-        private void Clusterize(List<AnalysisPropertyInfo> tags)
+        private SwfAnalysisInfo Analyze(string filePath)
         {
-            const int minGroupSize = 3;
-            int index = 0;
-            int groupStartIndex = -1;
-            string lastName = null;
+            SwfAnalysisInfo analysisInfo = swfFileAnalyzer.AnalyzeSwfFile(filePath);
+            AnalysisPropertyInfoUtility.Clusterize(analysisInfo.Tags);
+            return analysisInfo;
+        }
 
-            while (index < tags.Count)
-            {
-                AnalysisPropertyInfo currentTagProperty = tags[index];
+        private void UpdateLibrary(Guid id, SwfAnalysisInfo analysis)
+        {
+            SwfFileDetailsInfo detailsInfo = sessionContext.LibraryService.GetSingleFileDetails(id);
+            detailsInfo.Analysis = analysis;
+            sessionContext.SaveLibraryData(CancellationToken.None);
+        }
 
-                if (currentTagProperty.Name == lastName && !string.IsNullOrEmpty(lastName))
-                {
-                    if (groupStartIndex == -1)
-                        groupStartIndex = index - 1;
-                }
-                else if (groupStartIndex != -1)
-                {
-                    if ((index - groupStartIndex) >= minGroupSize)
-                    {
-                        int count = index - groupStartIndex;
-
-                        List<AnalysisPropertyInfo> newSubNodes = tags.GetRange(groupStartIndex, count);
-                        tags.RemoveRange(groupStartIndex, count);
-                        index -= count;
-
-                        AnalysisPropertyInfo groupNode = new AnalysisPropertyInfo
-                        {
-                            Name = $"{lastName} ({newSubNodes.Count})",
-                            Description = "Aggregated content",
-                            Properties = newSubNodes
-                        };
-
-                        tags.Insert(groupStartIndex, groupNode);
-                        currentTagProperty = groupNode;
-                    }
-
-                    groupStartIndex = -1;
-                }
-
-                index++;
-                lastName = currentTagProperty.Name;
-            }
+        private void UpdateUI(SwfAnalysisInfo analysis)
+        {
+            ISwfAnalysisDataModel analysisDataModel = mapper.Map<ISwfAnalysisDataModel>(analysis);
+            contextDataModel.FileDetails.Analysis = analysisDataModel;
         }
     }
 }
