@@ -11,7 +11,7 @@ So far 2 pages are integrated:
 - SWF-Details page
 - Overview page
 
-![Preview_Details](./Concept/Graphics/Preview_Details.png)
+![Preview_Details](./Concept/Graphics/Preview_Details2.png)
 
 ![Preview_Overview](./Concept/Graphics/Preview_Overview.png)
 
